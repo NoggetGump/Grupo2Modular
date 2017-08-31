@@ -15,13 +15,16 @@ typedef struct {
 	char *comp;
 } Endereco;
 
-/*Função para deletar um aluno. Recebe o endereço de memória (ponteiro) de um aluno e o deleta (apaga da memória).*/
+/*FunÃ§Ã£o para deletar um aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e o deleta (apaga da memÃ³ria).*/
 int deletaAluno (Aluno *a);
 
-/*Função para pegar a matrícula de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e retorna sua matrícula por referência (em um ponteiro). */
+/*FunÃ§Ã£o para pegar a matrÃ­cula de um aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e retorna sua matrÃ­cula por referÃªncia (em um ponteiro). */
 int GetMat (Aluno *a, int mat);
 
-//Função para criar um único aluno. Recebe o endereço de memória (ponteiro) de um aluno e retorna o aluno criado.
+//FunÃ§Ã£o para criar um Ãºnico aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e retorna o aluno criado.
 int CriaAluno(Aluno *a);
+
+/*FunÃ§Ã£o para pegar o nome de um aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e retorna seu nome por referÃªncia (em um ponteiro)*/
+int GetNome (Aluno *a,char* nome);
 
 #endif
