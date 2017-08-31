@@ -30,14 +30,28 @@ int GetNome (Aluno *a,char* nome){
    return(0);
 }
 
-//Cria um único aluno passado por referencia.
-int CriaAluno(Aluno *a){
+//Cria um único vazio aluno passado por referencia.
+int CriaAlunoVazio(Aluno *a){
 	a = (*Aluno) malloc(sizeof(Aluno));
 
 	if(a == NULL){
 		printf("\nError na criação do Aluno\n);
 		exit(1);
 	}
+
+	a->nome = NULL;
+	a->mat = NULL;
+	a->cfp = NULL;
+	a->telefone = NULL;
+	a->curso = NULL;
+	a->endereco.estado = NULL;
+	a->endereco.cidade = NULL;
+	a->endereco.bairro = NULL;
+	a->endereco.rua = NULL;
+	a->endereco.comp = NULL;
+	a->data.dia = NULL;
+	a->data.mes = NULL;
+	a->data.ano = NULL;
 
 	return (0);
 }
