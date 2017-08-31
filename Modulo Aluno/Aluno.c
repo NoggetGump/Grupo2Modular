@@ -23,3 +23,15 @@ int GetMat (Aluno *a, int mat){
 	mat = a->mat;
 	return (0);
 }
+
+//Cria um único aluno passado por referencia.
+int CriaAluno(Aluno *a){
+	a = (*Aluno) malloc(sizeof(Aluno));
+
+	if(a == NULL){
+		printf("\nError na criação do Aluno\n);
+		exit(1);
+	}
+
+	return (0);
+}
