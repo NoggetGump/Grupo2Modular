@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Aluno.h"
 
 typedef struct {
@@ -12,24 +13,29 @@ typedef struct {
 	Data data;
 }Aluno;
 
-/*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
+/*Recebe um ponteiro para aluno e desaloca o espaÃ§o de memÃ³ria apontado pelo mesmo*/
 int deleta_Aluno (Aluno *a){
 	free (a);
 	return (0);
 }
 
-/*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
+/*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrÃ­cula do aluno pelo ponteiro para inteiro.*/
 int GetMat (Aluno *a, int mat){
 	mat = a->mat;
 	return (0);
 }
+/*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
+int GetNome (Aluno *a,char* nome){
+   strcpy(nome,a->nome);
+   return(0);
+}
 
-//Cria um único aluno passado por referencia.
+//Cria um Ãºnico aluno passado por referencia.
 int CriaAluno(Aluno *a){
 	a = (*Aluno) malloc(sizeof(Aluno));
 
 	if(a == NULL){
-		printf("\nError na criação do Aluno\n);
+		printf("\nError na criaÃ§Ã£o do Aluno\n);
 		exit(1);
 	}
 
