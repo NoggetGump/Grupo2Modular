@@ -55,3 +55,40 @@ int CriaAlunoVazio(Aluno *a){
 
 	return (0);
 }
+
+//Função para pegar os dados digitados e colocar no aluno.
+int InsereDadosAluno(Aluno *a){
+
+	printf("\nDigite os dados:");
+	printf("\nDados academicos:\n");
+	printf("\nNome: ");
+	scanf("%s", a->nome);
+	printf("\nMatricula: ");
+	scanf("%d", a->mat);
+	printf("\nTelefone: ");
+	scanf("%s", a->telefone);
+	printf("\nCurso: ");
+	scanf("%s", a->curso);
+	printf("\nDados sobre a residencia\n);
+	printf("\nEstado: ");
+	scanf("%s", a->endereco.estado);
+	printf("\nCidade: ");
+	scanf("%s", a->endereco.cidade);
+	printf("\nBairro: ");
+	scanf("%s", a->endereco.bairro);
+	printf("\nRua: ");
+	scanf("%s", a->endereco.rua);
+	printf("\nCompletamento: ");
+	scanf("%s", a->endereco.comp);
+	printf("\nDados pessoais\n");
+	printf("\nCPF: ");
+	scanf("%d", a->cpf);
+	printf("\nDia do nascimento: ");
+	scanf("%d", a->data.dia);
+	printf("\nMes do nascimento: ");
+	scanf("%d", a->data.mes);
+	printf("\nAno do nascimento: ");
+	scanf("%d", a->data.ano);
+
+	return (0);
+}

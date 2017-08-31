@@ -27,4 +27,7 @@ int CriaAlunoVazio(Aluno *a);
 /*Função para pegar o nome de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e retorna seu nome por referência (em um ponteiro)*/
 int GetNome (Aluno *a,char* nome);
 
+//Função para pegar os dados digitados e colocar no aluno.
+int InsereDadosAluno(Aluno *a);
+
 #endif
