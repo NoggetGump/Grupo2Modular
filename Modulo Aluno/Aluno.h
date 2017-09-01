@@ -15,6 +15,16 @@ typedef struct {
 	char *comp;
 } Endereco;
 
+// Estrutura que contém dados básicos.
+typedef struct {
+	char* nome;
+	int mat;
+	int cpf;
+	int telefone;
+	Data nasc;
+	Endereco end;
+} Dados;
+
 /*Função para deletar um aluno. Recebe o endereço de memória (ponteiro) de um aluno e o deleta (apaga da memória).*/
 int deletaAluno (Aluno *a);
 
@@ -29,5 +39,14 @@ int GetNome (Aluno *a,char* nome);
 
 //Função para pegar os dados digitados e colocar no aluno.
 int InsereDadosAluno(Aluno *a);
+
+// Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
+int AlteraDados (Aluno* aluno, Dados* dados);
+
+/* Função interna para validar uma data. 
+Considera a data atual do sistema como data limite. 
+Retorna 1 se a data for válida e 0 caso contrário. 
+Valida verificando o número de dias por mês, p. ex. O dia 31 de setembro não é válido. */
+int ValidaData (Data* data);
 
 #endif
