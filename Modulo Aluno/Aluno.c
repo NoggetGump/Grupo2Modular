@@ -21,8 +21,8 @@ int deleta_Aluno (Aluno *a){
 }
 
 /*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
-int GetMat (Aluno *a, int mat){
-	mat = a->mat;
+int GetMat (Aluno *a, int* mat){
+	*mat = a->mat;
 	return (0);
 }
 /*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
