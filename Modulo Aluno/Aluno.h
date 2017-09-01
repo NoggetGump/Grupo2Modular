@@ -29,7 +29,7 @@ typedef struct {
 int deletaAluno (Aluno *a);
 
 /*Função para pegar a matrícula de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e retorna sua matrícula por referência (em um ponteiro). */
-int GetMat (Aluno *a, int mat);
+int GetMat (Aluno *a, int* mat);
 
 //Função para criar um único aluno vazio. Recebe o endereço de memória (ponteiro) de um aluno e retorna o aluno criado.
 int CriaAlunoVazio(Aluno *a);
