@@ -98,17 +98,25 @@ int InsereDadosAluno(Aluno *a) {
 int AlteraDados(Aluno* aluno, Dados* dados) {
 
 	if (dados->nome)
-		aluno->nome = dados->nome;
+		strcpy(aluno->nome,dados->nome);
 	if (dados->mat)
 		aluno->mat = dados->mat;
 	if (dados->cpf)
 		aluno->cpf = dados->cpf;
 	if (dados->telefone)
 		aluno->telefone = dados->telefone;
-	if (dados->nasc && ValidaData(dados.nasc))
-		aluno->data = dados->nasc;
-	if (dados->end)
-	aluno->endereco = dados->end;
+	if (dados->nasc && ValidaData(dados.nasc)){
+		aluno->data.ano = dados->nasc.ano;
+		aluno->data.mes = dados->nasc.mes;
+		aluno->data.dia = dados->nasc.dia;
+	}
+	if (dados->end) {
+		strcpy(aluno->endereco->estado,dados->end->estado);
+		strcpy(aluno->endereco->cidade,dados->end->cidade);
+		strcpy(aluno->endereco->bairro,dados->end->bairro);
+		strcpy(aluno->endereco->rua,dados->end->rua);
+		strcpy(aluno->endereco->comp,dados->end->comp);
+	}
 
 	return (0);
 }
