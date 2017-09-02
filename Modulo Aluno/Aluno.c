@@ -105,7 +105,7 @@ int AlteraDados(Aluno* aluno, Dados* dados) {
 		aluno->cpf = dados->cpf;
 	if (dados->telefone)
 		aluno->telefone = dados->telefone;
-	if (dados->nasc && ValidaData(dados.nasc)){
+	if (dados->nasc && ValidaData(dados->nasc)) {
 		aluno->data.ano = dados->nasc.ano;
 		aluno->data.mes = dados->nasc.mes;
 		aluno->data.dia = dados->nasc.dia;
