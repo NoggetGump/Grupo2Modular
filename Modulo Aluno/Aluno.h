@@ -15,7 +15,7 @@ typedef struct {
 	char *comp;
 } Endereco;
 
-// Estrutura que contÃ©m dados bÃ¡sicos.
+// Estrutura que contém dados básicos.
 typedef struct {
 	char* nome;
 	int mat;
@@ -25,28 +25,28 @@ typedef struct {
 	Endereco end;
 } Dados;
 
-/*FunÃ§Ã£o para deletar um aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e o deleta (apaga da memÃ³ria).*/
-int deletaAluno (Aluno *a);
+/*Função para deletar um aluno. Recebe o endereço de memória (ponteiro) de um aluno e o deleta (apaga da memória).*/
+int deletaAluno(Aluno *a);
 
-/*FunÃ§Ã£o para pegar a matrÃ­cula de um aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e retorna sua matrÃ­cula por referÃªncia (em um ponteiro). */
-int GetMat (Aluno *a, int* mat);
+/*Função para pegar a matrícula de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e retorna sua matrícula por referência (em um ponteiro). */
+int GetMat(Aluno *a, int* mat);
 
-//FunÃ§Ã£o para criar um Ãºnico aluno vazio. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e retorna o aluno criado.
+//Função para criar um único aluno vazio. Recebe o endereço de memória (ponteiro) de um aluno e retorna o aluno criado.
 int CriaAlunoVazio(Aluno *a);
 
-/*FunÃ§Ã£o para pegar o nome de um aluno. Recebe o endereÃ§o de memÃ³ria (ponteiro) de um aluno e retorna seu nome por referÃªncia (em um ponteiro)*/
-int GetNome (Aluno *a,char* nome);
+/*Função para pegar o nome de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e retorna seu nome por referência (em um ponteiro)*/
+int GetNome(Aluno *a, char* nome);
 
-//FunÃ§Ã£o para pegar os dados digitados e colocar no aluno.
+//Função para pegar os dados digitados e colocar no aluno.
 int InsereDadosAluno(Aluno *a);
 
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
-int AlteraDados (Aluno* aluno, Dados* dados);
+int AlteraDados(Aluno* aluno, Dados* dados);
 
-/* FunÃ§Ã£o interna para validar uma data. 
-Considera a data atual do sistema como data limite. 
-Retorna 1 se a data for vÃ¡lida e 0 caso contrÃ¡rio. 
-Valida verificando o nÃºmero de dias por mÃªs, p. ex. O dia 31 de setembro nÃ£o Ã© vÃ¡lido. */
-int ValidaData (Data* data);
+/* Função interna para validar uma data.
+Considera a data atual do sistema como data limite.
+Retorna 1 se a data for válida e 0 caso contrário.
+Valida verificando o número de dias por mês, p. ex. O dia 31 de setembro não é válido. */
+int ValidaData(Data* data);
 
 #endif
