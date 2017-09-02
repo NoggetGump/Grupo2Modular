@@ -129,8 +129,8 @@ int ValidaData(Data* data) {
 
 	time_t t = time(NULL);
 	struct tm *time = localtime(&t);
-	char meses31[6] = {1,3,5,7,8,10,12};
-	char meses30[3] = {4,6,9,11};
+	char meses31[7] = {1,3,5,7,8,10,12};
+	char meses30[4] = {4,6,9,11};
 	int i;
 
 	if ((data->dia < time->tm_mday && data->mes < (time->tm_mon + 1)) && data->ano < (time->tm_year + 1900))
