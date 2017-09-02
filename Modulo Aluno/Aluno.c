@@ -14,13 +14,13 @@ typedef struct {
 	Data data;
 }Aluno;
 
-/*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
+/*Recebe um ponteiro para aluno e desaloca o espaÃ§o de memÃ³ria apontado pelo mesmo*/
 int deleta_Aluno(Aluno *a) {
 	free(a);
 	return (0);
 }
 
-/*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
+/*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrÃ­cula do aluno pelo ponteiro para inteiro.*/
 int GetMat(Aluno *a, int* mat) {
 	*mat = a->mat;
 	return (0);
@@ -31,12 +31,12 @@ int GetNome(Aluno *a, char* nome) {
 	return(0);
 }
 
-//Cria um único vazio aluno passado por referencia.
+//Cria um Ãºnico vazio aluno passado por referencia.
 int CriaAlunoVazio(Aluno *a) {
 	a = (Aluno*) malloc(sizeof(Aluno));
 
 	if (a == NULL) {
-		printf("\nError na criação do Aluno\n");
+		printf("\nError na criaÃ§Ã£o do Aluno\n");
 		exit(1);
 	}
 
@@ -57,7 +57,7 @@ int CriaAlunoVazio(Aluno *a) {
 	return (0);
 }
 
-//Função para pegar os dados digitados e colocar no aluno.
+//FunÃ§Ã£o para pegar os dados digitados e colocar no aluno.
 int InsereDadosAluno(Aluno *a) {
 
 	printf("\nDigite os dados:");
@@ -113,16 +113,16 @@ int AlteraDados(Aluno* aluno, Dados* dados) {
 	return (0);
 }
 
-/* Função interna para validar uma data.
+/* FunÃ§Ã£o interna para validar uma data.
 Considera a data atual do sistema como data limite.
-Retorna 1 se a data for válida e 0 caso contrário.
-Valida verificando o número de dias por mês, p. ex. O dia 31 de setembro não é válido. */
+Retorna 1 se a data for vÃ¡lida e 0 caso contrÃ¡rio.
+Valida verificando o nÃºmero de dias por mÃªs, p. ex. O dia 31 de setembro nÃ£o Ã© vÃ¡lido. */
 int ValidaData(Data* data) {
 
 	time_t t = time(NULL);
 	struct tm *time = localtime(&t);
-	char* meses31[] = {"1","3","5","7","8","10","12"};
-	char* meses30[]= {"4","6","9","11"};
+	char* meses31[] = {1,3,5,7,8,10,12};
+	char* meses30[]= {4,6,9,11};
 	int i;
 
 	if ((data->dia < time->tm_mday && data->mes < (time->tm_mon + 1)) && data->ano < (time->tm_year + 1900))
