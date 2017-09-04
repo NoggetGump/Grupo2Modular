@@ -1,0 +1,144 @@
+#include "aluno.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+typedef struct aluno {
+	Dados dados;
+}Aluno;
+
+/*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
+int deletaAluno (Aluno* a) {
+	free(a);
+	return 0;
+}
+
+/*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
+int GetMat (Aluno *a, int mat) {
+	mat = a->dados.mat;
+	return 0;
+}
+/*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
+int GetNome (Aluno *a, char* nome) {
+	strcpy(nome, a->dados.nome);
+	return 0;
+}
+
+//Cria um único vazio aluno passado por referencia.
+int CriaAlunoVazio (Aluno *a) {
+	a = (Aluno*) malloc(sizeof(Aluno));
+
+	if (a == NULL) {
+		printf("\nError na criação do Aluno\n");
+		exit(1);
+	}
+
+	a->dados.nome = NULL;
+	a->dados.mat = NULL;
+	a->dados.cpf = NULL;
+	a->dados.telefone = NULL;
+	a->dados.end.estado = NULL;
+	a->dados.end.cidade = NULL;
+	a->dados.end.bairro = NULL;
+	a->dados.end.rua = NULL;
+	a->dados.end.comp = NULL;
+	a->dados.nasc.dia = NULL;
+	a->dados.nasc.mes = NULL;
+	a->dados.nasc.ano= NULL;
+
+	return 0;
+}
+
+//Função para pegar os dados digitados e colocar no aluno.
+int InsereDadosAluno (Aluno *a) {
+
+	printf("\nDigite os dados:");
+	printf("\nDados academicos:\n");
+	printf("\nNome: ");
+	scanf("%s", a->dados.nome);
+	printf("\nMatricula: ");
+	scanf("%d", a->dados.mat);
+	printf("\nTelefone: ");
+	scanf("%s", a->dados.telefone);
+	printf("\nDados sobre a residencia\n");
+	printf("\nEstado: ");
+	scanf("%s", a->dados.end.estado);
+	printf("\nCidade: ");
+	scanf("%s", a->dados.end.cidade);
+	printf("\nBairro: ");
+	scanf("%s", a->dados.end.bairro);
+	printf("\nRua: ");
+	scanf("%s", a->dados.end.rua);
+	printf("\nCompletamento: ");
+	scanf("%s", a->dados.end.comp);
+	printf("\nDados pessoais\n");
+	printf("\nCPF: ");
+	scanf("%d", a->dados.cpf);
+	printf("\nDia do nascimento: ");
+	scanf("%d", a->dados.nasc.dia);
+	printf("\nMes do nascimento: ");
+	scanf("%d", a->dados.nasc.mes);
+	printf("\nAno do nascimento: ");
+	scanf("%d", a->dados.nasc.ano);
+
+	return 0;
+}
+
+// Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
+int AlteraDados (Aluno* aluno, Dados* dados) {
+
+	if (dados->nome)
+		strcpy(aluno->dados.nome,dados->nome);
+	if (dados->mat)
+		aluno->dados.mat = dados->mat;
+	if (dados->cpf)
+		aluno->dados.cpf = dados->cpf;
+	if (dados->telefone)
+		aluno->dados.telefone = dados->telefone;
+	if (dados->nasc.ano && dados->nasc.dia && dados->nasc.mes && ValidaData(&dados->nasc)) {
+		aluno->dados.nasc.ano = dados->nasc.ano;
+		aluno->dados.nasc.mes = dados->nasc.mes;
+		aluno->dados.nasc.dia = dados->nasc.dia;
+	}
+	if (dados->end.estado && dados->end.bairro && dados->end.cidade && dados->end.rua && dados->end.comp) {
+		strcpy(aluno->dados.end.estado,dados->end.estado);
+		strcpy(aluno->dados.end.cidade,dados->end.cidade);
+		strcpy(aluno->dados.end.bairro,dados->end.bairro);
+		strcpy(aluno->dados.end.rua,dados->end.rua);
+		strcpy(aluno->dados.end.comp,dados->end.comp);
+	}
+
+	return 0;
+}
+
+/* Função interna para validar uma data.
+Considera a data atual do sistema como data limite.
+Retorna 1 se a data for válida e 0 caso contrário.
+Valida verificando o número de dias por mês, p. ex. O dia 31 de setembro não é válido. */
+int ValidaData (Data* data) {
+
+	time_t t = time(NULL);
+	struct tm *time = localtime(&t);
+	char meses31[7] = {1,3,5,7,8,10,12};
+	char meses30[4] = {4,6,9,11};
+	int i;
+
+	if ((data->dia < time->tm_mday && data->mes < (time->tm_mon + 1)) && data->ano < (time->tm_year + 1900))
+	{
+		for (i = 0; i < 7; i++) {
+			if (data->mes == meses31[i])
+				if (data->dia <= 31)
+					return 1;
+		}
+		for (i = 0; i < 4; i++) {
+			if (data->mes == meses30[i])
+				if (data->dia <= 30)
+					return 1;
+		}
+		if (data->mes == 2)
+			if (data->dia <= 28)
+				return 1;
+	}
+	return 0;
+}
