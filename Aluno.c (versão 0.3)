@@ -4,9 +4,9 @@
 #include <string.h>
 #include <time.h>
 
-typedef struct aluno {
+struct aluno {
 	Dados dados;
-}Aluno;
+};
 
 /*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
 int deletaAluno (Aluno* a) {
@@ -15,8 +15,8 @@ int deletaAluno (Aluno* a) {
 }
 
 /*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
-int GetMat (Aluno *a, int mat) {
-	mat = a->dados.mat;
+int GetMat (Aluno *a, int *mat) {
+	*mat = a->dados.mat;
 	return 0;
 }
 /*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
@@ -33,19 +33,14 @@ int CriaAlunoVazio (Aluno *a) {
 		printf("\nError na criação do Aluno\n");
 		exit(1);
 	}
-
-	a->dados.nome = NULL;
-	a->dados.mat = NULL;
-	a->dados.cpf = NULL;
-	a->dados.telefone = NULL;
-	a->dados.end.estado = NULL;
-	a->dados.end.cidade = NULL;
-	a->dados.end.bairro = NULL;
-	a->dados.end.rua = NULL;
-	a->dados.end.comp = NULL;
-	a->dados.nasc.dia = NULL;
-	a->dados.nasc.mes = NULL;
-	a->dados.nasc.ano= NULL;
+	
+	strcpy(a->dados.nome,"undefined");
+	a->dados.mat = 0;
+	a->dados.cpf = 0;
+	a->dados.telefone = 0;
+	a->dados.nasc.dia = 0;
+	a->dados.nasc.mes = 0;
+	a->dados.nasc.ano= 0;
 
 	return 0;
 }
@@ -53,34 +48,33 @@ int CriaAlunoVazio (Aluno *a) {
 //Função para pegar os dados digitados e colocar no aluno.
 int InsereDadosAluno (Aluno *a) {
 
-	printf("\nDigite os dados:");
-	printf("\nDados academicos:\n");
+	printf("Digite os dados do aluno: ");
 	printf("\nNome: ");
-	scanf("%s", a->dados.nome);
+	scanf(" %s", a->dados.nome);
 	printf("\nMatricula: ");
-	scanf("%d", a->dados.mat);
+	scanf("%d", &a->dados.mat);
 	printf("\nTelefone: ");
-	scanf("%s", a->dados.telefone);
-	printf("\nDados sobre a residencia\n");
+	scanf("%d", &a->dados.telefone);
+	printf("\nDados sobre a residencia: ");
 	printf("\nEstado: ");
-	scanf("%s", a->dados.end.estado);
+	scanf(" %s", a->dados.end.estado);
 	printf("\nCidade: ");
-	scanf("%s", a->dados.end.cidade);
+	scanf(" %s", a->dados.end.cidade);
 	printf("\nBairro: ");
-	scanf("%s", a->dados.end.bairro);
+	scanf(" %s", a->dados.end.bairro);
 	printf("\nRua: ");
-	scanf("%s", a->dados.end.rua);
-	printf("\nCompletamento: ");
-	scanf("%s", a->dados.end.comp);
+	scanf(" %s", a->dados.end.rua);
+	printf("\nComplemento: ");
+	scanf(" %s", a->dados.end.comp);
 	printf("\nDados pessoais\n");
 	printf("\nCPF: ");
-	scanf("%d", a->dados.cpf);
+	scanf("%d", &a->dados.cpf);
 	printf("\nDia do nascimento: ");
-	scanf("%d", a->dados.nasc.dia);
+	scanf("%hd", &a->dados.nasc.dia);
 	printf("\nMes do nascimento: ");
-	scanf("%d", a->dados.nasc.mes);
+	scanf("%hd", &a->dados.nasc.mes);
 	printf("\nAno do nascimento: ");
-	scanf("%d", a->dados.nasc.ano);
+	scanf("%hd", &a->dados.nasc.ano);
 
 	return 0;
 }
