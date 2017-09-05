@@ -19,7 +19,7 @@ ALN_tpCondRet GetMat (Aluno *a, int *mat) {
 		return ALN_CondRetAlunoNaoExiste;
 	}
 	*mat = a->dados.mat;
-	return ALN_tpCondRetOK;
+	return ALN_CondRetOK;
 }
 /*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
 ALN_tpCondRet GetNome (Aluno *a, char* nome) {
@@ -27,7 +27,7 @@ ALN_tpCondRet GetNome (Aluno *a, char* nome) {
 		return ALN_CondRetAlunoNaoExiste;
 	}
 	strcpy(nome, a->dados.nome);
-	return ALN_tpCondRetOK;
+	return ALN_CondRetOK;
 }
 
 //Cria um único vazio aluno passado por referencia.
@@ -108,7 +108,7 @@ ALN_tpCondRet AlteraDados (Aluno* aluno, Dados* dados) {
 		strcpy(aluno->dados.end.comp,dados->end.comp);
 	}
 
-	return ALN_tpCondRetOK;
+	return ALN_CondRetOK;
 }
 
 /* Função interna para validar uma data.
@@ -138,5 +138,5 @@ ALN_tpCondRet ValidaData (Data* data) {
 			if (data->dia <= 28)
 				return ALN_tpCondRetOK;
 	}
-	return  ALN_tpCondRetDataInválida;
+	return  ALN_CondRetDataInválida;
 }
