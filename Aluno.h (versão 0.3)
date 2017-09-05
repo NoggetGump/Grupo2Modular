@@ -29,13 +29,13 @@ typedef struct dados {
          ALN_CondRetOK = 0 ,
                /* Executou correto */
 
-         ALN_tpCondRetAlunoNaoExiste = 1 ,
+         ALN_CondRetAlunoNaoExiste = 1 ,
                /* O aluno não existe */
 
-        ALN_tpCondRetDataInválida = 2 ,
+        ALN_CondRetDataInválida = 2 ,
                /* Data inserida foi inválida */
 
-         ALN_tpCondRetFaltouMemoria = 3
+         ALN_CondRetFaltouMemoria = 3
                /* Faltou memória ao alocar dados */
 
    } ARV_tpCondRet ;
