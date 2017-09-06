@@ -44,8 +44,11 @@ ALN_tpCondRet GetNome(Aluno *a, char* nome);
 // Função para solicitar dados de alunos através da saída DOS. Devolve as entradas como parâmetros.
 ALN_tpCondRet SolicitaDados(char *nome, int *mat, int *cpf, int *telefone, Data *nasc, Endereco* end);
 
-/* Função que copia os dados do aluno  */
+// Função que copia os dados do aluno
 ALN_tpCondRet GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *nasc, Endereco *endereco);
+
+// Função recebe um ponteiro pra aluno e imprime todos os seus dados
+ALN_tpCondRet imprimeAluno(Aluno *a);
 
 // Função interna para validar uma data.
 // Considera a data atual do sistema como data limite.
