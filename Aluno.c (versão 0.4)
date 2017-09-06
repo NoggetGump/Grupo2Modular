@@ -135,6 +135,26 @@ int SolicitaDados(char *nome, int *mat, int *cpf, int *telefone, Data *nasc, End
 	return 0;
 }
 
+/* Função que copia os dados do aluno  */
+int GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *nasc, Endereco *endereco) {
+
+	if (a == NULL)
+		return 1;
+	strcpy(nome, a->nome);
+	*mat = a->mat;
+	*cpf = a->cpf;
+	*tel = a->telefone;
+	nasc->ano = a->nasc.ano;
+	nasc->dia = a->nasc.dia;
+	nasc->mes = a->nasc.mes;
+	strcpy(endereco->estado, a->end.estado);
+	strcpy(endereco->cidade, a->end.cidade);
+	strcpy(endereco->bairro, a->end.bairro);
+	strcpy(endereco->rua, a->end.rua);
+	strcpy(endereco->comp, a->end.comp);
+
+	return 0;
+}
 /* Função interna para validar uma data.
 Considera a data atual do sistema como data limite.
 Retorna 1 se a data for válida e 0 caso contrário.
