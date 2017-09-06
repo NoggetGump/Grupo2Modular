@@ -142,7 +142,7 @@ ALN_tpCondRet SolicitaDados(char *nome, int *mat, int *cpf, int *telefone, Data 
 	return ALN_CondRetOK;
 }
 
-/* Função que copia os dados do aluno  */
+// Função que copia os dados do aluno
 ALN_tpCondRet GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *nasc, Endereco *endereco) {
 
 	if (a == NULL)
@@ -162,6 +162,15 @@ ALN_tpCondRet GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *n
 
 	return ALN_CondRetOK;
 }
+
+// Função recebe um ponteiro pra aluno e imprime todos os seus dados
+ALN_tpCondRet imprimeAluno(Aluno *a) {
+	if (a == NULL)
+		return ALN_CondRetAlunoNaoExiste;
+	printf("Nome: %s \nMatricula: %d \nCPF: %ld \nTelefone: %d \nData de Nascimento: %hd/%hd/%hd \nEndereco: %s, %s, %s, %s, %s\n", a->nome, a->mat, a->cpf, a->telefone, a->nasc.dia, a->nasc.mes, a->nasc.ano, a->end.estado, a->end.cidade, a->end.bairro, a->end.rua, a->end.comp);
+	return ALN_CondRetOK;
+}
+
 /* Função interna para validar uma data.
 Considera a data atual do sistema como data limite.
 Retorna 1 se a data for válida e 0 caso contrário.
