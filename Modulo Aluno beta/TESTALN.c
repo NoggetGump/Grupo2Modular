@@ -13,10 +13,12 @@
 #define     CRIAR_ALN_CMD       "=criar"
 #define     GET_MAT_CMD         "=getmat"
 #define     GET_NOME_CMD        "=getnome"
-#define     INS_DADO_CMD        "=insdado"
 #define     ALT_DADO_CMD        "=alteradado"
+#define     SOL_DADO_CMD        "=solicdado"
+#define     GET_ALL_CMD         "=getall"
 #define     VAL_DATA_CMD        "=valdata"
-#define     DEL_ALUN_CMD        "=delaluno"
+#define     INS_DADO_CMD        "=insdado"
+#define     IMP_ALUN_CMD        "=impaluno"
 
 #define DIM_VT_ALUNO   10
 
@@ -112,9 +114,22 @@ Aluno vtAlunos[ DIM_VT_ALUNO ] ;
             {
                return TST_CondRetParm ;
             } /* if */
-             deletaAluno( vtListas[ indxaluno ]) ;
-            vtListas[ inxLista ] = NULL ;
+             deletaAluno( vtAlunos[ indxaluno ]) ;
+            vtAlunos[ inxaluno] = NULL ;
             return TST_CondRetOK ;
+         }
+		 /* Testar imprimir aluno */
+		   else if ( strcmp( ComandoTeste ,  IMP_ALUN_CMD) == 0 )
+         {
+			NumLidos = LER_LerParametros( "ci" ,&indxaluno,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 2 )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+            CondRetObtido = imprimeAluno( vtAlunos[ indxaluno]) ;
+            return TST_CompararInt(condRetEsperada,CondRetObtida,"Retorno Errado");
+
          }
 
       return TST_CondRetNaoConhec ;
@@ -122,3 +137,4 @@ Aluno vtAlunos[ DIM_VT_ALUNO ] ;
    }
 
       
+
