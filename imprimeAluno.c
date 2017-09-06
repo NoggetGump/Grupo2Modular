@@ -1,3 +1,4 @@
+/*Função recebe um ponteiro pra aluno e imprime todos os seus dados*/
 int imprimeAluno (Aluno *a){
 	if (a == NULL)
 		return ();
