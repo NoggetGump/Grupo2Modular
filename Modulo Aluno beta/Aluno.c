@@ -1,6 +1,4 @@
-#pragma warning( disable : 4996 ) 
-
-#include "aluno.h"
+#include "Aluno.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
