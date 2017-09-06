@@ -17,27 +17,35 @@ typedef struct endereco {
 
 typedef struct aluno Aluno;
 
+typedef enum {
+	ALN_CondRetOK,	// Executou corretamente
+	ALN_CondRetAlunoNaoExiste,	// O aluno não existe 
+	ALN_CondRetDataInvalida,	// Data inserida foi inválida
+	ALN_CondRetFaltouMemoria	// Faltou memória ao alocar dados
+} ALN_tpCondRet;
+
+
 
 // Função para criar um aluno. Recebe um ponteiro para Aluno e retorna o aluno criado com as informações passadas por parâmetros.
-int CriaAluno(Aluno *a, char *nome, int mat, int cpf, int telefone, Data *nasc, Endereco* end);
+ALN_tpCondRet CriaAluno(Aluno *a, char *nome, int mat, int cpf, int telefone, Data *nasc, Endereco* end);
 
 // Função para deletar um aluno. Recebe o endereço de memória de um aluno e o deleta (apaga da memória).*/
-int deletaAluno(Aluno* a);
+ALN_tpCondRet deletaAluno(Aluno* a);
 
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero). Caso um dado não necessite ser alterado, passar 0 / NULL como parâmetro.
-int AlteraDados(Aluno *aluno, char *nome, int mat, int cpf, int telefone, Data *nasc, Endereco* end);
+ALN_tpCondRet AlteraDados(Aluno *aluno, char *nome, int mat, int cpf, int telefone, Data *nasc, Endereco* end);
 
 // Função para pegar a matrícula de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e devolve sua matrícula por referência.
-int GetMat(Aluno *a, int *mat);
+ALN_tpCondRet GetMat(Aluno *a, int *mat);
 
 // Função para pegar o nome de um aluno. Recebe um ponteiro para Aluno e devolve seu nome por referência.
-int GetNome(Aluno *a, char* nome);
+ALN_tpCondRet GetNome(Aluno *a, char* nome);
 
 // Função para solicitar dados de alunos através da saída DOS. Devolve as entradas como parâmetros.
-int SolicitaDados(char *nome, int *mat, int *cpf, int *telefone, Data *nasc, Endereco* end);
+ALN_tpCondRet SolicitaDados(char *nome, int *mat, int *cpf, int *telefone, Data *nasc, Endereco* end);
 
 /* Função que copia os dados do aluno  */
-int GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *nasc, Endereco *endereco);
+ALN_tpCondRet GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *nasc, Endereco *endereco);
 
 // Função interna para validar uma data.
 // Considera a data atual do sistema como data limite.
