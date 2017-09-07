@@ -16,11 +16,11 @@ int main(void)
 
 	strcpy(endTest->estado, "RJ");
 	strcpy(endTest->cidade, "Rio de Janeiro");
-	strcpy(endTest->bairro, "Itanhanga");
-	strcpy(endTest->rua, "Estrada do Itanhanga");
-	strcpy(endTest->comp, "2222, Casa 6A");
+	strcpy(endTest->bairro, "Gávea");
+	strcpy(endTest->rua, "Rua Marquês de São Vicente");
+	strcpy(endTest->comp, "225");
 	
-	CriaAluno(a,"Bruno Miranda Marinho",1613071,(long)15773120747,992691584,nascTest,endTest);
+	CriaAluno(a,"Bruno Miranda Marinho",1610000,14299300120,992349329,nascTest,endTest);
 	GetMat(a, &mat);
 	printf("Matrícula adicionada: %d", mat);
 	printf("Compilado!\n");
