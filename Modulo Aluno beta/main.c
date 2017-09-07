@@ -11,7 +11,7 @@ int main(void)
 	Data *nascTest = (Data*) malloc(sizeof(Data));
 	Endereco *endTest = (Endereco*) malloc(sizeof(Endereco));
 	int mat, tel = 0;
-	// long cpf;
+	unsigned long cpf = 10990100200;
 	char nome[81];
 	
 	// Testa funções CriaAluno, GetMat, GetNome, AlteraDados
@@ -26,7 +26,7 @@ int main(void)
 	strcpy(endTest->rua, "Rua Marques de Sao Vicente");
 	strcpy(endTest->comp, "225");
 
-	ALU_CriaAluno(&a,"Pessoa Souza",1612220,(long)14020210100,991749212,nascTest,endTest);
+	ALU_CriaAluno(&a,"Pessoa Souza",1612220,cpf,991749212,nascTest,endTest);
 	
 	ALU_GetMat(a, &mat);
 	ALU_GetNome(a,nome);
