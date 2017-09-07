@@ -1,4 +1,6 @@
-#include "Aluno.h"
+#pragma warning( disable : 4996 ) 
+
+#include "aluno.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,8 +15,35 @@ struct aluno {
 	Endereco end;
 };
 
+int ValidaData(Data* data);	// Cabeçalho da função interna que valida data.
+
+//Cria um único aluno com as informações passadas por referencia.
+ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, int mat, long cpf, int telefone, Data *nasc, Endereco* end) {
+
+	*a = (Aluno*)malloc(sizeof(Aluno));	// Alocando espaço na memória para um Aluno
+	Aluno *b = *a;	// Usando outro ponteiro para me referenciar ao aluno, para facilitar leitura
+					// e não ter que usar (*a)->atributo.
+	if (a == NULL)
+		return ALN_CondRetFaltouMemoria;
+
+	strcpy(b->nome, nome);	// Atribuo todas as informações ao aluno.
+	b->mat = mat;
+	b->cpf = cpf;
+	b->telefone = telefone;
+	b->nasc.dia = nasc->dia;
+	b->nasc.mes = nasc->mes;
+	b->nasc.ano = nasc->ano;
+	strcpy(b->end.bairro, end->bairro);
+	strcpy(b->end.cidade, end->cidade);
+	strcpy(b->end.comp, end->comp);
+	strcpy(b->end.estado, end->estado);
+	strcpy(b->end.rua, end->rua);
+
+	return ALN_CondRetOK;	// Retorno que tudo deu certo.
+}
+
 /*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
-ALN_tpCondRet deletaAluno(Aluno* a) {
+ALN_tpCondRet ALU_deletaAluno(Aluno* a) {
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
 	free(a);
@@ -22,126 +51,104 @@ ALN_tpCondRet deletaAluno(Aluno* a) {
 }
 
 /*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
-ALN_tpCondRet GetMat(Aluno *a, int *mat) {
+ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat) {
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
 	*mat = a->mat;
 	return ALN_CondRetOK;
 }
 /*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
-ALN_tpCondRet GetNome(Aluno *a, char* nome) {
+ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome) {
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
 	strcpy(nome, a->nome);
 	return ALN_CondRetOK;
 }
 
-//Cria um único vazio aluno passado por referencia.
-ALN_tpCondRet CriaAluno(Aluno *a, char *nome, int mat, int cpf, int telefone, Data *nasc, Endereco* end) {
-	
-	a = (Aluno*)malloc(sizeof(Aluno));
+// Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
+ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, int mat, long cpf, int telefone, Data *nasc, Endereco* end) {
 
 	if (a == NULL)
-		return ALN_CondRetFaltouMemoria;
-
-	strcpy(a->nome, nome);
-	a->mat = mat;
-	a->cpf = cpf;
-	a->telefone = telefone;
-	a->nasc.dia = nasc->dia;
-	a->nasc.mes = nasc->mes;
-	a->nasc.ano = nasc->ano;
-	strcpy(a->end.bairro, end->bairro);
-	strcpy(a->end.cidade, end->cidade);
-	strcpy(a->end.comp, end->comp);
-	strcpy(a->end.estado, end->estado);
-	strcpy(a->end.rua, end->rua);
-
-	return ALN_CondRetOK;
-}
-
-// Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
-ALN_tpCondRet AlteraDados(Aluno *aluno, char *nome, int mat, int cpf, int telefone, Data *nasc, Endereco* end) {
-
-	if (aluno == NULL)
 		return ALN_CondRetAlunoNaoExiste;
-	
+
+
 	if (nome)
-		strcpy(aluno->nome, nome);
+		strcpy(a->nome, nome);
 	if (mat)
-		aluno->mat = mat;
+		a->mat = mat;
 	if (cpf)
-		aluno->cpf = cpf;
+		a->cpf = cpf;
 	if (telefone)
-		aluno->telefone = telefone;
+		a->telefone = telefone;
 	if (nasc && ValidaData(nasc)) {
-		aluno->nasc.ano = nasc->ano;
-		aluno->nasc.mes = nasc->mes;
-		aluno->nasc.dia = nasc->dia;
+		a->nasc.ano = nasc->ano;
+		a->nasc.mes = nasc->mes;
+		a->nasc.dia = nasc->dia;
 	}
 	if (end) {
-		strcpy(aluno->end.estado, end->estado);
-		strcpy(aluno->end.cidade, end->cidade);
-		strcpy(aluno->end.bairro, end->bairro);
-		strcpy(aluno->end.rua, end->rua);
-		strcpy(aluno->end.comp, end->comp);
+		strcpy(a->end.estado, end->estado);
+		strcpy(a->end.cidade, end->cidade);
+		strcpy(a->end.bairro, end->bairro);
+		strcpy(a->end.rua, end->rua);
+		strcpy(a->end.comp, end->comp);
 	}
-
 	return ALN_CondRetOK;
 }
 
-ALN_tpCondRet SolicitaDados(char *nome, int *mat, int *cpf, int *telefone, Data *nasc, Endereco* end) {
+ALN_tpCondRet ALU_SolicitaDados(char *nome, int *mat, long *cpf, int *telefone, Data *nasc, Endereco* end) {
 
 	int retNasc;
+	char matT[30];
+	char cpfT[30];
 
-	printf("Digite os dados do aluno: \n");
+	printf("--- Digite os dados do aluno --- \n");
 
 	printf("Nome Completo: ");	// Prompt para o nome do aluno.
-	scanf(" %s", nome);
+	scanf(" %80[^\n]", nome);
 
-	printf("Matrícula (7 dígitos): ");	// Prompt para a matrícula do aluno.
 	do {
+		printf("Matricula (7 digitos): ");	// Prompt para a matrícula do aluno.
 		scanf(" %d", mat);
-	} while (*mat < 1000000 && *mat > 9999999);
+	} while (strlen(itoa(*mat, matT, 10)) != 7);
 
-	printf("CPF (Sem caracteres especiais): ");	// Prompt para o CPF do aluno.
 	do {
-		scanf(" %ld", cpf);
-	} while (*cpf < 10000000000 && *cpf > 99999999999);
+		printf("CPF (11 Digitos / Somente numeros): ");	// Prompt para o CPF do aluno.
+		scanf("%ld", cpf);
+	} while (strlen(itoa(*cpf, cpfT, 10)) != 10);
 
 	printf("Telefone: ");	// Prompt para o telefone do aluno.
-	scanf(" %d", telefone);
+	scanf("%d", telefone);
 
 	do {
-		printf("Data de Nascimento: \n");	// Prompt para a data de nascimento do aluno.
+		printf("--- Data de Nascimento ---\n");	// Prompt para a data de nascimento do aluno.
 		printf("Dia: ");
-		scanf(" %hd", &nasc->dia);
-		printf("\nMes: ");
-		scanf(" %hd", &nasc->mes);
-		printf("\nAno: ");
-		scanf(" %hd", &nasc->ano);
+		scanf("%hd", &nasc->dia);
+		printf("Mes: ");
+		scanf("%hd", &nasc->mes);
+		printf("Ano: ");
+		scanf("%hd", &nasc->ano);
 		retNasc = ValidaData(nasc);
 		if (!retNasc)
-			printf("Data invalida");
+			printf("Data invalida\n");
 	} while (!retNasc);
 
-	printf("Endereco: \n");	// Prompt para o endereço o do aluno.
+	printf("--- Dados de Endereco --- \n");	// Prompt para o endereço o do aluno.
 	printf("Estado: ");
-	scanf(" %s", end->estado);
-	printf("\nCidade: ");
-	scanf(" %s", end->cidade);
-	printf("\nBairro: ");
-	scanf(" %s", end->bairro);
-	printf("\nRua: ");
-	scanf(" %s", end->rua);
-	printf("\nComplemento: ");
-	scanf(" %s", end->comp);
+	scanf("  %50[^\n]", end->estado);
+	printf("Cidade: ");
+	scanf("  %50[^\n]", end->cidade);
+	printf("Bairro: ");
+	scanf("  %31[^\n]", end->bairro);
+	printf("Rua: ");
+	scanf("  %80[^\n]", end->rua);
+	printf("Complemento: ");
+	scanf("  %31[^\n]", end->comp);
 
 	return ALN_CondRetOK;
 }
 
 // Função que copia os dados do aluno
-ALN_tpCondRet GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *nasc, Endereco *endereco) {
+ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, int *mat, long *cpf, int *tel, Data *nasc, Endereco *endereco) {
 
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
@@ -162,10 +169,15 @@ ALN_tpCondRet GetAll(Aluno *a, char *nome, int *mat, int *cpf, int *tel, Data *n
 }
 
 // Função recebe um ponteiro pra aluno e imprime todos os seus dados
-ALN_tpCondRet imprimeAluno(Aluno *a) {
+ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
-	printf("Nome: %s \nMatricula: %d \nCPF: %ld \nTelefone: %d \nData de Nascimento: %hd/%hd/%hd \nEndereco: %s, %s, %s, %s, %s\n", a->nome, a->mat, a->cpf, a->telefone, a->nasc.dia, a->nasc.mes, a->nasc.ano, a->end.estado, a->end.cidade, a->end.bairro, a->end.rua, a->end.comp);
+	printf("Nome: %s\n", a->nome);
+	printf("Matricula: %d\n", a->mat);
+	printf("CPF: %ld\n", a->cpf);
+	printf("Telefone: %d\n", a->telefone);
+	printf("Data de Nascimento: %hd/%hd/%hd\n",a->nasc.dia,a->nasc.mes,a->nasc.ano);
+	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);
 	return ALN_CondRetOK;
 }
 
@@ -176,13 +188,21 @@ Valida verificando o número de dias por mês, p. ex. O dia 31 de setembro não 
 int ValidaData(Data* data) {
 
 	time_t t = time(NULL);
-	struct tm *time = localtime(&t);
-	char meses31[7] = { 1,3,5,7,8,10,12 };
-	char meses30[4] = { 4,6,9,11 };
-	int i;
+	struct tm *time = localtime(&t);	// Pego a data atual do computador para comparar
+	char meses31[7] = { 1,3,5,7,8,10,12 };	// Meses com 31 dias
+	char meses30[4] = { 4,6,9,11 };	// Meses com 30 dias
+	int i;	// iterador
 
-	if ((data->dia < time->tm_mday && data->mes < (time->tm_mon + 1)) && data->ano < (time->tm_year + 1900))
+	if (data->ano <= (time->tm_year + 1900))
 	{
+		if (data->ano == (time->tm_year + 1900))
+		{
+			if (data->mes == (time->tm_mon + 1))
+				if (data->dia <= time->tm_mday)
+					return 1;
+				else
+					return 0;
+		}
 		for (i = 0; i < 7; i++) {
 			if (data->mes == meses31[i])
 				if (data->dia <= 31)
