@@ -9,7 +9,7 @@
 struct aluno {
 	char nome[81];
 	int mat;
-	long cpf;
+	unsigned long cpf;
 	int telefone;
 	Data nasc;
 	Endereco end;
@@ -18,7 +18,7 @@ struct aluno {
 int ValidaData(Data* data);	// Cabeçalho da função interna que valida data.
 
 //Cria um único aluno com as informações passadas por referencia.
-ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, int mat, long cpf, int telefone, Data *nasc, Endereco* end) {
+ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, int mat, unsigned long cpf, int telefone, Data *nasc, Endereco* end) {
 
 	*a = (Aluno*)malloc(sizeof(Aluno));	// Alocando espaço na memória para um Aluno
 	Aluno *b = *a;	// Usando outro ponteiro para me referenciar ao aluno, para facilitar leitura
@@ -30,9 +30,17 @@ ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, int mat, long cpf, int telefo
 	b->mat = mat;
 	b->cpf = cpf;
 	b->telefone = telefone;
-	b->nasc.dia = nasc->dia;
-	b->nasc.mes = nasc->mes;
-	b->nasc.ano = nasc->ano;
+	if (ValidaData(nasc)) {
+		b->nasc.dia = nasc->dia;
+		b->nasc.mes = nasc->mes;
+		b->nasc.ano = nasc->ano;
+	}
+	else {
+		printf("\nData de nascimento fornecida invalida.\n\n");
+		b->nasc.dia = 0;
+		b->nasc.mes = 0;
+		b->nasc.ano = 0;
+	}
 	strcpy(b->end.bairro, end->bairro);
 	strcpy(b->end.cidade, end->cidade);
 	strcpy(b->end.comp, end->comp);
@@ -66,7 +74,7 @@ ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome) {
 }
 
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
-ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, int mat, long cpf, int telefone, Data *nasc, Endereco* end) {
+ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, int mat, unsigned long cpf, int telefone, Data *nasc, Endereco* end) {
 
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
@@ -95,7 +103,7 @@ ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, int mat, long cpf, int telef
 	return ALN_CondRetOK;
 }
 
-ALN_tpCondRet ALU_SolicitaDados(char *nome, int *mat, long *cpf, int *telefone, Data *nasc, Endereco* end) {
+ALN_tpCondRet ALU_SolicitaDados(char *nome, int *mat, unsigned long *cpf, int *telefone, Data *nasc, Endereco* end) {
 
 	int retNasc;
 	char matT[30];
@@ -148,7 +156,7 @@ ALN_tpCondRet ALU_SolicitaDados(char *nome, int *mat, long *cpf, int *telefone, 
 }
 
 // Função que copia os dados do aluno
-ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, int *mat, long *cpf, int *tel, Data *nasc, Endereco *endereco) {
+ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, int *mat, unsigned long *cpf, int *tel, Data *nasc, Endereco *endereco) {
 
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
@@ -174,9 +182,9 @@ ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 		return ALN_CondRetAlunoNaoExiste;
 	printf("Nome: %s\n", a->nome);
 	printf("Matricula: %d\n", a->mat);
-	printf("CPF: %ld\n", a->cpf);
+	printf("CPF: %lu\n", a->cpf);
 	printf("Telefone: %d\n", a->telefone);
-	printf("Data de Nascimento: %hd/%hd/%hd\n",a->nasc.dia,a->nasc.mes,a->nasc.ano);
+	printf("Data de Nascimento: %hd/%hd/%hd\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
 	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);
 	return ALN_CondRetOK;
 }
