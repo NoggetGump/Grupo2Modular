@@ -16,8 +16,6 @@
 #define     ALT_DADO_CMD        "=alteradado"
 #define     SOL_DADO_CMD        "=solicdado"
 #define     GET_ALL_CMD         "=getall"
-#define     VAL_DATA_CMD        "=valdata"
-#define     INS_DADO_CMD        "=insdado"
 #define     IMP_ALUN_CMD        "=impaluno"
 
 #define DIM_VT   10
@@ -71,6 +69,44 @@ Endereco vtEnds[ DIM_VT];
 
             return TST_CompararInt( CondRetEsperada , CondRetObtido ,
                                     "Retorno errado ao criar Aluno." );
+
+         }
+		  /* Testar ALU Altera dados do aluno*/
+
+         if ( strcmp( ComandoTeste , ALT_DADO_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "isiiiiii" ,&indxaluno,StringNome,&MatEsperada,&cpf,&telefone,&indxdata,&indxendereco,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 8 )
+            {
+               return TST_CondRetParm ;
+            } 
+			/* testando se a matricula é valida, isto é, tem 7 números */
+			if(MatEsperada<1000000 || MatEsperada>9999999){
+				return TST_CondRetErro;
+			}
+            CondRetObtido = ALU_AlteraDados(vtAlunos[indxaluno],StringNome,MatEsperada,cpf,telefone,vtDatas[indxdata],vtEnds[indxendereco]);
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao alterar dados do Aluno." );
+
+         }
+		  /* Testar ALU Get ALL que pega todos os dados do aluno e copia para os parametros enviados*/
+
+         if ( strcmp( ComandoTeste , GET_ALL_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "isiiiiii" ,&indxaluno,StringNome,&MatObtida,&cpf,&telefone,&indxdata,&indxendereco,
+                               &CondRetEsperada ) ;
+            if ( NumLidos != 8 )
+            {
+               return TST_CondRetParm ;
+            } 
+            CondRetObtido = ALU_GetAll(vtAlunos[indxaluno],StringNome,MatObtida,cpf,telefone,vtDatas[indxdata],vtEnds[indxendereco]);
+
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao pegar dados do Aluno." );
 
          }
 
