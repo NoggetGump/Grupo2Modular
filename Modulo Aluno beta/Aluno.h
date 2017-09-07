@@ -25,13 +25,13 @@ typedef enum {
 typedef struct aluno Aluno;
 
 // Função para criar um aluno. Recebe um ponteiro para Aluno e retorna o aluno criado com as informações passadas por parâmetros.
-ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, int mat, long cpf, int telefone, Data *nasc, Endereco* end);
+ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, int mat, unsigned long cpf, int telefone, Data *nasc, Endereco* end);
 
 // Função para deletar um aluno. Recebe o endereço de memória de um aluno e o deleta (apaga da memória).*/
 ALN_tpCondRet ALU_deletaAluno(Aluno* a);
 
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero). Caso um dado não necessite ser alterado, passar 0 / NULL como parâmetro.
-ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, int mat, long cpf, int telefone, Data *nasc, Endereco* end);
+ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, int mat, unsigned long cpf, int telefone, Data *nasc, Endereco* end);
 
 // Função para pegar a matrícula de um aluno. Recebe o endereço de memória (ponteiro) de um aluno e devolve sua matrícula por referência.
 ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat);
@@ -40,10 +40,10 @@ ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat);
 ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome);
 
 // Função para solicitar dados de alunos através da saída DOS. Devolve as entradas como parâmetros.
-ALN_tpCondRet ALU_SolicitaDados(char *nome, int *mat, long *cpf, int *telefone, Data *nasc, Endereco* end);
+ALN_tpCondRet ALU_SolicitaDados(char *nome, int *mat, unsigned long *cpf, int *telefone, Data *nasc, Endereco* end);
 
 // Função que copia os dados do aluno
-ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, int *mat, long *cpf, int *tel, Data *nasc, Endereco *endereco);
+ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, int *mat, unsigned long *cpf, int *tel, Data *nasc, Endereco *endereco);
 
 // Função recebe um ponteiro pra aluno e imprime todos os seus dados
 ALN_tpCondRet ALU_imprimeAluno(Aluno *a);
