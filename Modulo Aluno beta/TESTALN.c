@@ -21,11 +21,23 @@
 #define DIM_VT   10
 #define  DIM_STRING  250
 
+typedef struct endereco {
+	char estado[51];
+	char cidade[51];
+	char bairro[32];
+	char rua[81];
+	char comp[32];
+} Endereco;
+
+typedef struct data {
+	short dia;
+	short mes;
+	short ano;
+} Data;
+
 Aluno vtAlunos[ DIM_VT] ;
-Data vtDatas[ DIM_VT];
-Endereco vtEnds[ DIM_VT];
-
-
+Endereco Endteste;
+Data Datateste;
    TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
    {
 
@@ -37,15 +49,20 @@ Endereco vtEnds[ DIM_VT];
       char ValorObtido   = '!'  ;
 	  char StringNome[ DIM_STRING ];
 	  char StringObtido[DIM_STRING];
-	  int MatEsperada = '-1';
+	  char dia[2];
+	  char mes[2];
+	  char ano[4];
+	  char estado[15];
+	  char cidade[15];
+	  char bairro[10];
+	  char rua[20];
+	  char complemento[7];
+	  int MatEsperada = '-1	';
 	  int MatObtida = '-1' ;
 	  int indxaluno ='-1';
 	  int nome;
 	  int cpf;
 	  int telefone;
-	  int indxdata;
-	  int indxendereco;
-	
       int  NumLidos = -1 ;
 
       TST_tpCondRet Ret ;
@@ -55,9 +72,9 @@ Endereco vtEnds[ DIM_VT];
          if ( strcmp( ComandoTeste , CRIAR_ALN_CMD ) == 0 )
          {
 
-            NumLidos = LER_LerParametros( "isiiiiii" ,&indxaluno,StringNome,&MatEsperada,&cpf,&telefone,&indxdata,&indxendereco,
+            NumLidos = LER_LerParametros( "isiiiiiisssssi" ,&indxaluno,StringNome,&MatEsperada,&cpf,&telefone,dia,mes,ano,estado,cidade,bairro,rua,complemento,
                                &CondRetEsperada ) ;
-            if ( NumLidos != 8 )
+            if ( NumLidos !=14 )
             {
                return TST_CondRetParm ;
             } 
@@ -65,8 +82,17 @@ Endereco vtEnds[ DIM_VT];
 			if(MatEsperada<1000000 || MatEsperada>9999999){
 				return TST_CondRetErro;
 			}
-            CondRetObtido = ALU_CriaAluno(vtAlunos[indxaluno],StringNome,MatEsperada,cpf,telefone,vtDatas[indxdata],vtEnds[indxendereco]);
+			/* montando structs para testar criaaluno */
+			Datateste->dia = dia;
+			Datateste->mes = mes;
+			Datateste->ano = ano;
+			Endteste->estado=estado;
+			Endteste->cidade=cidade;
+			Endteste->bairro=bairro;
+			Endteste->rua=rua;
+			Endteste->comp=complemento;
 
+            CondRetObtido = ALU_CriaAluno(vtAlunos[indxaluno],StringNome,MatEsperada,cpf,telefone,Datateste,Endteste);
             return TST_CompararInt( CondRetEsperada , CondRetObtido ,
                                     "Retorno errado ao criar Aluno." );
 
@@ -76,9 +102,9 @@ Endereco vtEnds[ DIM_VT];
          if ( strcmp( ComandoTeste , ALT_DADO_CMD ) == 0 )
          {
 
-            NumLidos = LER_LerParametros( "isiiiiii" ,&indxaluno,StringNome,&MatEsperada,&cpf,&telefone,&indxdata,&indxendereco,
-                               &CondRetEsperada ) ;
-            if ( NumLidos != 8 )
+            NumLidos = LER_LerParametros( "isiiiiiisssssi" ,&indxaluno,StringNome,&MatEsperada,&cpf,&telefone,dia,mes,ano,estado,cidade,bairro,rua,complemento,
+                               &CondRetEsperada) ;
+            if ( NumLidos != 14 )
             {
                return TST_CondRetParm ;
             } 
@@ -86,11 +112,46 @@ Endereco vtEnds[ DIM_VT];
 			if(MatEsperada<1000000 || MatEsperada>9999999){
 				return TST_CondRetErro;
 			}
-            CondRetObtido = ALU_AlteraDados(vtAlunos[indxaluno],StringNome,MatEsperada,cpf,telefone,vtDatas[indxdata],vtEnds[indxendereco]);
+			Datateste->dia = dia;
+			Datateste->mes = mes;
+			Datateste->ano = ano;
+			Endteste->estado=estado;
+			Endteste->cidade=cidade;
+			Endteste->bairro=bairro;
+			Endteste->rua=rua;
+			Endteste->comp=complemento;
+            CondRetObtido = ALU_AlteraDados(vtAlunos[indxaluno],StringNome,MatEsperada,cpf,telefone,Datateste,Endteste);
 
             return TST_CompararInt( CondRetEsperada , CondRetObtido ,
                                     "Retorno errado ao alterar dados do Aluno." );
 
+         }
+		 /* Testar ALU Solicita dados do aluno*/
+
+         if ( strcmp( ComandoTeste , SOL_DADO_CMD ) == 0 )
+         {
+
+            NumLidos = LER_LerParametros( "siiiiiisssssi",StringNome,&MatEsperada,&cpf,&telefone,dia,mes,ano,estado,cidade,bairro,rua,complemento,
+                               &CondRetEsperada);
+            if ( NumLidos != 13 )
+            {
+               return TST_CondRetParm ;
+            } 
+			/* testando se a matricula é valida, isto é, tem 7 números */
+			if(MatEsperada<1000000 || MatEsperada>9999999){
+				return TST_CondRetErro;
+			}
+			Datateste->dia = dia;
+			Datateste->mes = mes;
+			Datateste->ano = ano;
+			Endteste->estado=estado;
+			Endteste->cidade=cidade;
+			Endteste->bairro=bairro;
+			Endteste->rua=rua;
+			Endteste->comp=complemento;
+            CondRetObtido = ALU_SolicitaDados(StringNome,MatEsperada,cpf,telefone,Datateste,Endteste);
+            return TST_CompararInt( CondRetEsperada , CondRetObtido ,
+                                    "Retorno errado ao alterar dados do Aluno." );
          }
 		  /* Testar ALU Get ALL que pega todos os dados do aluno e copia para os parametros enviados*/
 
@@ -182,6 +243,8 @@ Endereco vtEnds[ DIM_VT];
       return TST_CondRetNaoConhec ;
 
    }
+
+      
 
       
 
