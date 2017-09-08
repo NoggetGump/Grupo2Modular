@@ -8,7 +8,7 @@
 struct aluno {
 	char nome[81];
 	unsigned int mat;
-	CPF cpf;
+	CPF cpfA;
 	unsigned int telefone;
 	Data nasc;
 	Endereco end;
@@ -27,10 +27,10 @@ ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, u
 
 	strcpy((*a)->nome, nome);	// Atribuo todas as informações ao aluno.
 	(*a)->mat = mat;
-	(*a)->cpf.dig1 = cpf->dig1;
-	(*a)->cpf.dig2 = cpf->dig2;
-	(*a)->cpf.dig3 = cpf->dig3;
-	(*a)->cpf.cod = cpf->cod;
+	(*a)->cpfA.dig1 = cpf->dig1;
+	(*a)->cpfA.dig2 = cpf->dig2;
+	(*a)->cpfA.dig3 = cpf->dig3;
+	(*a)->cpfA.cod = cpf->cod;
 	(*a)->telefone = telefone;
 	if (ValidaData(nasc)) {
 		(*a)->nasc.dia = nasc->dia;
@@ -88,10 +88,10 @@ ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, unsigned int mat, CPF *cpf, 
 		a->mat = mat;
 	if (cpf)
 	{
-		a->cpf.dig1 = cpf->dig1;
-		a->cpf.dig2 = cpf->dig2;
-		a->cpf.dig3 = cpf->dig3;
-		a->cpf.cod = cpf->cod;
+		a->cpfA.dig1 = cpf->dig1;
+		a->cpfA.dig2 = cpf->dig2;
+		a->cpfA.dig3 = cpf->dig3;
+		a->cpfA.cod = cpf->cod;
 	}
 	if (telefone)
 		a->telefone = telefone;
@@ -114,7 +114,7 @@ ALN_tpCondRet ALU_SolicitaDados(char *nome, unsigned int *mat, CPF *cpf, unsigne
 
 	int retNasc;
 	char matT[30];
-	char cpfT[30];
+	//char cpfT[30];
 	int verifica = 0;
 
 	printf("--- Digite os dados do aluno --- \n");
@@ -186,10 +186,10 @@ ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, unsigned int *mat, CPF *cpf, unsi
 		return ALN_CondRetAlunoNaoExiste;
 	strcpy(nome, a->nome);
 	*mat = a->mat;
-	(cpf)->dig1 = a->cpf.dig1;
-	(cpf)->dig2 = a->cpf.dig2;
-	(cpf)->dig3 = a->cpf.dig3;
-	(cpf)->cod = a->cpf.cod;
+	(cpf)->dig1 = a->cpfA.dig1;
+	(cpf)->dig2 = a->cpfA.dig2;
+	(cpf)->dig3 = a->cpfA.dig3;
+	(cpf)->cod = a->cpfA.cod;
 	*tel = a->telefone;
 	nasc->ano = a->nasc.ano;
 	nasc->dia = a->nasc.dia;
@@ -209,7 +209,7 @@ ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 		return ALN_CondRetAlunoNaoExiste;
 	printf("Nome: %s\n", a->nome);
 	printf("Matricula: %d\n", a->mat);
-	printf("CPF: %hd.%hd.%hd-%hd\n", a->cpf.dig1, a->cpf.dig2, a->cpf.dig3, a->cpf.cod);
+	printf("CPF: %hd.%hd.%hd-%hd\n", a->cpfA.dig1, a->cpfA.dig2, a->cpfA.dig3, a->cpfA.cod);
 	printf("Telefone: %d\n", a->telefone);
 	printf("Data de Nascimento: %hd/%hd/%hd\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
 	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);
