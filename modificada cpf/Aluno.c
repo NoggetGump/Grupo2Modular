@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "aluno.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,8 +27,10 @@ ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, u
 
 	strcpy((*a)->nome, nome);	// Atribuo todas as informações ao aluno.
 	(*a)->mat = mat;
-	(*a)->cpf.digitos = cpf->digitos;
-	(*a)->cpf.verificador = cpf->verificador;
+	(*a)->cpf.dig1 = cpf->dig1;
+	(*a)->cpf.dig2 = cpf->dig2;
+	(*a)->cpf.dig3 = cpf->dig3;
+	(*a)->cpf.cod = cpf->cod;
 	(*a)->telefone = telefone;
 	if (ValidaData(nasc)) {
 		(*a)->nasc.dia = nasc->dia;
@@ -79,15 +82,16 @@ ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, unsigned int mat, CPF *cpf, 
 	if (a == NULL)
 		return ALN_CondRetAlunoNaoExiste;
 
-
 	if (nome)
 		strcpy(a->nome, nome);
 	if (mat)
 		a->mat = mat;
 	if (cpf)
 	{
-		a->cpf.digitos = cpf->digitos;
-		a->cpf.verificador = cpf->verificador;
+		a->cpf.dig1 = cpf->dig1;
+		a->cpf.dig2 = cpf->dig2;
+		a->cpf.dig3 = cpf->dig3;
+		a->cpf.cod = cpf->cod;
 	}
 	if (telefone)
 		a->telefone = telefone;
@@ -111,6 +115,7 @@ ALN_tpCondRet ALU_SolicitaDados(char *nome, unsigned int *mat, CPF *cpf, unsigne
 	int retNasc;
 	char matT[30];
 	char cpfT[30];
+	int verifica = 0;
 
 	printf("--- Digite os dados do aluno --- \n");
 
@@ -123,11 +128,25 @@ ALN_tpCondRet ALU_SolicitaDados(char *nome, unsigned int *mat, CPF *cpf, unsigne
 	} while (strlen(itoa(*mat, matT, 10)) != 7);
 
 	do {
-		printf("CPF (9 Digitos / Somente numeros): ");	// Prompt para o CPF do aluno.
-		scanf("%ld", cpf->digitos);
-		printf("CPF (2 Digitos / Somente numeros): ");	// Prompt para o CPF do aluno.
-		scanf("%ld", cpf->verificador);
-	} while (strlen(itoa(*cpf, cpfT, 10)) != 10);
+		printf("CPF (3 Digitos / Somente numeros): ");	// 3 primeiros digitos.
+		scanf("%hd", cpf->dig1);
+		printf("CPF (3 Digitos / Somente numeros): ");	// 3 segundos digitos
+		scanf("%hd", cpf->dig2);
+		printf("CPF (3 Digitos / Somente numeros): ");	// 3 terceiro digitos.
+		scanf("%hd", cpf->dig3);
+		printf("CPF (2 Digitos / Somente numeros): ");	// 2 ultimos digitos.
+		scanf("%hd", cpf->cod);
+		
+		if(cpf->dig1 >= 99 && cpf->dig1 <= 999)
+			verifica = 1;
+		if(cpf->dig2 >= 0 && cpf->dig1 <= 999)
+			verifica = 1;
+		if(cpf->dig3 >= 0 && cpf->dig3 <= 999)
+			verifica = 1;
+		if(cpf->dig2 >= 0 && cpf->dig1 <= 99)
+			verifica = 1;
+
+	} while (verifica == 0);
 
 	printf("Telefone: ");	// Prompt para o telefone do aluno.
 	scanf("%d", telefone);
@@ -167,8 +186,10 @@ ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, unsigned int *mat, CPF *cpf, unsi
 		return ALN_CondRetAlunoNaoExiste;
 	strcpy(nome, a->nome);
 	*mat = a->mat;
-	*cpf->digitos = a->cpf.digitos;
-	*cpf->verificador = a->cpf->verificador;
+	(cpf)->dig1 = a->cpf.dig1;
+	(cpf)->dig2 = a->cpf.dig2;
+	(cpf)->dig3 = a->cpf.dig3;
+	(cpf)->cod = a->cpf.cod;
 	*tel = a->telefone;
 	nasc->ano = a->nasc.ano;
 	nasc->dia = a->nasc.dia;
@@ -188,7 +209,7 @@ ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 		return ALN_CondRetAlunoNaoExiste;
 	printf("Nome: %s\n", a->nome);
 	printf("Matricula: %d\n", a->mat);
-	printf("CPF: %lu-%hd\n", a->cpf.digitos, a->cpf.verificador);
+	printf("CPF: %hd.%hd.%hd-%hd\n", a->cpf.dig1, a->cpf.dig2, a->cpf.dig3, a->cpf.cod);
 	printf("Telefone: %d\n", a->telefone);
 	printf("Data de Nascimento: %hd/%hd/%hd\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
 	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);

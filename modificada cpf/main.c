@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,8 +11,10 @@ int main(void)
 	Endereco *endTest = (Endereco*) malloc(sizeof(Endereco));
 	unsigned int mat, tel, t = 0;
 	CPF *cpfTest = (CPF*) malloc(sizeof(CPF));
-	cpfTest->digitos = 109901002;
-	cpfTest->verificador = 00;
+	cpfTest->dig1= 123;
+	cpfTest->dig1= 456;
+	cpfTest->dig1= 789;
+	cpfTest->cod = 00;
 	//unsigned long cpf = 10990100200;
 	char nome[81];
 	
@@ -57,7 +60,7 @@ int main(void)
 	
 	printf ("Nome do Aluno: %s\n", nome);
 	printf ("Matricula: %d\n", mat);
-	printf ("CPF: %d-%hd\n", cpfTest->digitos, cpfTest->verificador);
+	printf ("CPF: %hd.%hd.%hd-%hd\n", cpfTest->dig1, cpfTest->dig2,cpfTest->dig3, cpfTest->cod);
 	printf ("Telefone: %d\n", tel);
 	printf ("Data de nascimento: %d/%d/%d\n", nascTest->dia, nascTest->mes, nascTest->ano);
 	printf ("Endereço: %s/%s, %s - %s, %s\n", endTest->cidade, endTest->estado, endTest ->bairro, endTest->rua, endTest->comp);

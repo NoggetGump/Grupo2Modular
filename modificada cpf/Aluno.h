@@ -15,8 +15,10 @@ typedef struct endereco {
 } Endereco;
 
 typedef struct cpf {
-	unsigned long digitos;
-	short verificador;
+	short dig1;
+	short dig2;
+	short dig3;
+	short cod;
 } CPF;
 
 typedef enum {
