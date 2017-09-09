@@ -60,10 +60,10 @@ int main(void)
 	
 	printf ("Nome do Aluno: %s\n", nomePessoa);
 	printf ("Matricula: %d\n", mat);
-	printf ("CPF: %hd.%hd.%hd-%hd\n", cpfTest->dig1, cpfTest->dig2,cpfTest->dig3, cpfTest->cod);
+	printf ("CPF: %03d.%03d.%03d-%02d\n", cpfTest->dig1, cpfTest->dig2,cpfTest->dig3, cpfTest->cod);
 	printf ("Telefone: %d\n", tel);
 	printf ("Data de nascimento: %d/%d/%d\n", nascTest->dia, nascTest->mes, nascTest->ano);
-	printf ("Endereço: %s/%s, %s - %s, %s\n", endTest->cidade, endTest->estado, endTest ->bairro, endTest->rua, endTest->comp);
+	printf ("Endereco: %s/%s, %s - %s, %s\n", endTest->cidade, endTest->estado, endTest ->bairro, endTest->rua, endTest->comp);
 	//Virtual Studio abortando, só usei o scanf pra ele mostrar a tela impressa sem fechar
 	scanf ("%d", &t);
 	return 0;
