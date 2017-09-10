@@ -1,4 +1,6 @@
+#pragma once
 #define ALUNO_H
+#pragma warning( disable : 4996 ) 
 
 typedef struct data {
 	short dia;
@@ -45,12 +47,8 @@ ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat);
 // Função para pegar o nome de um aluno. Recebe um ponteiro para Aluno e devolve seu nome por referência.
 ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome);
 
-// Função para solicitar dados de alunos através da saída DOS. Devolve as entradas como parâmetros.
-ALN_tpCondRet ALU_SolicitaDados(char *nome, unsigned int *mat, CPF *cpf, unsigned int *telefone, Data *nasc, Endereco* end);
-
 // Função que copia os dados do aluno
 ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, unsigned int *mat, CPF *cpf, unsigned int *tel, Data *nasc, Endereco *endereco);
 
 // Função recebe um ponteiro pra aluno e imprime todos os seus dados
 ALN_tpCondRet ALU_imprimeAluno(Aluno *a);
-
