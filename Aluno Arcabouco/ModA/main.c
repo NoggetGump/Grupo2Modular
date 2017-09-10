@@ -8,18 +8,18 @@ int main(void)
 {
 	char nomePessoa[81];
 	Aluno *a = NULL;
-	Data *nascTest = (Data*) malloc(sizeof(Data));
-	Endereco *endTest = (Endereco*) malloc(sizeof(Endereco));
+	Data *nascTest = (Data*)malloc(sizeof(Data));
+	Endereco *endTest = (Endereco*)malloc(sizeof(Endereco));
 	unsigned int mat, tel, t = 0;
-	CPF *cpfTest = (CPF*) malloc(sizeof(CPF));
-	cpfTest->dig1= 123;
-	cpfTest->dig2= 456;
-	cpfTest->dig3= 789;
+	CPF *cpfTest = (CPF*)malloc(sizeof(CPF));
+	cpfTest->dig1 = 123;
+	cpfTest->dig2 = 456;
+	cpfTest->dig3 = 789;
 	cpfTest->cod = 00;
 	//
-	
+
 	// Testa funções CriaAluno, GetMat, GetNome, AlteraDados
-	
+
 	nascTest->ano = 1995;
 	nascTest->mes = 7;
 	nascTest->dia = 20;
@@ -30,22 +30,22 @@ int main(void)
 	strcpy(endTest->rua, "Rua Marques de Sao Vicente");
 	strcpy(endTest->comp, "225");
 
-	ALU_CriaAluno(&a,"Pessoa Souza",1612220,cpfTest,991749212,nascTest,endTest);
-	
+	ALU_CriaAluno(&a, "Pessoa Souza", 1612220, cpfTest, 991749212, nascTest, endTest);
+
 	ALU_GetMat(a, &mat);
 	ALU_GetNome(a, nomePessoa);
 	ALU_imprimeAluno(a);
 	printf("Matricula Inalterada: %u\n", mat);
-	printf("Nome Inalterado: %s\n",nomePessoa);
+	printf("Nome Inalterado: %s\n", nomePessoa);
 	printf("--------- ALTERACAO ---------\n");
-	ALU_AlteraDados(a,"Aluno da Silva", 1610001,0,0,NULL,NULL);
+	ALU_AlteraDados(a, "Aluno da Silva", 1610001, 0, 0, NULL, NULL);
 	ALU_GetMat(a, &mat);
 	ALU_GetNome(a, nomePessoa);
 	ALU_imprimeAluno(a);
 	printf("Matricula Alterada: %u\n", mat);
 	printf("Nome Alterado: %s\n", nomePessoa);
 
-	 //Testa a Função Solicita Dados, em seguida cria um aluno com os dados inseridos
+	//Testa a Função Solicita Dados, em seguida cria um aluno com os dados inseridos
 	// e imprime os dados do aluno na tela.
 	/*ALU_SolicitaDados(nome,&mat,&cpf,&tel,nascTest,endTest);
 	ALU_CriaAluno(&a, nome, mat, cpf, tel, nascTest, endTest);
@@ -56,15 +56,15 @@ int main(void)
 	printf("Nome: %s\n", nome);*/
 	//Testa função GetAll e imprime os dados obtidos na tela.
 	ALU_GetAll(a, nomePessoa, &mat, cpfTest, &tel, nascTest, endTest);
-	printf ("-------------------------Dados da GetAll----------------------------\n");
-	
-	printf ("Nome do Aluno: %s\n", nomePessoa);
-	printf ("Matricula: %d\n", mat);
-	printf ("CPF: %03d.%03d.%03d-%02d\n", cpfTest->dig1, cpfTest->dig2,cpfTest->dig3, cpfTest->cod);
-	printf ("Telefone: %d\n", tel);
-	printf ("Data de nascimento: %d/%d/%d\n", nascTest->dia, nascTest->mes, nascTest->ano);
-	printf ("Endereco: %s/%s, %s - %s, %s\n", endTest->cidade, endTest->estado, endTest ->bairro, endTest->rua, endTest->comp);
+	printf("-------------------------Dados da GetAll----------------------------\n");
+
+	printf("Nome do Aluno: %s\n", nomePessoa);
+	printf("Matricula: %d\n", mat);
+	printf("CPF: %03d.%03d.%03d-%02d\n", cpfTest->dig1, cpfTest->dig2, cpfTest->dig3, cpfTest->cod);
+	printf("Telefone: %d\n", tel);
+	printf("Data de nascimento: %02hd/%02hd/%02hd\n", nascTest->dia, nascTest->mes, nascTest->ano);
+	printf("Endereco: %s, %s, %s, %s - %s\n", endTest->rua, endTest->comp, endTest->bairro, endTest->cidade, endTest->estado);
 	//Virtual Studio abortando, só usei o scanf pra ele mostrar a tela impressa sem fechar
-	scanf ("%d", &t);
+	scanf("%d", &t);
 	return 0;
 }
