@@ -1,9 +1,9 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include    <string.h>
 #include    <stdio.h>
 #include	<stdlib.h>
 #include    "Aluno.h"
 #include    "TST_ESPC.H"
+
 #include    "generico.h"
 #include    "lerparm.h"
 
@@ -21,7 +21,8 @@
 #define DIM_VT   10
 #define  DIM_STRING  250
 
-Aluno *vtAlunos[DIM_VT];
+Aluno *vtAlunos[DIM_VT] = { NULL, NULL, NULL, NULL, NULL, 
+							NULL, NULL, NULL, NULL, NULL };	// vetor de ponteiros para os alunos criados no script.
 Data vtDatas[DIM_VT];
 Endereco vtEnds[DIM_VT];
 Endereco Endteste;
@@ -35,30 +36,26 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 
 	char ValorEsperado = '?';
 	char ValorObtido = '!';
-	char StringNome[DIM_STRING];
-	char StringObtido[DIM_STRING];
 	short dia = 0;
 	short mes = 0;
 	short ano = 0;
-	char *pDado;
-	char *pDado1;
-	char *pDado2;
-	char *pDado3;
-	char *pDado4;
-	char estado[30];
-	char cidade[30];
-	char bairro[15];
-	char rua[30];
-	char complemento[7];
+	char estado[32];
+	char cidade[51];
+	char bairro[32];
+	char rua[32];
+	char complemento[51];
+	char StringEsperada[81];
+	char StringObtida[81];
 	int MatEsperada = '-1	';
 	int MatObtida = '-1';
 	int indxaluno = '-1';
 	int indxdata = '-1';
 	int indxendereco = '-1';
 	int nome;
-	int dig1, dig2, dig3, cod;
-	CPF cpf;
-	int telefone;
+	CPF cpfEsperado;
+	CPF cpfObtido;
+	int telefoneEsperado;
+	int telefoneObtido;
 	int  NumLidos = -1;
 
 	TST_tpCondRet Ret;
@@ -68,7 +65,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, CRIAR_ALN_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringNome, &MatEsperada, dig1, dig2, dig3, cod, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
 		if (NumLidos != 17)
 		{
@@ -78,32 +75,17 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
-
 		/* montando structs para testar criaaluno */
-		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
-		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
-		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
-		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
-		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
-		cpf.dig1 = dig1;
-		cpf.dig2 = dig2;
-		cpf.dig3 = dig3;
-		cpf.cod = cod;
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
-		strcpy(pDado, StringNome);
-		strcpy(pDado1, estado);
-		strcpy(pDado2, cidade);
-		strcpy(pDado3, bairro);
-		strcpy(pDado4, complemento);
 		strcpy(Endteste.estado,estado);
 		strcpy(Endteste.cidade,cidade);
 		strcpy(Endteste.bairro,bairro);
 		strcpy(Endteste.rua,rua);
 		strcpy(Endteste.comp,complemento);
 
-		CondRetObtido = ALU_CriaAluno(vtAlunos[indxaluno], StringNome, MatEsperada, &cpf, telefone, &Datateste, &Endteste);
+		CondRetObtido = ALU_CriaAluno(&vtAlunos+indxaluno, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao criar Aluno.");
 
@@ -113,7 +95,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, ALT_DADO_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringNome, &MatEsperada, dig1, dig2, dig3, cod, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
 		if (NumLidos != 17)
 		{
@@ -123,21 +105,6 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
-
-		cpf.dig1 = dig1;
-		cpf.dig2 = dig2;
-		cpf.dig3 = dig3;
-		cpf.cod = cod;
-		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
-		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
-		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
-		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
-		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
-		strcpy(pDado, StringNome);
-		strcpy(pDado1, estado);
-		strcpy(pDado2, cidade);
-		strcpy(pDado3, bairro);
-		strcpy(pDado4, complemento);
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
@@ -146,7 +113,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		strcpy(Endteste.bairro, bairro);
 		strcpy(Endteste.rua, rua);
 		strcpy(Endteste.comp, complemento);
-		CondRetObtido = ALU_AlteraDados(vtAlunos[indxaluno], StringNome, MatEsperada, &cpf, telefone, &Datateste, &Endteste);
+		CondRetObtido = ALU_AlteraDados(vtAlunos[indxaluno], StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
 
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao alterar dados do Aluno.");
@@ -154,63 +121,31 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	}
 	/* Testar ALU Solicita dados do aluno*/
 
-	if (strcmp(ComandoTeste, SOL_DADO_CMD) == 0)
-	{
-
-		NumLidos = LER_LerParametros("siiiiiiiiisssssi", StringNome, &MatEsperada, dig1, dig2, dig3, cod, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
-			&CondRetEsperada);
-
-		if (NumLidos != 16)
-		{
-			return TST_CondRetParm;
-		}
-		/* testando se a matricula é valida, isto é, tem 7 números */
-		if (MatEsperada<1000000 || MatEsperada>9999999) {
-			return TST_CondRetErro;
-		}
-
-		cpf.dig1 = dig1;
-		cpf.dig2 = dig2;
-		cpf.dig3 = dig3;
-		cpf.cod = cod;
-		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
-		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
-		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
-		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
-		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
-		strcpy(pDado, StringNome);
-		strcpy(pDado1, estado);
-		strcpy(pDado2, cidade);
-		strcpy(pDado3, bairro);
-		strcpy(pDado4, complemento);
-		Datateste.dia = dia;
-		Datateste.mes = mes;
-		Datateste.ano = ano;
-		strcpy(Endteste.estado, estado);
-		strcpy(Endteste.cidade, cidade);
-		strcpy(Endteste.bairro, bairro);
-		strcpy(Endteste.rua, rua);
-		strcpy(Endteste.comp, complemento);
-		CondRetObtido = ALU_SolicitaDados(StringNome, &MatEsperada, &cpf, &telefone, &Datateste, &Endteste);
-		return TST_CompararInt(CondRetEsperada, CondRetObtido,
-			"Retorno errado ao alterar dados do Aluno.");
-	}
 	/* Testar ALU Get ALL que pega todos os dados do aluno e copia para os parametros enviados*/
 
 	if (strcmp(ComandoTeste, GET_ALL_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiiiii", &indxaluno, StringNome, &MatObtida, dig1, dig2, dig3, cod, &telefone, &indxdata, &indxendereco,
+		NumLidos = LER_LerParametros("isiiiiiiiii", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &indxdata, &indxendereco,
 			&CondRetEsperada);
 		if (NumLidos != 11)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = ALU_GetAll(vtAlunos[indxaluno], StringNome, &MatObtida, &cpf, &telefone, &vtDatas[indxdata], &vtEnds[indxendereco]);
+		CondRetObtido = ALU_GetAll(vtAlunos[indxaluno], StringObtida, &MatObtida, &cpfObtido, &telefoneObtido, &vtDatas[indxdata], &vtEnds[indxendereco]);
 
-		return TST_CompararInt(CondRetEsperada, CondRetObtido,
+		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao pegar dados do Aluno.");
-
+	
+		if (Ret != TST_CondRetOK) return Ret;
+		Ret = TST_CompararString(StringEsperada, StringObtida,
+			"Retorno por referencia errado ao consultar nome do Aluno.") && 
+			TST_CompararInt(MatObtida, MatEsperada,
+				"Retorno por referencia errado ao consultar matricula do Aluno.") &&
+			TST_CompararInt(CondRetEsperada, CondRetObtido,
+				"Retorno por referencia errado ao consultar matricula do Aluno.");
+		
+		return Ret;
 	}
 
 	/* Testar ALU pegar matrícula do aluno */
@@ -240,19 +175,18 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	else if (strcmp(ComandoTeste, GET_NOME_CMD) == 0)
 	{
 		/*nesse caso abaixo StringNome = nome do aluno digitado no script de teste */
-		NumLidos = LER_LerParametros("isi", &indxaluno, StringNome, &CondRetEsperada);
+		NumLidos = LER_LerParametros("isi", &indxaluno, StringEsperada, &CondRetEsperada);
 		if (NumLidos != 3)
 		{
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = ALU_GetNome(vtAlunos[indxaluno], StringObtido);
+		CondRetObtido = ALU_GetNome(vtAlunos[indxaluno], StringObtida);
 		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
 		if (Ret != TST_CondRetOK) {
 			return Ret;
 		}
-
-		return TST_CompararString(StringNome, StringObtido,
+		return TST_CompararString(StringEsperada, StringObtida,
 			"Nome errado.");
 	}
 
@@ -282,12 +216,6 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
 	}
 
-
-	free(pDado);
-	free(pDado1);
-	free(pDado2);
-	free(pDado3);
-	free(pDado4);
 	return TST_CondRetNaoConhec;
 
 }
