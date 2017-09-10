@@ -161,28 +161,30 @@ int ValidaData(Data* data) {
 	char meses30[4] = { 4,6,9,11 };	// Meses com 30 dias
 	int i;	// iterador
 
-	if (data->ano <= (time->tm_year + 1900))
+	// Um aluno não pode ter mais de 120 anos, nem menos de 15 anos.
+
+	if ((data->ano >= ((time->tm_year + 1900) - 120) && data->ano <= ((time->tm_year + 1900) - 15) )  && data->ano <= (time->tm_year + 1900))
 	{
-		if (data->ano == (time->tm_year + 1900))
+		if (data->ano == (time->tm_year + 1900))	// verifico se o ano fornecido é o ano atual.
 		{
-			if (data->mes == (time->tm_mon + 1))
-				if (data->dia <= time->tm_mday)
+			if (data->mes == (time->tm_mon + 1))	// verifico se o mes fornecido é o mês atual.
+				if (data->dia <= time->tm_mday)		// verifico se o dia fornecido é menor ou igual que o dia atual.
 					return 1;
 				else
 					return 0;
 		}
 		for (i = 0; i < 7; i++) {
-			if (data->mes == meses31[i])
-				if (data->dia <= 31)
+			if (data->mes == meses31[i])	// verifico se o mes fornecido possui 31 dias.
+				if (data->dia <= 31)	// verifico se o dia fornecido é menor ou igual a 31.
 					return 1;
 		}
 		for (i = 0; i < 4; i++) {
-			if (data->mes == meses30[i])
-				if (data->dia <= 30)
+			if (data->mes == meses30[i])	// verifico se o mes fornecido possui 30 dias.
+				if (data->dia <= 30)	// verifico se o dia fornecido é menor ou igual a 30.
 					return 1;
 		}
-		if (data->mes == 2)
-			if (data->dia <= 28)
+		if (data->mes == 2)		// verifico se o mes fornecido é fevereiro.
+			if (data->dia <= 28)	// verifico se o dia fornecido é menor ou igual a 28.
 				return 1;
 	}
 	return 0;
