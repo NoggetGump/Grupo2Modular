@@ -85,7 +85,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		strcpy(Endteste.rua,rua);
 		strcpy(Endteste.comp,complemento);
 
-		CondRetObtido = ALU_CriaAluno(&vtAlunos+indxaluno, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
+		CondRetObtido = ALU_CriaAluno(vtAlunos+indxaluno, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao criar Aluno.");
 
