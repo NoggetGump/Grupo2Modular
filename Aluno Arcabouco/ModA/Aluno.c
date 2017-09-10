@@ -1,4 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
+#pragma warning( disable : 4996 ) 
+
 #include "aluno.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,12 +18,12 @@ struct aluno {
 
 int ValidaData(Data* data);	// Cabeçalho da função interna que valida data.
 
-//Cria um único aluno com as informações passadas por referencia.
+							//Cria um único aluno com as informações passadas por referencia.
 ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end) {
 
 	*a = (Aluno*)malloc(sizeof(Aluno));	// Alocando espaço na memória para um Aluno
-	//*a = b;	// Usando outro ponteiro para me referenciar ao aluno, para facilitar leitura
-					// e não ter que usar (*a)->atributo.
+										//*a = b;	// Usando outro ponteiro para me referenciar ao aluno, para facilitar leitura
+										// e não ter que usar (*a)->atributo.
 	if (a == NULL)
 		return ALN_CondRetFaltouMemoria;
 
@@ -125,7 +127,7 @@ ALN_tpCondRet ALU_SolicitaDados(char *nome, unsigned int *mat, CPF *cpf, unsigne
 	do {
 		printf("Matricula (7 digitos): ");	// Prompt para a matrícula do aluno.
 		scanf(" %d", mat);
-	} while (strlen(itoa(*mat, matT, 10)) != 7);
+	} while (strlen(_itoa(*mat, matT, 10)) != 7);
 
 	do {
 		printf("CPF (3 Digitos / Somente numeros): ");	// 3 primeiros digitos.
@@ -136,14 +138,14 @@ ALN_tpCondRet ALU_SolicitaDados(char *nome, unsigned int *mat, CPF *cpf, unsigne
 		scanf("%hd", cpf->dig3);
 		printf("CPF (2 Digitos / Somente numeros): ");	// 2 ultimos digitos.
 		scanf("%hd", cpf->cod);
-		
-		if(cpf->dig1 >= 99 && cpf->dig1 <= 999)
+
+		if (cpf->dig1 >= 99 && cpf->dig1 <= 999)
 			verifica = 1;
-		if(cpf->dig2 >= 0 && cpf->dig1 <= 999)
+		if (cpf->dig2 >= 0 && cpf->dig1 <= 999)
 			verifica = 1;
-		if(cpf->dig3 >= 0 && cpf->dig3 <= 999)
+		if (cpf->dig3 >= 0 && cpf->dig3 <= 999)
 			verifica = 1;
-		if(cpf->dig2 >= 0 && cpf->dig1 <= 99)
+		if (cpf->dig2 >= 0 && cpf->dig1 <= 99)
 			verifica = 1;
 
 	} while (verifica == 0);
@@ -211,7 +213,7 @@ ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 	printf("Matricula: %d\n", a->mat);
 	printf("CPF:  %03d.%03d.%03d-%02d\n", a->cpfA.dig1, a->cpfA.dig2, a->cpfA.dig3, a->cpfA.cod);
 	printf("Telefone: %d\n", a->telefone);
-	printf("Data de Nascimento: %hd/%hd/%hd\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
+	printf("Data de Nascimento: %02hd/%02hd/%hd\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
 	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);
 	return ALN_CondRetOK;
 }
