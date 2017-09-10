@@ -56,6 +56,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	int indxdata = '-1';
 	int indxendereco = '-1';
 	int nome;
+	int dig1, dig2, dig3, cod;
 	CPF cpf;
 	int telefone;
 	int  NumLidos = -1;
@@ -67,9 +68,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, CRIAR_ALN_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiisssssi", &indxaluno, StringNome, &MatEsperada, &cpf, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringNome, &MatEsperada, dig1, dig2, dig3, cod, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
-		if (NumLidos != 14)
+		if (NumLidos != 17)
 		{
 			return TST_CondRetParm;
 		}
@@ -77,12 +78,17 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
+
 		/* montando structs para testar criaaluno */
 		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
 		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
 		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
 		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
 		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
+		cpf.dig1 = dig1;
+		cpf.dig2 = dig2;
+		cpf.dig3 = dig3;
+		cpf.cod = cod;
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
@@ -107,9 +113,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, ALT_DADO_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiisssssi", &indxaluno, StringNome, &MatEsperada, &cpf, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringNome, &MatEsperada, dig1, dig2, dig3, cod, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
-		if (NumLidos != 14)
+		if (NumLidos != 17)
 		{
 			return TST_CondRetParm;
 		}
@@ -117,6 +123,11 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
+
+		cpf.dig1 = dig1;
+		cpf.dig2 = dig2;
+		cpf.dig3 = dig3;
+		cpf.cod = cod;
 		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
 		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
 		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
@@ -146,9 +157,10 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, SOL_DADO_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("siiiiiisssssi", StringNome, &MatEsperada, &cpf, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("siiiiiiiiisssssi", StringNome, &MatEsperada, dig1, dig2, dig3, cod, &telefone, dia, mes, ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
-		if (NumLidos != 13)
+
+		if (NumLidos != 16)
 		{
 			return TST_CondRetParm;
 		}
@@ -156,6 +168,11 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
+
+		cpf.dig1 = dig1;
+		cpf.dig2 = dig2;
+		cpf.dig3 = dig3;
+		cpf.cod = cod;
 		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
 		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
 		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
@@ -183,9 +200,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, GET_ALL_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiii", &indxaluno, StringNome, &MatObtida, &cpf, &telefone, &indxdata, &indxendereco,
+		NumLidos = LER_LerParametros("isiiiiiiiii", &indxaluno, StringNome, &MatObtida, dig1, dig2, dig3, cod, &telefone, &indxdata, &indxendereco,
 			&CondRetEsperada);
-		if (NumLidos != 8)
+		if (NumLidos != 11)
 		{
 			return TST_CondRetParm;
 		}

@@ -19,13 +19,16 @@
 =declararparm rua string "Avenida dos anoes grandes"
 =declararparm bairro string "Ceu"
 =declararparm complemento string "prox ao inferno"
-=declararparm cpf int 12345678900
+=declararparm cpf_dig1 int 123
+=declararparm cpf_dig2 int 456
+=declararparm cpf_dig3 int 789
+=declararparm cpf_cod int 00
 
 == Verificar criar
-=criar aluno0 nome mat cpf telefone dia mes ano estado cidade bairro rua complemento ok
+=criar aluno0 nome mat cpf_dig1 cpf_dig2 cpf_dig3 cpf_cod telefone dia mes ano estado cidade bairro rua complemento ok
 
 == Verificar criar
-=criar aluno1 nome mat cpf telefone dia mes ano estado cidade bairro rua complemento ok
+=criar aluno1 nome mat cpf_dig1 cpf_dig2 cpf_dig3 cpf_cod telefone dia mes ano estado cidade bairro rua complemento ok
 
 == Deleta Aluno
 =delaluno 0 ok
