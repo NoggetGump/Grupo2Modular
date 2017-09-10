@@ -1,9 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include    <string.h>
 #include    <stdio.h>
 #include	<stdlib.h>
 #include    "Aluno.h"
 #include    "TST_ESPC.H"
-
 #include    "generico.h"
 #include    "lerparm.h"
 
@@ -40,10 +40,15 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	short dia = 0;
 	short mes = 0;
 	short ano = 0;
-	char estado[15];
-	char cidade[15];
-	char bairro[10];
-	char rua[20];
+	char *pDado;
+	char *pDado1;
+	char *pDado2;
+	char *pDado3;
+	char *pDado4;
+	char estado[30];
+	char cidade[30];
+	char bairro[15];
+	char rua[30];
 	char complemento[7];
 	int MatEsperada = '-1	';
 	int MatObtida = '-1';
@@ -73,9 +78,19 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetErro;
 		}
 		/* montando structs para testar criaaluno */
+		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
+		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
+		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
+		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
+		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
+		strcpy(pDado, StringNome);
+		strcpy(pDado1, estado);
+		strcpy(pDado2, cidade);
+		strcpy(pDado3, bairro);
+		strcpy(pDado4, complemento);
 		strcpy(Endteste.estado,estado);
 		strcpy(Endteste.cidade,cidade);
 		strcpy(Endteste.bairro,bairro);
@@ -102,6 +117,16 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
+		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
+		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
+		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
+		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
+		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
+		strcpy(pDado, StringNome);
+		strcpy(pDado1, estado);
+		strcpy(pDado2, cidade);
+		strcpy(pDado3, bairro);
+		strcpy(pDado4, complemento);
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
@@ -131,6 +156,16 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		if (MatEsperada<1000000 || MatEsperada>9999999) {
 			return TST_CondRetErro;
 		}
+		pDado = (char*) malloc(sizeof(strlen(StringNome)+1));
+		pDado1 = (char*) malloc(sizeof(strlen(estado)+1));
+		pDado2 = (char*) malloc(sizeof(strlen(cidade)+1));
+		pDado3 = (char*) malloc(sizeof(strlen(bairro)+1));
+		pDado4 = (char*) malloc(sizeof(strlen(complemento)+1));
+		strcpy(pDado, StringNome);
+		strcpy(pDado1, estado);
+		strcpy(pDado2, cidade);
+		strcpy(pDado3, bairro);
+		strcpy(pDado4, complemento);
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
@@ -230,6 +265,12 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
 	}
 
+
+	free(pDado);
+	free(pDado1);
+	free(pDado2);
+	free(pDado3);
+	free(pDado4);
 	return TST_CondRetNaoConhec;
 
 }

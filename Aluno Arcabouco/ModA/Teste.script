@@ -1,0 +1,24 @@
+//Script teste Grupo 2
+
+== Retorno
+=decalararparm ok int 0
+
+== Paramentos
+=decalararparm nome string Matheus
+=decalararparm mat int 1621473
+=decalararparm dia int 17
+=decalararparm mes int 09
+=decalararparm ano int 1997
+=decalararparm telefone int 99933412
+=decalararparm estado string Rio de janeiro
+=decalararparm cidade string Rio de janeiro
+=decalararparm rua string Avenida dos anoes grandes
+=decalararparm bairro string Ceu
+=decalararparm complemento string prox ao inferno
+=decalararparm cpf int 12345678900
+
+== Verificar criar
+=criar 0 nome mat cpf telefone dia mes ano estado cidade bairro rua complemento OK
+
+== Mostra aluno
+=impaluno 0 ok

@@ -1,0 +1,36 @@
+//Script teste Grupo 2
+
+== Retorno
+=declararparm ok int 0
+=declararparm alunoNull int 1
+
+== Paramentos
+=declararparm aluno0 int 0
+=declararparm aluno1 int 1
+
+=declararparm nome string "Matheus"
+=declararparm mat int 1621473
+=declararparm dia int 17
+=declararparm mes int 09
+=declararparm ano int 1997
+=declararparm telefone int 99933412
+=declararparm estado string "Rio de janeiro"
+=declararparm cidade string "Rio de janeiro"
+=declararparm rua string "Avenida dos anoes grandes"
+=declararparm bairro string "Ceu"
+=declararparm complemento string "prox ao inferno"
+=declararparm cpf int 12345678900
+
+== Verificar criar
+=criar aluno0 nome mat cpf telefone dia mes ano estado cidade bairro rua complemento ok
+
+== Verificar criar
+=criar aluno1 nome mat cpf telefone dia mes ano estado cidade bairro rua complemento ok
+
+== Deleta Aluno
+=delaluno 0 ok
+
+= Deleta aluno que nao existe
+=delaluno 0 alunoNull
+
+
