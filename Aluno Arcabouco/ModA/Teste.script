@@ -1,24 +1,93 @@
-//Script teste Grupo 2
+// Script teste Grupo 2
 
 == Retorno
-=decalararparm ok int 0
+=declararparm OK	int 0
+=declararparm alunoNull int 1
 
 == Paramentos
-=decalararparm nome string Matheus
-=decalararparm mat int 1621473
-=decalararparm dia int 17
-=decalararparm mes int 09
-=decalararparm ano int 1997
-=decalararparm telefone int 99933412
-=decalararparm estado string Rio de janeiro
-=decalararparm cidade string Rio de janeiro
-=decalararparm rua string Avenida dos anoes grandes
-=decalararparm bairro string Ceu
-=decalararparm complemento string prox ao inferno
-=decalararparm cpf int 12345678900
+=declararparm aluno0 	int 0
+=declararparm aluno1 	int 1
+=declararparm aluno2 	int 2
+
+== Declarando conteúdo dos alunos
+// Aluno 0
+=declararparm nome1 		string "Matheus"
+=declararparm mat1 		int 1621473
+=declararparm dia1 		int 17
+=declararparm mes1 		int 09
+=declararparm ano1 		int 1997
+=declararparm telefone1 	int 99933412
+=declararparm estado1 		string "Rio de janeiro"
+=declararparm cidade1 		string "Rio de janeiro"
+=declararparm rua1 		string "Avenida dos anoes grandes"
+=declararparm bairro1 		string "Ceu"
+=declararparm complemento1 	string "prox ao inferno"
+=declararparm cpf_dig1A 	int 123
+=declararparm cpf_dig2A 	int 456
+=declararparm cpf_dig3A 	int 789
+=declararparm cpf_codA 		int 00
+
+// Aluno 1
+=declararparm nome2 		string "Joao"
+=declararparm mat2 		int 1621473
+=declararparm dia2 		int 17
+=declararparm mes2 		int 09
+=declararparm ano2 		int 1997
+=declararparm telefone2		int 99933412
+=declararparm estado2 		string "Rio de janeiro"
+=declararparm cidade2 		string "Rio de janeiro"
+=declararparm rua2 		string "Avenida dos anoes grandes"
+=declararparm bairro2 		string "Ceu"
+=declararparm complemento2 	string "prox ao inferno"
+=declararparm cpf_dig1B 	int 123
+=declararparm cpf_dig2B 	int 456
+=declararparm cpf_dig3B 	int 789
+=declararparm cpf_codB 		int 00
+
+// Aluno 2
+=declararparm nome3 		string "Joao"
+=declararparm mat3 		int 1621473
+=declararparm dia3 		int 17
+=declararparm mes3 		int 09
+=declararparm ano3 		int 1997
+=declararparm telefone3 	int 99933412
+=declararparm estado3 		string "Rio de janeiro"
+=declararparm cidade3 		string "Rio de janeiro"
+=declararparm rua3 		string "Avenida dos anoes grandes"
+=declararparm bairro3 		string "Ceu"
+=declararparm complemento3 	string "prox ao inferno"
+=declararparm cpf_dig1C 	int 123
+=declararparm cpf_dig2C 	int 456
+=declararparm cpf_dig3C 	int 789
+=declararparm cpf_codC 		int 00
 
 == Verificar criar
-=criar 0 nome mat cpf telefone dia mes ano estado cidade bairro rua complemento OK
+=criar aluno0 nome1 mat1 cpf_dig1A cpf_dig2A cpf_dig3A cpf_codA telefone1 dia1 mes1 ano1 estado1 cidade1 bairro1 rua1 complemento1 OK
 
-== Mostra aluno
-=impaluno 0 ok
+== Verificar criar
+=criar aluno1 nome2 mat2 cpf_dig1B cpf_dig2B cpf_dig3B cpf_codB telefone2 dia2 mes2 ano2 estado2 cidade2 bairro2 rua2 complemento2 OK
+
+== Verificar criar
+=criar aluno2 nome3 mat3 cpf_dig1C cpf_dig2C cpf_dig3C cpf_codC telefone3 dia3 mes3 ano3 estado3 cidade3 bairro3 rua3 complemento3 OK
+
+== Verificar getnome
+==getnome aluno0 nome1 OK
+
+== Verificar getnome (comparando com nome errado)
+==getnome aluno1 nome2 OK
+==recuperar
+
+== Verificar getnome
+==getnome aluno2 nome3 OK
+
+== Verificar getmat
+==getnome aluno2 mat3 OK
+
+== Deleta Aluno
+=delaluno 0 OK
+
+== Deleta Aluno
+=delaluno 1 OK
+
+== Deleta Aluno
+=delaluno 3 OK
