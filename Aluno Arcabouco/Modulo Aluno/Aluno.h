@@ -26,8 +26,6 @@ typedef struct cpf {
 typedef enum {
 	ALN_CondRetOK,	// Executou corretamente
 	ALN_CondRetAlunoNaoExiste,	// O aluno não existe 
-	ALN_CondRetDataInvalida,	// Data inserida foi inválida
-	ALN_CondRetFaltouMemoria	// Faltou memória ao alocar dados
 } ALN_tpCondRet;
 
 typedef struct aluno Aluno;
