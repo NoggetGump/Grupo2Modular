@@ -61,6 +61,9 @@
 =declararparm cpfdigDoisC 	int 456
 =declararparm cpfdigTresC 	int 789
 =declararparm cpfcodC 		int 00
+=declararparm nomeAlt		string "Bruno"
+=declararparm matAlt		int 1510003
+
 
 == Verificar criar
 =criar aluno nomeUm matUm cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
@@ -84,6 +87,35 @@
 == Verificar getmat
 =getmat alunoDois matTres OK
 
+== Verificar alteradado
+=alteradado aluno nomeAlt matAlt cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+
+== Verificar getnome apos alterar
+=getnome aluno nomeAlt OK
+
+== Verificar getmat apos alterar
+=getmat aluno matAlt OK
+
+== Verificar impaluno
+=impaluno aluno OK
+
+== Verificar impaluno
+=impaluno alunoUm OK
+
+== Verificar impaluno
+=impaluno alunoDois OK
+
+== Verificar getall
+=getall aluno nomeAlt matAlt cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+
+== Verificar getall esperando nome errado
+=getall aluno nomeDois matAlt cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+=recuperar
+
+== Verificar getall esperando matricula errado
+=getall aluno nomeAlt matDois cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+=recuperar
+
 == Deleta Aluno
 =delaluno 0 OK
 
@@ -92,3 +124,9 @@
 
 == Deleta Aluno
 =delaluno 2 OK
+
+== Deleta Aluno que nao existe
+=delaluno 3 alunoNull
+
+== Deleta Aluno que ja foi deletado
+=delaluno 2 alunoNull
