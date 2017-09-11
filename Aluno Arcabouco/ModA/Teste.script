@@ -79,10 +79,10 @@
 =recuperar
 
 == Verificar getnome
-=getmat alunoDois nomeTres OK
+=getnome alunoDois nomeTres OK
 
 == Verificar getmat
-=getnome alunoDois matTres OK
+=getmat alunoDois matTres OK
 
 == Deleta Aluno
 =delaluno 0 OK
