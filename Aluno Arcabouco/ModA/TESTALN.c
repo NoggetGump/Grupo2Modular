@@ -127,9 +127,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, GET_ALL_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiiiii", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &indxdata, &indxendereco,
+		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
-		if (NumLidos != 11)
+		if (NumLidos != 17)
 		{
 			return TST_CondRetParm;
 		}
