@@ -77,7 +77,7 @@
 == Verificar getnome
 =getnome aluno nomeUm OK
 
-== Verificar getnome (comparando com nome errado)
+== Verificar getnome comparando com nome errado
 =getnome aluno nomeDois OK
 =recuperar
 
