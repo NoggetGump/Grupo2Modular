@@ -23,10 +23,10 @@
 =declararparm ruaUm 		string "AvenidaDosAnoesGrandes"
 =declararparm bairroUm 		string "Ceu"
 =declararparm complementoUm 	string "ProxAoInferno"
-=declararparm cpf_digUmA 	int 123
-=declararparm cpf_digDoisA 	int 456
-=declararparm cpf_digTresA 	int 789
-=declararparm cpf_codA 		int 00
+=declararparm cpfdigUmA 	int 123
+=declararparm cpfdigDoisA 	int 456
+=declararparm cpfdigTresA 	int 789
+=declararparm cpfcodA 		int 00
 
 // AlunoUm
 =declararparm nomeDois 		string "Joao"
@@ -40,10 +40,10 @@
 =declararparm ruaDois 		string "AvenidaDosAnoesGrandes"
 =declararparm bairroDois 	string "Ceu"
 =declararparm complementoDois 	string "prox ao inferno"
-=declararparm cpf_digUmB 	int 123
-=declararparm cpf_digDoisB 	int 456
-=declararparm cpf_digTresB 	int 789
-=declararparm cpf_codB 		int 00
+=declararparm cpfdigUmB 	int 123
+=declararparm cpfdigDoisB 	int 456
+=declararparm cpfdigTresB 	int 789
+=declararparm cpfcodB 		int 00
 
 // AlunoDois
 =declararparm nomeTres 		string "Joao"
@@ -57,19 +57,19 @@
 =declararparm ruaTres 		string "AvenidaDosAnoesGrandes"
 =declararparm bairroTres 	string "Ceu"
 =declararparm complementoTres 	string "ProxAoInferno"
-=declararparm cpf_digUmC 	int 123
-=declararparm cpf_digDoisC 	int 456
-=declararparm cpf_digTresC 	int 789
-=declararparm cpf_codC 		int 00
+=declararparm cpfdigUmC 	int 123
+=declararparm cpfdigDoisC 	int 456
+=declararparm cpfdigTresC 	int 789
+=declararparm cpfcodC 		int 00
 
 == Verificar criar
-=criar aluno nomeUm matUm cpf_digUmA cpf_digDoisA cpf_digTresA cpf_codA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+=criar aluno nomeUm matUm cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
 
 == Verificar criar
-=criar alunoUm nomeDois matDois cpf_digUmB cpf_digDoisB cpf_digTresB cpf_codB telefoneDois diaDois mesDois anoDois estadoDois cidadeDois bairroDois ruaDois complementoDois OK
+=criar alunoUm nomeDois matDois cpfdigUmB cpfdigDoisB cpfdigTresB cpfcodB telefoneDois diaDois mesDois anoDois estadoDois cidadeDois bairroDois ruaDois complementoDois OK
 
 == Verificar criar
-=criar alunoDois nomeTres matTres cpf_digUmC cpf_digDoisC cpf_digTresC cpf_codC telefoneTres diaTres mesTres anoTres estadoTres cidadeTres bairroTres ruaTres complementoTres OK
+=criar alunoDois nomeTres matTres cpfdigUmC cpfdigDoisC cpfdigTresC cpfcodC telefoneTres diaTres mesTres anoTres estadoTres cidadeTres bairroTres ruaTres complementoTres OK
 
 == Verificar getnome
 =getnome aluno nomeUm OK
