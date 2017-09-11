@@ -17,10 +17,10 @@ typedef struct endereco {
 } Endereco;
 
 typedef struct cpf {
-	short dig1;
-	short dig2;
-	short dig3;
-	short cod;
+	int dig1;
+	int dig2;
+	int dig3;
+	int cod;
 } CPF;
 
 typedef enum {
