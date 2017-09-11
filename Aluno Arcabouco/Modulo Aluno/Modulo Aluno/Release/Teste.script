@@ -1,0 +1,129 @@
+// Script teste Grupo 2
+
+== Retorno
+=declararparm OK	int 0
+=declararparm alunoNull int 1
+
+== Paramentos
+=declararparm aluno 	int 0
+=declararparm alunoUm 	int 1
+=declararparm alunoDois int 2
+
+== Declarando conteúdo dos alunos
+
+// Aluno
+=declararparm nomeUm 		string "Matheus"
+=declararparm matUm 		int 1621473
+=declararparm diaUm 		int 17
+=declararparm mesUm 		int 09
+=declararparm anoUm 		int 1997
+=declararparm telefoneUm 	int 99933412
+=declararparm estadoUm 		string "RioDeJaneiro"
+=declararparm cidadeUm 		string "RioDeJaneiro"
+=declararparm ruaUm 		string "AvenidaDosAnoesGrandes"
+=declararparm bairroUm 		string "Ceu"
+=declararparm complementoUm 	string "ProxAoInferno"
+=declararparm cpfdigUmA 	int 123
+=declararparm cpfdigDoisA 	int 456
+=declararparm cpfdigTresA 	int 789
+=declararparm cpfcodA 		int 00
+
+// AlunoUm
+=declararparm nomeDois 		string "Joao"
+=declararparm matDois		int 1621473
+=declararparm diaDois 		int 17
+=declararparm mesDois 		int 09
+=declararparm anoDois 		int 1997
+=declararparm telefoneDois	int 99933412
+=declararparm estadoDois 	string "RioDeJaneiro"
+=declararparm cidadeDois 	string "RioDeJaneiro"
+=declararparm ruaDois 		string "AvenidaDosAnoesGrandes"
+=declararparm bairroDois 	string "Ceu"
+=declararparm complementoDois 	string "prox ao inferno"
+=declararparm cpfdigUmB 	int 123
+=declararparm cpfdigDoisB 	int 456
+=declararparm cpfdigTresB 	int 789
+=declararparm cpfcodB 		int 00
+
+// AlunoDois
+=declararparm nomeTres 		string "Joao"
+=declararparm matTres 		int 1621473
+=declararparm diaTres 		int 17
+=declararparm mesTres 		int 09
+=declararparm anoTres 		int 1997
+=declararparm telefoneTres 	int 99933412
+=declararparm estadoTres 	string "RioDeJaneiro"
+=declararparm cidadeTres 	string "RioDeJaneiro"
+=declararparm ruaTres 		string "AvenidaDosAnoesGrandes"
+=declararparm bairroTres 	string "Ceu"
+=declararparm complementoTres 	string "ProxAoInferno"
+=declararparm cpfdigUmC 	int 123
+=declararparm cpfdigDoisC 	int 456
+=declararparm cpfdigTresC 	int 789
+=declararparm cpfcodC 		int 00
+=declararparm nomeAlt		string "Bruno"
+=declararparm matAlt		int 1510003
+
+
+== Verificar criar
+=criar aluno nomeUm matUm cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+
+== Verificar criar
+=criar alunoUm nomeDois matDois cpfdigUmB cpfdigDoisB cpfdigTresB cpfcodB telefoneDois diaDois mesDois anoDois estadoDois cidadeDois bairroDois ruaDois complementoDois OK
+
+== Verificar criar
+=criar alunoDois nomeTres matTres cpfdigUmC cpfdigDoisC cpfdigTresC cpfcodC telefoneTres diaTres mesTres anoTres estadoTres cidadeTres bairroTres ruaTres complementoTres OK
+
+== Verificar getnome
+=getnome aluno nomeUm OK
+
+== Verificar getnome comparando com nome errado
+=getnome aluno nomeDois OK
+=recuperar
+
+== Verificar getnome
+=getnome alunoDois nomeTres OK
+
+== Verificar getmat
+=getmat alunoDois matTres OK
+
+== Verificar alteradado
+=alteradado aluno nomeAlt matAlt cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+
+== Verificar getnome apos alterar
+=getnome aluno nomeAlt OK
+
+== Verificar getmat apos alterar
+=getmat aluno matAlt OK
+
+== Verificar impaluno
+=impaluno aluno OK
+
+== Verificar impaluno
+=impaluno alunoUm OK
+
+== Verificar impaluno
+=impaluno alunoDois OK
+
+== Verificar getall
+=getall aluno nomeAlt matAlt cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+
+== Verificar getall esperando matricula errado
+=getall aluno nomeAlt matDois cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+=recuperar
+
+== Verificar getall esperando nome errado
+=getall aluno nomeUm matAlt cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+=recuperar
+
+== Deleta Aluno
+=delaluno 0 OK
+
+== Deleta Aluno
+=delaluno 1 OK
+
+== Deleta Aluno
+=delaluno 2 OK
+
+== Deleta Aluno que ja foi deletado
+=delaluno 2 alunoNull
