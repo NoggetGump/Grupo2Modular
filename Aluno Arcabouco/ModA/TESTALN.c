@@ -38,9 +38,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 
 	char ValorEsperado = '?';
 	char ValorObtido = '!';
-	short dia;
-	short mes;
-	short ano;
+	int dia;
+	int mes;
+	int ano;
 	char estado[81];
 	char cidade[81];
 	char bairro[81];
