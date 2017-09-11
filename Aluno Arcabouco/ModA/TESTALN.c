@@ -1,6 +1,6 @@
 #include    <string.h>
 #include    <stdio.h>
-#include	<stdlib.h>
+#include    <stdlib.h>
 #include    "Aluno.h"
 #include    "TST_ESPC.H"
 
@@ -46,16 +46,15 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	char complemento[51];
 	char StringEsperada[81];
 	char StringObtida[81];
-	int MatEsperada = '-1	';
-	int MatObtida = '-1';
-	int indxaluno = '-1';
-	int indxdata = '-1';
-	int indxendereco = '-1';
-	int nome;
+	unsigned int MatEsperada = -1;
+	unsigned int MatObtida = -1;
+	int indxdata = -1;
+	int indxaluno = -1;
+	int indxendereco = -1;
 	CPF cpfEsperado;
 	CPF cpfObtido;
-	int telefoneEsperado;
-	int telefoneObtido;
+	unsigned int telefoneEsperado;
+	unsigned int telefoneObtido;
 	int  NumLidos = -1;
 
 	TST_tpCondRet Ret;
