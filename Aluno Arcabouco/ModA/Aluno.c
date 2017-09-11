@@ -144,7 +144,7 @@ ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 	printf("Matricula: %d\n", a->mat);
 	printf("CPF:  %03d.%03d.%03d-%02d\n", a->cpfA.dig1, a->cpfA.dig2, a->cpfA.dig3, a->cpfA.cod);
 	printf("Telefone: %d\n", a->telefone);
-	printf("Data de Nascimento: %02hd/%02hd/%hd\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
+	printf("Data de Nascimento: %02d/%02d/%d\n", a->nasc.dia, a->nasc.mes, a->nasc.ano);
 	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);
 	return ALN_CondRetOK;
 }
