@@ -5,83 +5,84 @@
 =declararparm alunoNull int 1
 
 == Paramentos
-=declararparm aluno0 	int 0
-=declararparm aluno1 	int 1
-=declararparm aluno2 	int 2
+=declararparm aluno 	int 0
+=declararparm alunoUm 	int 1
+=declararparm alunoDois int 2
 
 == Declarando conteúdo dos alunos
-// Aluno 0
-=declararparm nome1 		string "Matheus"
-=declararparm mat1 		int 1621473
-=declararparm dia1 		int 17
-=declararparm mes1 		int 09
-=declararparm ano1 		int 1997
-=declararparm telefone1 	int 99933412
-=declararparm estado1 		string "Rio de janeiro"
-=declararparm cidade1 		string "Rio de janeiro"
-=declararparm rua1 		string "Avenida dos anoes grandes"
-=declararparm bairro1 		string "Ceu"
-=declararparm complemento1 	string "prox ao inferno"
-=declararparm cpf_dig1A 	int 123
-=declararparm cpf_dig2A 	int 456
-=declararparm cpf_dig3A 	int 789
+
+// Aluno
+=declararparm nomeUm 		string "Matheus"
+=declararparm matUm 		int 1621473
+=declararparm diaUm 		int 17
+=declararparm mesUm 		int 09
+=declararparm anoUm 		int 1997
+=declararparm telefoneUm 	int 99933412
+=declararparm estadoUm 		string "RioDeJaneiro"
+=declararparm cidadeUm 		string "RioDeJaneiro"
+=declararparm ruaUm 		string "AvenidaDosAnoesGrandes"
+=declararparm bairroUm 		string "Ceu"
+=declararparm complementoUm 	string "ProxAoInferno"
+=declararparm cpf_digUmA 	int 123
+=declararparm cpf_digDoisA 	int 456
+=declararparm cpf_digTresA 	int 789
 =declararparm cpf_codA 		int 00
 
-// Aluno 1
-=declararparm nome2 		string "Joao"
-=declararparm mat2 		int 1621473
-=declararparm dia2 		int 17
-=declararparm mes2 		int 09
-=declararparm ano2 		int 1997
-=declararparm telefone2		int 99933412
-=declararparm estado2 		string "Rio de janeiro"
-=declararparm cidade2 		string "Rio de janeiro"
-=declararparm rua2 		string "Avenida dos anoes grandes"
-=declararparm bairro2 		string "Ceu"
-=declararparm complemento2 	string "prox ao inferno"
-=declararparm cpf_dig1B 	int 123
-=declararparm cpf_dig2B 	int 456
-=declararparm cpf_dig3B 	int 789
+// AlunoUm
+=declararparm nomeDois 		string "Joao"
+=declararparm matDois		int 1621473
+=declararparm diaDois 		int 17
+=declararparm mesDois 		int 09
+=declararparm anoDois 		int 1997
+=declararparm telefoneDois	int 99933412
+=declararparm estadoDois 	string "RioDeJaneiro"
+=declararparm cidadeDois 	string "RioDeJaneiro"
+=declararparm ruaDois 		string "AvenidaDosAnoesGrandes"
+=declararparm bairroDois 	string "Ceu"
+=declararparm complementoDois 	string "prox ao inferno"
+=declararparm cpf_digUmB 	int 123
+=declararparm cpf_digDoisB 	int 456
+=declararparm cpf_digTresB 	int 789
 =declararparm cpf_codB 		int 00
 
-// Aluno 2
-=declararparm nome3 		string "Joao"
-=declararparm mat3 		int 1621473
-=declararparm dia3 		int 17
-=declararparm mes3 		int 09
-=declararparm ano3 		int 1997
-=declararparm telefone3 	int 99933412
-=declararparm estado3 		string "Rio de janeiro"
-=declararparm cidade3 		string "Rio de janeiro"
-=declararparm rua3 		string "Avenida dos anoes grandes"
-=declararparm bairro3 		string "Ceu"
-=declararparm complemento3 	string "prox ao inferno"
-=declararparm cpf_dig1C 	int 123
-=declararparm cpf_dig2C 	int 456
-=declararparm cpf_dig3C 	int 789
+// AlunoDois
+=declararparm nomeTres 		string "Joao"
+=declararparm matTres 		int 1621473
+=declararparm diaTres 		int 17
+=declararparm mesTres 		int 09
+=declararparm anoTres 		int 1997
+=declararparm telefoneTres 	int 99933412
+=declararparm estadoTres 	string "RioDeJaneiro"
+=declararparm cidadeTres 	string "RioDeJaneiro"
+=declararparm ruaTres 		string "AvenidaDosAnoesGrandes"
+=declararparm bairroTres 	string "Ceu"
+=declararparm complementoTres 	string "ProxAoInferno"
+=declararparm cpf_digUmC 	int 123
+=declararparm cpf_digDoisC 	int 456
+=declararparm cpf_digTresC 	int 789
 =declararparm cpf_codC 		int 00
 
 == Verificar criar
-=criar aluno0 nome1 mat1 cpf_dig1A cpf_dig2A cpf_dig3A cpf_codA telefone1 dia1 mes1 ano1 estado1 cidade1 bairro1 rua1 complemento1 OK
+=criar aluno nomeUm matUm cpf_digUmA cpf_digDoisA cpf_digTresA cpf_codA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
 
 == Verificar criar
-=criar aluno1 nome2 mat2 cpf_dig1B cpf_dig2B cpf_dig3B cpf_codB telefone2 dia2 mes2 ano2 estado2 cidade2 bairro2 rua2 complemento2 OK
+=criar alunoUm nomeDois matDois cpf_digUmB cpf_digDoisB cpf_digTresB cpf_codB telefoneDois diaDois mesDois anoDois estadoDois cidadeDois bairroDois ruaDois complementoDois OK
 
 == Verificar criar
-=criar aluno2 nome3 mat3 cpf_dig1C cpf_dig2C cpf_dig3C cpf_codC telefone3 dia3 mes3 ano3 estado3 cidade3 bairro3 rua3 complemento3 OK
+=criar alunoDois nomeTres matTres cpf_digUmC cpf_digDoisC cpf_digTresC cpf_codC telefoneTres diaTres mesTres anoTres estadoTres cidadeTres bairroTres ruaTres complementoTres OK
 
 == Verificar getnome
-==getnome aluno0 nome1 OK
+=getnome aluno nomeUm OK
 
 == Verificar getnome (comparando com nome errado)
-==getnome aluno1 nome2 OK
-==recuperar
+=getnome aluno nomeDois OK
+=recuperar
 
 == Verificar getnome
-==getnome aluno2 nome3 OK
+=getnome alunoDois nomeTres OK
 
 == Verificar getmat
-==getnome aluno2 mat3 OK
+=getnome alunoDois matTres OK
 
 == Deleta Aluno
 =delaluno 0 OK
