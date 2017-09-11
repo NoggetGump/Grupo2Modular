@@ -79,7 +79,7 @@
 =recuperar
 
 == Verificar getnome
-=getnome alunoDois nomeTres OK
+=getmat alunoDois nomeTres OK
 
 == Verificar getmat
 =getnome alunoDois matTres OK
