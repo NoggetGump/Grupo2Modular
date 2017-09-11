@@ -1,6 +1,6 @@
 #include    <string.h>
 #include    <stdio.h>
-#include    <stdlib.h>
+#include	<stdlib.h>
 #include    "Aluno.h"
 #include    "TST_ESPC.H"
 
@@ -23,8 +23,10 @@
 
 Aluno *vtAlunos[DIM_VT] = { NULL, NULL, NULL, NULL, NULL, 
 							NULL, NULL, NULL, NULL, NULL };	// vetor de ponteiros para os alunos criados no script.
-Data vtDatas[DIM_VT];
-Endereco vtEnds[DIM_VT];
+Data vtDatas[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
+						NULL, NULL, NULL, NULL, NULL };
+Endereco vtEnds[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
+							NULL, NULL, NULL, NULL, NULL };
 Endereco Endteste;
 Data Datateste;
 TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
