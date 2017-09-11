@@ -3,9 +3,9 @@
 #pragma warning( disable : 4996 ) 
 
 typedef struct data {
-	short dia;
-	short mes;
-	short ano;
+	int dia;
+	int mes;
+	int ano;
 } Data;
 
 typedef struct endereco {
