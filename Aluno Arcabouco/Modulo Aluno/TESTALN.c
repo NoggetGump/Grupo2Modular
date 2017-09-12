@@ -8,7 +8,7 @@
 *
 *  Projeto: Disciplina INF 1301
 *  Gestor:  DI/PUC-Rio
-*  Autores: Bruno Marinho, BM
+*  Autores: 		Bruno Marinho, BM
 *			Matheus Zeitune, MZ
 *			Flávio Franco, FF
 *			João Cerqueira, JC
