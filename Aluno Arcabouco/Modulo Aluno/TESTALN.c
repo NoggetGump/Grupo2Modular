@@ -1,6 +1,66 @@
+/***************************************************************************
+*  $MCI Módulo de implementação: Módulo de teste específico
+*
+*  Arquivo gerado:              TESTALN.C
+*  Letras identificadoras:      TALN
+*
+*  Nome da base de software:    Teste Automatizado para o Módulo Aluno
+*
+*  Projeto: Disciplina INF 1301
+*  Gestor:  DI/PUC-Rio
+*  Autores: Bruno Marinho, BM
+*			Matheus Zeitune, MZ
+*			Flávio Franco, FF
+*			João Cerqueira, JC
+*			Vinicius Btechs, VB.
+*
+*  $HA Histórico de evolução:
+*     Versão  Autor    Data     Observações
+*       1.00   BM/RP   09/09/2017 Desenvolvimento para T1 modificando TESTARV.C
+*
+*  $ED Descrição do módulo
+*     Este modulo contém as funções específicas para o teste do
+*     módulo aluno. É um interpretador de comandos de teste específicos 
+*	  utilizando o arcabouço de teste para C.
+*
+*		CRIAR_ALN_CMD	Cria um novo aluno			"=criar"
+*		GET_MAT_CMD	Pega a matrícula de um aluno		"=getmat"
+*		GET_NOME_CMD	Pega o nome de um aluno			"=getnome"
+*		ALT_DADO_CMD	Altera os dados de um aluno		"=alteradado"
+*		GET_ALL_CMD	Pega todos os dados de um aluno		"=getall"
+*		IMP_ALUN_CMD	Imprime os dados de um aluno		"=impaluno"
+*		DEL_ALUN_CMD	Deleta um aluno da memória		"=delaluno"
+*		
+*		Comandos de teste específicos para o módulo aluno:
+*
+*		"=criar" <int>indexAluno <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig 
+*		<int>cpf3TercDig <int>cpfcodVerif <int>telefone <int>diaNasc <int>mesNasc <int>anoNasc 
+*		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
+*		<int>CondRet
+*
+*		"=getmat" <int>indexAluno <int>matricula <int>CondRet
+*
+*		"=getnome" <int>indexAluno <string>nome <int>CondRet
+*
+*		"=alteradado" <int>indexAluno <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig 
+*		<int>cpf3TercDig <int>cpfcodVerif <int>telefone <int>diaNasc <int>mesNasc <int>anoNasc 
+*		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
+*		<int>CondRet
+*
+*		"=getall" <int>indexAluno <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig 
+*		<int>cpf3TercDig <int>cpfcodVerif <int>telefone <int>diaNasc <int>mesNasc <int>anoNasc 
+*		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
+*		<int>CondRet
+*
+*		"=impaluno" <int>indexAluno <int>CondRet
+*
+*		"=delaluno" <int>indexAluno <int>CondRet
+*
+***************************************************************************/
+
 #include    <string.h>
 #include    <stdio.h>
-#include	<stdlib.h>
+#include    <stdlib.h>
 #include    "Aluno.h"
 #include    "TST_ESPC.H"
 
@@ -15,7 +75,7 @@
 #define     ALT_DADO_CMD        "=alteradado"
 #define     GET_ALL_CMD         "=getall"
 #define     IMP_ALUN_CMD        "=impaluno"
-#define		DEL_ALUN_CMD		"=delaluno"
+#define	    DEL_ALUN_CMD	"=delaluno"
 
 #define DIM_VT   10
 #define  DIM_STRING  250
@@ -58,7 +118,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	unsigned int telefoneObtido;
 	int  NumLidos = -1;
 
-	TST_tpCondRet Ret, Ret1;
+	TST_tpCondRet Ret;
 
 	/* Testar ALU Criar aluno*/
 
@@ -119,7 +179,8 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			"Retorno errado ao alterar dados do Aluno.");
 
 	}
-	
+	/* Testar ALU Solicita dados do aluno*/
+
 	/* Testar ALU Get ALL que pega todos os dados do aluno e copia para os parametros enviados*/
 
 	if (strcmp(ComandoTeste, GET_ALL_CMD) == 0)
@@ -138,11 +199,12 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	
 		if (Ret != TST_CondRetOK) return Ret;
 		Ret = TST_CompararString(StringEsperada, StringObtida,
-			"Retorno por referencia errado ao consultar nome do Aluno."); 
-
-		Ret1 = TST_CompararInt(MatObtida, MatEsperada,
+			"Retorno por referencia errado ao consultar nome do Aluno.") && 
+			TST_CompararInt(MatObtida, MatEsperada,
+				"Retorno por referencia errado ao consultar matricula do Aluno.") &&
+			TST_CompararInt(CondRetEsperada, CondRetObtido,
 				"Retorno por referencia errado ao consultar matricula do Aluno.");
-		if(Ret1 != TST_CondRetOK) return Ret1;
+		
 		return Ret;
 	}
 
@@ -197,7 +259,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = ALU_deletaAluno(vtAlunos+indxaluno);
+		CondRetObtido = ALU_deletaAluno(vtAlunos[indxaluno]);
 		vtAlunos[indxaluno] = NULL;
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
 	}
