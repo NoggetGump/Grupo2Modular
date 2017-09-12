@@ -60,7 +60,7 @@
 
 #include    <string.h>
 #include    <stdio.h>
-#include    <stdlib.h>
+#include	<stdlib.h>
 #include    "Aluno.h"
 #include    "TST_ESPC.H"
 
@@ -75,17 +75,17 @@
 #define     ALT_DADO_CMD        "=alteradado"
 #define     GET_ALL_CMD         "=getall"
 #define     IMP_ALUN_CMD        "=impaluno"
-#define	    DEL_ALUN_CMD	"=delaluno"
+#define		DEL_ALUN_CMD		"=delaluno"
 
 #define DIM_VT   10
 #define  DIM_STRING  250
 
-Aluno *vtAlunos[DIM_VT] = { NULL, NULL, NULL, NULL, NULL, 
-							NULL, NULL, NULL, NULL, NULL };	// vetor de ponteiros para os alunos criados no script.
+Aluno *vtAlunos[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
+NULL, NULL, NULL, NULL, NULL };	// vetor de ponteiros para os alunos criados no script.
 Data vtDatas[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
-						NULL, NULL, NULL, NULL, NULL };
+NULL, NULL, NULL, NULL, NULL };
 Endereco vtEnds[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
-							NULL, NULL, NULL, NULL, NULL };
+NULL, NULL, NULL, NULL, NULL };
 Endereco Endteste;
 Data Datateste;
 TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
@@ -118,7 +118,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	unsigned int telefoneObtido;
 	int  NumLidos = -1;
 
-	TST_tpCondRet Ret;
+	TST_tpCondRet Ret, Ret1;
 
 	/* Testar ALU Criar aluno*/
 
@@ -139,13 +139,13 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		Datateste.dia = dia;
 		Datateste.mes = mes;
 		Datateste.ano = ano;
-		strcpy(Endteste.estado,estado);
-		strcpy(Endteste.cidade,cidade);
-		strcpy(Endteste.bairro,bairro);
-		strcpy(Endteste.rua,rua);
-		strcpy(Endteste.comp,complemento);
+		strcpy(Endteste.estado, estado);
+		strcpy(Endteste.cidade, cidade);
+		strcpy(Endteste.bairro, bairro);
+		strcpy(Endteste.rua, rua);
+		strcpy(Endteste.comp, complemento);
 
-		CondRetObtido = ALU_CriaAluno(vtAlunos+indxaluno, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
+		CondRetObtido = ALU_CriaAluno(vtAlunos + indxaluno, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao criar Aluno.");
 
@@ -179,7 +179,6 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			"Retorno errado ao alterar dados do Aluno.");
 
 	}
-	/* Testar ALU Solicita dados do aluno*/
 
 	/* Testar ALU Get ALL que pega todos os dados do aluno e copia para os parametros enviados*/
 
@@ -196,15 +195,14 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 
 		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao pegar dados do Aluno.");
-	
+
 		if (Ret != TST_CondRetOK) return Ret;
 		Ret = TST_CompararString(StringEsperada, StringObtida,
-			"Retorno por referencia errado ao consultar nome do Aluno.") && 
-			TST_CompararInt(MatObtida, MatEsperada,
-				"Retorno por referencia errado ao consultar matricula do Aluno.") &&
-			TST_CompararInt(CondRetEsperada, CondRetObtido,
-				"Retorno por referencia errado ao consultar matricula do Aluno.");
-		
+			"Retorno por referencia errado ao consultar nome do Aluno.");
+
+		Ret1 = TST_CompararInt(MatObtida, MatEsperada,
+			"Retorno por referencia errado ao consultar matricula do Aluno.");
+		if (Ret1 != TST_CondRetOK) return Ret1;
 		return Ret;
 	}
 
@@ -259,7 +257,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = ALU_deletaAluno(&vtAlunos[indxaluno]);
+		CondRetObtido = ALU_deletaAluno(vtAlunos + indxaluno);
 		vtAlunos[indxaluno] = NULL;
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
 	}
