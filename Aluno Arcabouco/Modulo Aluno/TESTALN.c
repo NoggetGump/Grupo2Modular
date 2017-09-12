@@ -16,7 +16,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
-*       1.00   BM/RP   09/09/2017 Desenvolvimento para T1 modificando TESTARV.C
+*       1.00   BM   09/09/2017 Desenvolvimento para T1 modificando TESTARV.C
 *
 *  $ED Descrição do módulo
 *     Este modulo contém as funções específicas para o teste do
