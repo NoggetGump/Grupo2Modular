@@ -259,7 +259,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = ALU_deletaAluno(vtAlunos[indxaluno]);
+		CondRetObtido = ALU_deletaAluno(&vtAlunos[indxaluno]);
 		vtAlunos[indxaluno] = NULL;
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
 	}
