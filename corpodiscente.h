@@ -35,6 +35,7 @@
 typedef enum {
 	CDIS_CondRetOK,	// Executou corretamente
 	CDIS_CondRetAlunoNaoCadastrado,	// O aluno não está cadastrado
+	CDIS_CondRetAlunoNãoEncontrado, // O aluno não foi encontrado
 	CDIS_CondRetFaltouMemoria	// Faltou memória ao alocar dados
 } CDIS_tpCondRet;
 /***********************************************************************
