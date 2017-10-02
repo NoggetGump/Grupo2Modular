@@ -21,10 +21,46 @@
     <ClCompile Include="menu.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="disciplina.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="listas.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="professor.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sala.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="turma.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Aluno.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="disciplina.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="listas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="menu.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sala.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="turma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="professor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Aluno.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

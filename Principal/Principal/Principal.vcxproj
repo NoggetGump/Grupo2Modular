@@ -74,11 +74,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Aluno.c" />
+    <ClCompile Include="disciplina.c" />
+    <ClCompile Include="listas.c" />
     <ClCompile Include="menu.c" />
     <ClCompile Include="principal.c" />
+    <ClCompile Include="professor.c" />
+    <ClCompile Include="sala.c" />
+    <ClCompile Include="turma.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aluno.h" />
+    <ClInclude Include="disciplina.h" />
+    <ClInclude Include="listas.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="professor.h" />
+    <ClInclude Include="sala.h" />
+    <ClInclude Include="turma.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

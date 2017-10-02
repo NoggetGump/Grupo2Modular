@@ -5,8 +5,10 @@
 
 int main(void)
 {
+	//Variavel de retorno
 	int retMenuInicial = 0;
 
+	//Iniciacao do menu
 	retMenuInicial = MenuInicial();
 
 	return 0;

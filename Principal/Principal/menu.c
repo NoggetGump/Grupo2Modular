@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "Aluno.h"
+#include "disciplina.h"
+#include "listas.h"
+#include "professor.h"
+#include "sala.h"
+#include "turma.h"
+
+//Funcoes
 int MenuInicial(void);
 int MenuProfessor(void);
 int MenuAluno(void);
@@ -17,7 +25,9 @@ int ProsLoginAluno(void);
 
 int MenuInicial(void)
 {
+	//Variavel de controle
 	int opcao = 0;
+	//Variavel de returno
 	int retMenuProfessor = 0, retMenuAluno = 0, retMenuAdmistrador = 0;
 
 	while (opcao == 0)
@@ -62,8 +72,8 @@ int MenuProfessor(void)
 	{
 		printf("\nDigite 1: lista professores");
 		printf("\nDigite 2: para logar como aluno");
-		printf("\nDigite 3 para logar como admistrador");
-		printf("\nDigite 4 para sair\n");
+		printf("\nDigite 3: para logar como admistrador");
+		printf("\nDigite 4: para sair\n");
 		scanf("%d", &opcao);
 		
 		switch(opcao)

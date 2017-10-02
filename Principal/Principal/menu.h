@@ -19,14 +19,11 @@ int LoginProfessor(void);
 //Autenticação para administradores. Retorna 1, quando não há erro. Retorna 0, quando há erro.
 int LoginAdmistrador(void);
 
-//Retorna 1, quando não há erro. Retorna 0, quando há erro.
+//Essa função será responsável pela funcionalidades administrativas. Retorna 1, quando não há erro. Retorna 0, quando há erro.
 int ProsLoginAdmistrador(void);
 
-//Retorna 1, quando não há erro. Retorna 0, quando há erro.
+//Essa função será responsável pela funcionalidades dos professores. Retorna 1, quando não há erro. Retorna 0, quando há erro.
 int ProsLoginProfessor(void);
 
-//Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int ProsLoginAdmistrador(void);
-
-//Retorna 1, quando não há erro. Retorna 0, quando há erro.
+//Essa função será responsável pela funcionalidades dos alunos. Retorna 1, quando não há erro. Retorna 0, quando há erro.
 int ProsLoginAluno(void);
