@@ -10,6 +10,10 @@ int MenuAdmistrador(void);
 int LoginAluno(void);
 int LoginProfessor(void);
 int LoginAdmistrador(void);
+int ProsLoginAdmistrador(void);
+int ProsLoginProfessor(void);
+int ProsLoginAdmistrador(void);
+int ProsLoginAluno(void);
 
 int MenuInicial(void)
 {
@@ -170,13 +174,13 @@ int LoginAluno(void)
 
 int LoginProfessor(void)
 {
-
+	
 }
 
 int LoginAdmistrador(void)
 {
-	char* adminName, *entraNome;
-	char* adminSenha, *entraSenha;
+	char* adminName = "admin", *entraNome;
+	char* adminSenha = "admin", *entraSenha;
 
 	printf("\nLogin para Admistradores\n");
 	printf("\nDigite o nome: ");
@@ -196,4 +200,34 @@ int LoginAdmistrador(void)
 		system("cls");
 		return 0;
 	}
+}
+
+int ProsLoginAdmistrador(void)
+{
+	//Ponteiro necessarios
+
+	//Variaveis necessarias
+
+
+	return 1;
+}
+
+int ProsLoginAluno(void)
+{
+	//Ponteiro necessarios
+
+	//Variaveis necessarias
+
+
+	return 1;
+}
+
+int ProsLoginProfessor(void)
+{
+	//Ponteiro necessarios
+
+	//Variaveis necessarias
+
+
+	return 1;
 }
