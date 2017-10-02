@@ -12,14 +12,10 @@
 
 int main(void)
 {
-int opcao = 0;
+int opcao = 0, pOP = 0, aOP = 0, aDOP = 0;
 
 // Ponteiros
-List** alunoL;
-List** professoresL;
-createList(alunoL);
-createList(professoresL);
-Prof** professor;
+
 
 while (opcao == 0)
 {
@@ -34,7 +30,6 @@ while (opcao == 0)
 	case 1:
 		//ir menu professor
 		system("cls");
-			int pOP = 0;
 			while(pOP == 0)
 			{
 				printf("\nDigite 1: ver horarios");
@@ -64,7 +59,6 @@ while (opcao == 0)
 		break;
 	case 2:
 		//ir menu aluno
-		int aOP = 0;
 			while(aOP == 0)
 			{
 				printf("\nDigite 1: ver horarios");
@@ -101,7 +95,6 @@ while (opcao == 0)
 		break;
 	case 3:
 		//ir menu admistrador
-		int aDOP = 0;
 			while(aOP == 0)
 			{
 				printf("\nDigite 1: adiconar aluno");
