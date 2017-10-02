@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
+#include "listas.h"
 #include "corpodiscente.h"
-
+#include "aluno.h"
 struct corpodisc {
-	List* Alunos;
+	List* Aluno;
 }typedef CorpoDisc;
 
 CDIS_tpCondRet CorpoDisc_cria() {
@@ -12,10 +12,27 @@ CDIS_tpCondRet CorpoDisc_cria() {
 	
 	Corpo = (CorpoDisc*) malloc (sizeof(CorpoDisc));
 
-	if (createList(&Corpo->Alunos) != LIS_CondRetOK) {
+	if (createList(&Corpo->Aluno) != LIS_CondRetOK) {
 		return CDIS_CondRetFaltouMemoria;
 	}
 	//TODO
 	return CDIS_CondRetOK;
 
+}
+
+CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, int mat1){
+    unsigned int mat2;
+    Aluno *a = (Aluno*)malloc (sizeof(Aluno*));
+    unsigned int i, size;
+    list_size(Corpo->Aluno, &size);
+    for (i = 0; i < size; i++){
+        get_val_cursor (Corpo->Aluno, &a);
+        ALU_GetMat (a, &mat2);
+        if (mat1 == mat2){
+            pop_cursor (Corpo->Aluno, &a);
+            return CDIS_CondRetOK;
+        }
+        next (Corpo->Aluno);
+    }
+	return CDIS_CondRetAlunoNaoCadastrado;
 }
