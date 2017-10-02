@@ -19,6 +19,9 @@ CDIS_tpCondRet CorpoDisc_cria() {
 	return CDIS_CondRetOK;
 
 }
+/*Recebe um ponteiro para CorpoDisc e procura a matrícula fornecida por referência em matbusca na lista de alunos e caso encontre o aluno
+ desejado retorna seus dados em alunodesejado que é um ponteiro para Aluno passado por referência.Caso não encontre,retorna a condição 
+ de erro de aluno não encontrado.*/
 CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno *alunodesejado){
 	 unsigned int mat2;
 	 unsigned int i, size;
