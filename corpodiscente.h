@@ -78,7 +78,7 @@ CDIS_tpCondRet CorpoDisc_imprime (CorpoDisc *Corpo);
 *  $FC Função: CDIS busca
 *
 *  $ED Descrição da função
-*		Percorre a lista procurando pelo Aluno com matrícula igual a mat1 e retorna, por referência, em aluno.
+*		Percorre a lista procurando pelo Aluno com matrícula igual a matbusca e retorna, por referência, em alunodesejado.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int mat1, Aluno* aluno);
+CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno* alunodesejado);
