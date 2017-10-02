@@ -17,7 +17,7 @@ int opcao = 0, pOP = 0, aOP = 0, aDOP = 0;
 // Ponteiros
 
 
-while (opcao == 0)
+while (opcao != 4)
 {
 	printf("\nDigite 1: para logar como porfessor");
 	printf("\nDigite 2: para logar como aluno");
@@ -30,7 +30,7 @@ while (opcao == 0)
 	case 1:
 		//ir menu professor
 		system("cls");
-			while(pOP == 0)
+			while(pOP != 5)
 			{
 				printf("\nDigite 1: ver horarios");
 				printf("\nDigite 2: adicionar grau");
@@ -59,7 +59,7 @@ while (opcao == 0)
 		break;
 	case 2:
 		//ir menu aluno
-			while(aOP == 0)
+			while(aOP != 9)
 			{
 				printf("\nDigite 1: ver horarios");
 				printf("\nDigite 2: ver disciplina");
@@ -95,7 +95,7 @@ while (opcao == 0)
 		break;
 	case 3:
 		//ir menu admistrador
-			while(aOP == 0)
+			while(aOP != 10)
 			{
 				printf("\nDigite 1: adiconar aluno");
 				printf("\nDigite 2: adicionar professor");
