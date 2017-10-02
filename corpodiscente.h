@@ -16,8 +16,8 @@
 *	          
 *
 *  $HA Histórico de evolução:
-*     Versão  Autor    Data        Observações
-*       0.01   Flávio	01/10/17	Início do desenvolvimento
+*     Versão  Autor    Data			Observações
+*     0.01    Flávio   01/10/2017	Início do desenvolvimento
 *
 *  $ED Descrição do módulo
 *     Este módulo implementa o Corpo Discente do Sistema Acadêmico a ser desenvolvido.
