@@ -27,3 +27,12 @@ CDIS_tpCondRet CorpoDisc_cria (void);
 *
 ***********************************************************************/
 CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int mat1);
+/***********************************************************************
+*
+*  $FC Função: CDIS imprime
+*
+*  $ED Descrição da função
+*		Imprime na tela o corpo discente.
+*
+***********************************************************************/
+CDIS_tpCondRet CorpoDisc_imprime (CorpoDisc *Corpo);
