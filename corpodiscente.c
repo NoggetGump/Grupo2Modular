@@ -19,7 +19,7 @@ CDIS_tpCondRet CorpoDisc_cria() {
 	return CDIS_CondRetOK;
 
 }
-CDIS_tpCondRet CorpoDisc_buscaAluno(CorpoDisc *Corpo,int matbusca,Aluno alunodesejado){
+CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno *alunodesejado){
 	 unsigned int mat2;
 	 unsigned int i, size;
 	 Aluno *a = (Aluno*)malloc(sizeof(Aluno));
@@ -28,7 +28,7 @@ CDIS_tpCondRet CorpoDisc_buscaAluno(CorpoDisc *Corpo,int matbusca,Aluno alunodes
         get_val_cursor(Corpo->Aluno, &a);
         ALU_GetMat(a, &mat2);
         if (matbusca == mat2){
-            alunodesejado = *a;
+            *alunodesejado = *a;
             return CDIS_CondRetOK;
         }
         next(Corpo->Aluno);
