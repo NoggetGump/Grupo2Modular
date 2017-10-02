@@ -1,0 +1,154 @@
+﻿Build started 02/10/2017 13:40:23.
+     1>Project "C:\Principal\Principal\Principal.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\Principal.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt Aluno.c disciplina.c main.c
+         main.c
+     1>c:\principal\principal\aluno.h(54): error C2143: syntax error : missing '{' before ':'
+     1>c:\principal\principal\aluno.h(54): error C2059: syntax error : ':'
+     1>c:\principal\principal\aluno.h(54): error C2059: syntax error : ')'
+     1>c:\principal\principal\aluno.h(56): error C2011: 'data' : 'struct' type redefinition
+                 c:\principal\principal\aluno.h(4) : see declaration of 'data'
+     1>c:\principal\principal\aluno.h(62): error C2011: 'endereco' : 'struct' type redefinition
+                 c:\principal\principal\aluno.h(10) : see declaration of 'endereco'
+     1>c:\principal\principal\aluno.h(70): error C2011: 'cpf' : 'struct' type redefinition
+                 c:\principal\principal\aluno.h(18) : see declaration of 'cpf'
+     1>c:\principal\principal\aluno.h(78): error C2365: 'ALN_CondRetOK' : redefinition; previous definition was 'enumerator'
+                 c:\principal\principal\aluno.h(26) : see declaration of 'ALN_CondRetOK'
+     1>c:\principal\principal\aluno.h(78): error C2086: 'ALN_CondRetOK' : redefinition
+                 c:\principal\principal\aluno.h(78) : see declaration of 'ALN_CondRetOK'
+     1>c:\principal\principal\aluno.h(79): error C2365: 'ALN_CondRetAlunoNaoExiste' : redefinition; previous definition was 'enumerator'
+                 c:\principal\principal\aluno.h(27) : see declaration of 'ALN_CondRetAlunoNaoExiste'
+     1>c:\principal\principal\aluno.h(79): error C2086: 'ALN_CondRetAlunoNaoExiste' : redefinition
+                 c:\principal\principal\aluno.h(79) : see declaration of 'ALN_CondRetAlunoNaoExiste'
+     1>c:\principal\principal\aluno.h(80): error C2365: 'ALN_CondRetFaltouMemoria' : redefinition; previous definition was 'enumerator'
+                 c:\principal\principal\aluno.h(30) : see declaration of 'ALN_CondRetFaltouMemoria'
+     1>c:\principal\principal\aluno.h(80): error C2086: 'ALN_CondRetFaltouMemoria' : redefinition
+                 c:\principal\principal\aluno.h(80) : see declaration of 'ALN_CondRetFaltouMemoria'
+     1>c:\principal\principal\aluno.h(80): error C2059: syntax error : ';'
+     1>c:\principal\principal\aluno.h(81): error C2059: syntax error : '}'
+     1>c:\principal\principal\aluno.h(89): warning C4028: formal parameter 1 different from declaration
+     1>c:\principal\principal\disciplina.h(51): error C2061: syntax error : identifier 'DIS_CondRetParametroInvalido'
+     1>c:\principal\principal\disciplina.h(63): error C2061: syntax error : identifier 'DIS_get_creditos'
+     1>c:\principal\principal\disciplina.h(63): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(63): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(72): error C2061: syntax error : identifier 'DIS_get_nome'
+     1>c:\principal\principal\disciplina.h(72): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(72): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(81): error C2061: syntax error : identifier 'DIS_get_codigo'
+     1>c:\principal\principal\disciplina.h(81): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(81): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(90): error C2061: syntax error : identifier 'DIS_get_bibliografia'
+     1>c:\principal\principal\disciplina.h(90): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(90): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(99): error C2061: syntax error : identifier 'DIS_get_ementa'
+     1>c:\principal\principal\disciplina.h(99): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(99): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(108): error C2061: syntax error : identifier 'DIS_gera_cmd'
+     1>c:\principal\principal\disciplina.h(108): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(108): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(117): error C2061: syntax error : identifier 'DIS_gera_param'
+     1>c:\principal\principal\disciplina.h(117): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(117): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(126): error C2061: syntax error : identifier 'DIS_exibe'
+     1>c:\principal\principal\disciplina.h(126): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(126): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(135): error C2061: syntax error : identifier 'DIS_deleta_Disciplina'
+     1>c:\principal\principal\disciplina.h(135): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(135): error C2059: syntax error : 'type'
+     1>c:\principal\principal\main.c(22): error C2275: 'Prof' : illegal use of this type as an expression
+                 c:\principal\principal\professor.h(42) : see declaration of 'Prof'
+     1>c:\principal\principal\main.c(22): error C2065: 'professor' : undeclared identifier
+     1>c:\principal\principal\main.c(22): error C2100: illegal indirection
+     1>c:\principal\principal\main.c(37): error C2143: syntax error : missing ';' before 'type'
+     1>c:\principal\principal\main.c(38): error C2065: 'pOP' : undeclared identifier
+     1>c:\principal\principal\main.c(44): error C2065: 'pOP' : undeclared identifier
+     1>c:\principal\principal\main.c(46): error C2065: 'pOP' : undeclared identifier
+         disciplina.c
+     1>c:\principal\principal\disciplina.h(51): error C2061: syntax error : identifier 'DIS_CondRetParametroInvalido'
+     1>c:\principal\principal\disciplina.h(63): error C2061: syntax error : identifier 'DIS_get_creditos'
+     1>c:\principal\principal\disciplina.h(63): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(63): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(72): error C2061: syntax error : identifier 'DIS_get_nome'
+     1>c:\principal\principal\disciplina.h(72): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(72): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(81): error C2061: syntax error : identifier 'DIS_get_codigo'
+     1>c:\principal\principal\disciplina.h(81): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(81): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(90): error C2061: syntax error : identifier 'DIS_get_bibliografia'
+     1>c:\principal\principal\disciplina.h(90): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(90): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(99): error C2061: syntax error : identifier 'DIS_get_ementa'
+     1>c:\principal\principal\disciplina.h(99): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(99): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(108): error C2061: syntax error : identifier 'DIS_gera_cmd'
+     1>c:\principal\principal\disciplina.h(108): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(108): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(117): error C2061: syntax error : identifier 'DIS_gera_param'
+     1>c:\principal\principal\disciplina.h(117): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(117): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(126): error C2061: syntax error : identifier 'DIS_exibe'
+     1>c:\principal\principal\disciplina.h(126): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(126): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.h(135): error C2061: syntax error : identifier 'DIS_deleta_Disciplina'
+     1>c:\principal\principal\disciplina.h(135): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.h(135): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(63): error C2061: syntax error : identifier 'DIS_exibe'
+     1>c:\principal\principal\disciplina.c(63): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(63): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(152): error C2061: syntax error : identifier 'DIS_get_bibliografia'
+     1>c:\principal\principal\disciplina.c(152): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(152): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(170): error C2061: syntax error : identifier 'DIS_get_codigo'
+     1>c:\principal\principal\disciplina.c(170): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(170): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(189): error C2061: syntax error : identifier 'DIS_get_nome'
+     1>c:\principal\principal\disciplina.c(189): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(189): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(207): error C2061: syntax error : identifier 'DIS_get_ementa'
+     1>c:\principal\principal\disciplina.c(207): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(207): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(226): error C2061: syntax error : identifier 'DIS_get_creditos'
+     1>c:\principal\principal\disciplina.c(226): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(226): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(245): error C2061: syntax error : identifier 'DIS_gera_cmd'
+     1>c:\principal\principal\disciplina.c(245): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(245): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(263): error C2061: syntax error : identifier 'DIS_gera_param'
+     1>c:\principal\principal\disciplina.c(263): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(263): error C2059: syntax error : 'type'
+     1>c:\principal\principal\disciplina.c(288): error C2061: syntax error : identifier 'DIS_deleta_Disciplina'
+     1>c:\principal\principal\disciplina.c(288): error C2059: syntax error : ';'
+     1>c:\principal\principal\disciplina.c(288): error C2059: syntax error : 'type'
+         Aluno.c
+     1>c:\principal\principal\aluno.h(54): error C2143: syntax error : missing '{' before ':'
+     1>c:\principal\principal\aluno.h(54): error C2059: syntax error : ':'
+     1>c:\principal\principal\aluno.h(54): error C2059: syntax error : ')'
+     1>c:\principal\principal\aluno.h(56): error C2011: 'data' : 'struct' type redefinition
+                 c:\principal\principal\aluno.h(4) : see declaration of 'data'
+     1>c:\principal\principal\aluno.h(62): error C2011: 'endereco' : 'struct' type redefinition
+                 c:\principal\principal\aluno.h(10) : see declaration of 'endereco'
+     1>c:\principal\principal\aluno.h(70): error C2011: 'cpf' : 'struct' type redefinition
+                 c:\principal\principal\aluno.h(18) : see declaration of 'cpf'
+     1>c:\principal\principal\aluno.h(78): error C2365: 'ALN_CondRetOK' : redefinition; previous definition was 'enumerator'
+                 c:\principal\principal\aluno.h(26) : see declaration of 'ALN_CondRetOK'
+     1>c:\principal\principal\aluno.h(78): error C2086: 'ALN_CondRetOK' : redefinition
+                 c:\principal\principal\aluno.h(78) : see declaration of 'ALN_CondRetOK'
+     1>c:\principal\principal\aluno.h(79): error C2365: 'ALN_CondRetAlunoNaoExiste' : redefinition; previous definition was 'enumerator'
+                 c:\principal\principal\aluno.h(27) : see declaration of 'ALN_CondRetAlunoNaoExiste'
+     1>c:\principal\principal\aluno.h(79): error C2086: 'ALN_CondRetAlunoNaoExiste' : redefinition
+                 c:\principal\principal\aluno.h(79) : see declaration of 'ALN_CondRetAlunoNaoExiste'
+     1>c:\principal\principal\aluno.h(80): error C2365: 'ALN_CondRetFaltouMemoria' : redefinition; previous definition was 'enumerator'
+                 c:\principal\principal\aluno.h(30) : see declaration of 'ALN_CondRetFaltouMemoria'
+     1>c:\principal\principal\aluno.h(80): error C2086: 'ALN_CondRetFaltouMemoria' : redefinition
+                 c:\principal\principal\aluno.h(80) : see declaration of 'ALN_CondRetFaltouMemoria'
+     1>c:\principal\principal\aluno.h(80): error C2059: syntax error : ';'
+     1>c:\principal\principal\aluno.h(81): error C2059: syntax error : '}'
+     1>c:\principal\principal\aluno.h(89): warning C4028: formal parameter 1 different from declaration
+         Generating Code...
+     1>Done Building Project "C:\Principal\Principal\Principal.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.78

@@ -77,7 +77,7 @@
     <ClCompile Include="Aluno.c" />
     <ClCompile Include="disciplina.c" />
     <ClCompile Include="listas.c" />
-    <ClCompile Include="menu.c" />
+    <ClCompile Include="main.c" />
     <ClCompile Include="principal.c" />
     <ClCompile Include="professor.c" />
     <ClCompile Include="sala.c" />
@@ -87,7 +87,6 @@
     <ClInclude Include="Aluno.h" />
     <ClInclude Include="disciplina.h" />
     <ClInclude Include="listas.h" />
-    <ClInclude Include="menu.h" />
     <ClInclude Include="professor.h" />
     <ClInclude Include="sala.h" />
     <ClInclude Include="turma.h" />

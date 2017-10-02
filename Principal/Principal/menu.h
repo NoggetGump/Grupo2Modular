@@ -1,29 +1,35 @@
+
+typedef enum{
+	MEN_CondRetOK,	// Executou corretamente
+	MEN_CondReteERRO // Há erros
+}	MEN_tpCondRet;
+
 //Primeiro menu a ser exibido. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int MenuInicial(void);
+MEN_tpCondRet MenuInicial(void);
 
 //Menu que possui todas as opções ligada ao modulo professor. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int MenuProfessor(void);
+MEN_tpCondRet MenuProfessor(void);
 
 //Menu que possui todas as opções ligadas ao modulo aluno. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int MenuAluno(void);
+MEN_tpCondRet MenuAluno(void);
 
 //Menu que possui todas as opções administrativas. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int MenuAdmistrador(void);
+MEN_tpCondRet MenuAdmistrador(void);
 
 //Autenticação para alunos. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int LoginAluno(void);
+MEN_tpCondRet LoginAluno(void);
 
 //Autenticação para professores. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int LoginProfessor(void);
+MEN_tpCondRet LoginProfessor(void);
 
 //Autenticação para administradores. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int LoginAdmistrador(void);
+MEN_tpCondRet LoginAdmistrador(void);
 
 //Essa função será responsável pela funcionalidades administrativas. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int ProsLoginAdmistrador(void);
+MEN_tpCondRet ProsLoginAdmistrador(void);
 
 //Essa função será responsável pela funcionalidades dos professores. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int ProsLoginProfessor(void);
+MEN_tpCondRet ProsLoginProfessor(void);
 
 //Essa função será responsável pela funcionalidades dos alunos. Retorna 1, quando não há erro. Retorna 0, quando há erro.
-int ProsLoginAluno(void);
+MEN_tpCondRet ProsLoginAluno(void);
