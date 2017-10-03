@@ -38,7 +38,7 @@ CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno *
 	 return CDIS_CondRetAlunoNaoCadastrado;
 }
 /*Início da função CorpoDisc_deleta*/
-/*Função que deleta da Lista do Corpo Discente o Aluno com matrícula igual a matbusca*/
+/*Função que recebe como parâmetros a matrícula do aluno a ser deletado, o ponteiro para a estrutura Corpo Discente e deleta da Lista do Corpo Discente o Aluno com matrícula igual a recebida*/
 CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca){
     Aluno *alunodesejado;
     if (CorpoDisc_busca (Corpo, matbusca, &alunodesejado) != CDIS_CondRetOK ) 
@@ -49,3 +49,22 @@ CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca){
 	}
 }
 /*Fim da função CorpoDisc_deleta*/
+
+/*Início da função CorpoDisc_imprime*/
+/*Função que recebe como parâmetro o ponteiro para a estrutura Corpo Discente e imprime na tela todos os seus elementos*/
+CDIS_tpCondRet CorpoDisc_imprime (CorpoDisc *Corpo){
+	unsigned int mat2, i, size; 
+	Aluno *a;
+	list_size(Corpo->Aluno, &size);
+	if (size == 0){
+		printf ("Não há alunos cadastrados no Corpo Discente.\n");
+		return CDIS_CondRetCDISVazio;
+	}
+	for (i = 0; i < size; i++){
+		get_val_cursor(Corpo->Aluno, &a);
+        ALU_imprimeAluno(a);
+		next(Corpo->Aluno);
+	}
+	return CDIS_CondRetOK;
+}
+/*Fim da função
