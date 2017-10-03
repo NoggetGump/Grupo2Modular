@@ -25,6 +25,7 @@ void MEN_menuInicial(void)
 			case 1:
 				system("cls");
 				// Ir menu Aluno. Area onde o aluno realizar o menu
+				MEN_menuAluno();
 				break;
 			case 2:
 				system("cls");
@@ -103,12 +104,12 @@ void MEN_menuAluno(void)
 
 int MEN_loginAluno(void)
 {
-	char* mat;
+	char mat[81];
 
 	printf("\nLogin Aluno\n");
 
 	printf("\nDigite a matricula: ");
-	scanf(" %s", mat);
+	scanf("%s", mat);
 
 	//Quando o modulo aluno estive funcionado irá ser feita
 	system("cls");
@@ -117,7 +118,7 @@ int MEN_loginAluno(void)
 
 int MEN_loginProfessor(void)
 {
-	char* mat;
+	char mat[81];
 
 	printf("\nLogin Professor\n");
 
