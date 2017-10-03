@@ -117,12 +117,12 @@ void MEN_menuAluno(void)
 
 int MEN_loginAluno(void)
 {
-	char mat[81];
+	int mat;
 
 	printf("\nLogin Aluno\n");
 
 	printf("\nDigite a matricula: ");
-	scanf("%s", mat);
+	scanf("%d", &mat);
 
 	//Quando o modulo aluno estive funcionado irá ser feita
 	system("cls");
@@ -131,12 +131,12 @@ int MEN_loginAluno(void)
 
 int MEN_loginProfessor(void)
 {
-	char mat[81];
+	int mat;
 
 	printf("\nLogin Professor\n");
 
 	printf("\nDigite a matricula: ");
-	scanf(" %s", mat);
+	scanf("%d", &mat);
 
 	//Quando o modulo aluno estive funcionado irá ser feita
 	system("cls");
@@ -296,17 +296,17 @@ void MEN_menuPAdministrativo(void)
 
 int MEN_loginAdministrativo(void)
 {
-	char mat[81];
+	char user[81];
 	char senha[81];
 	printf("\nLogin Administrador\n");
 
 	printf("\nDigite a matricula: ");
-	scanf(" %s", mat);
+	scanf(" %s", user);
 
 	printf("\nDigite a senha: ");
 	scanf(" %s", senha);
 
-	if(strcmp("admin", mat) == 0 && strcmp("admin", senha) == 0 )
+	if(strcmp("admin", user) == 0 && strcmp("admin", senha) == 0 )
 	{
 		system("cls");
 		return 1;
