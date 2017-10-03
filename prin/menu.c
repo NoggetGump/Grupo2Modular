@@ -41,8 +41,11 @@ void MEN_menuInicial(void)
 				// Ir menu Aluno. Area onde o aluno realizar o menu
 				break;
 			default:
-				system("cls");
-				// Ir menu Aluno. Area onde o aluno realizar o menu
+				if(opcao != 4)
+				{
+					system("cls");
+					printf("\n\nOPCAO INVALIDA!!!!!\n\n");
+				}
 				break;
 		}
 	}
@@ -102,8 +105,11 @@ void MEN_menuAluno(void)
 				// Ir menu Aluno. Area onde o aluno realizar o menu
 				break;
 			default:
-				system("cls");
-				// Ir menu Aluno. Area onde o aluno realizar o menu
+				if(opcao != 8)
+				{
+					system("cls");
+					printf("\n\nOPCAO INVALIDA!!!!!\n\n");
+				}
 				break;
 		}
 	}
@@ -177,8 +183,11 @@ void MEN_menuProfessor(void)
 				// Ir menu Aluno. Area onde o aluno realizar o menu
 				break;
 			default:
-				system("cls");
-				// Ir menu Aluno. Area onde o aluno realizar o menu
+				if(opcao != 6)
+				{
+					system("cls");
+					printf("\n\nOPCAO INVALIDA!!!!!\n\n");
+				}
 				break;
 		}
 	}
@@ -275,8 +284,11 @@ void MEN_menuPAdministrativo(void)
 				// Ir menu Aluno. Area onde o aluno realizar o menu
 				break;
 			default:
-				system("cls");
-				// Ir menu Aluno. Area onde o aluno realizar o menu
+				if(opcao != 16)
+				{
+					system("cls");
+					printf("\n\nOPCAO INVALIDA!!!!!\n\n");
+				}
 				break;
 		}
 	}
@@ -285,13 +297,21 @@ void MEN_menuPAdministrativo(void)
 int MEN_loginAdministrativo(void)
 {
 	char mat[81];
-
+	char senha[81];
 	printf("\nLogin Administrador\n");
 
 	printf("\nDigite a matricula: ");
 	scanf(" %s", mat);
 
-	//Quando o modulo aluno estive funcionado irá ser feita
+	printf("\nDigite a senha: ");
+	scanf(" %s", senha);
+
+	if(strcomp("admin", mat) == 0 && strcomp("admin", senha) == 0 )
+	{
+		system("cls");
+		return 1;
+	}
+
 	system("cls");
-	return 1;
+	return 0;
 }
