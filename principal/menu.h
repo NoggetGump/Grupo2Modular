@@ -19,10 +19,79 @@
 *     Este modulo contém o menu
 ***************************************************************************/
 
+/***********************************************************************
+*
+*  $FC Função: MEN_menuInicial
+*
+*  $ED Descrição da função
+*		Mostra menu inicial.
+*
+***********************************************************************/
+
 void MEN_menuInicial(void);
+
+/***********************************************************************
+*
+*  $FC Função: MEN_menuAluno
+*
+*  $ED Descrição da função
+*		Mostra o menu Aluno.
+*
+***********************************************************************/
+
 void MEN_menuAluno(void);
+
+/***********************************************************************
+*
+*  $FC Função: MEN_loginAluno
+*
+*  $ED Descrição da função
+*		Faz o login Aluno.
+*
+***********************************************************************/
+
 int MEN_loginAluno(void);
+
+/***********************************************************************
+*
+*  $FC Função: MEN_loginProfessor
+*
+*  $ED Descrição da função
+*		Faz o login Professor.
+*
+***********************************************************************/
+
 int MEN_loginProfessor(void);
+
+/***********************************************************************
+*
+*  $FC Função: MEN_menuProfessor
+*
+*  $ED Descrição da função
+*		Mostra o menu Professor.
+*
+***********************************************************************/
+
 void MEN_menuProfessor(void);
+
+/***********************************************************************
+*
+*  $FC Função: MEN_menuPAdministrativo
+*
+*  $ED Descrição da função
+*		Mostra o menu administrativo.
+*
+***********************************************************************/
+
 void MEN_menuPAdministrativo(void);
+
+/***********************************************************************
+*
+*  $FC Função: MEN_loginAdministrativo
+*
+*  $ED Descrição da função
+*		Faz o login do Administrador.
+*
+***********************************************************************/
+
 int MEN_loginAdministrativo(void);
