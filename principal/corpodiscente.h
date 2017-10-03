@@ -11,9 +11,9 @@
 *  Projeto: Sistema Acadêmico da turma 3WB
 *  Gestor:  Grupo 2
 *  Autores:   Flávio Thiago Franco Vaz
-*             
-*	      	  
-*	          
+*
+*
+*
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data			Observações
@@ -36,7 +36,8 @@ typedef enum {
 	CDIS_CondRetOK,	// Executou corretamente
 	CDIS_CondRetAlunoNaoCadastrado,	// O aluno não está cadastrado
 	CDIS_CondRetAlunoNãoEncontrado, // O aluno não foi encontrado
-	CDIS_CondRetFaltouMemoria	// Faltou memória ao alocar dados
+	CDIS_CondRetFaltouMemoria,	// Faltou memória ao alocar dados
+	CDIS_CondRetCDISVazio
 } CDIS_tpCondRet;
 /***********************************************************************
 *
@@ -46,7 +47,7 @@ typedef enum {
 *		Cria lista de Alunos do Corpo Discente.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_cria (void);
+CDIS_tpCondRet CorpoDisc_cria(CorpoDisc **corpo);
 /***********************************************************************
 *
 *  $FC Função: CDIS deleta
@@ -64,7 +65,7 @@ CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca);
 *		Imprime na tela o Corpo Discente.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_imprime (CorpoDisc *Corpo);
+CDIS_tpCondRet CorpoDisc_imprime(CorpoDisc *Corpo);
 /***********************************************************************
 *
 *  $FC Função: CDIS insere
@@ -82,4 +83,4 @@ CDIS_tpCondRet CorpoDisc_imprime (CorpoDisc *Corpo);
 *		Percorre a lista procurando pelo Aluno com matrícula igual a matbusca e retorna, por referência, em alunodesejado.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno** alunodesejado);
+CDIS_tpCondRet CorpoDisc_busca(CorpoDisc *Corpo, unsigned int matbusca, Aluno** alunodesejado);
