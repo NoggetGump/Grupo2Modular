@@ -48,3 +48,4 @@ CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca){
 		return CDIS_CondRetOK;
 	}
 }
+/*Fim da função CorpoDisc_deleta*/
