@@ -37,14 +37,14 @@ CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno *
     }
 	 return CDIS_CondRetAlunoNaoCadastrado;
 }
-
+/*Início da função CorpoDisc_deleta*/
+/*Função que deleta da Lista do Corpo Discente o Aluno com matrícula igual a matbusca*/
 CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca){
-    unsigned int mat2;
     Aluno *alunodesejado;
     if (CorpoDisc_busca (Corpo, matbusca, &alunodesejado) != CDIS_CondRetOK ) 
 		return CDIS_CondRetAlunoNaoCadastrado;
 	else{
-		pop_cursor(Corpo->Aluno, &alunodesejado);
+		pop_cursor(Corpo->Aluno, &alunodesejado);//Remove da lista o elemento apontado pelo cursor
 		return CDIS_CondRetOK;
 	}
 }
