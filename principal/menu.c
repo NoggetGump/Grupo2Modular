@@ -306,7 +306,7 @@ int MEN_loginAdministrativo(void)
 	printf("\nDigite a senha: ");
 	scanf(" %s", senha);
 
-	if(strcomp("admin", mat) == 0 && strcomp("admin", senha) == 0 )
+	if(strcmp("admin", mat) == 0 && strcmp("admin", senha) == 0 )
 	{
 		system("cls");
 		return 1;
