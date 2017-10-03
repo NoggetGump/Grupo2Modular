@@ -7,6 +7,8 @@ void MEN_menuAluno(void);
 int MEN_loginAluno(void);
 int MEN_loginProfessor(void);
 void MEN_menuProfessor(void);
+void MEN_menuPAdministrativo(void);
+int MEN_loginAdministrativo(void);
 
 void MEN_menuInicial(void)
 {
@@ -35,6 +37,7 @@ void MEN_menuInicial(void)
 				break;
 			case 3:
 				system("cls");
+				MEN_menuPAdministrativo();
 				// Ir menu Aluno. Area onde o aluno realizar o menu
 				break;
 			default:
@@ -180,4 +183,115 @@ void MEN_menuProfessor(void)
 		}
 	}
 
+}
+
+void MEN_menuPAdministrativo(void)
+{
+	int opcao = 0;
+
+	if(MEN_loginAdministrativo() == 1) // Se volta 1, ok.
+
+	while(opcao != 16)
+	{
+		printf("\nMenu Aluno\n");
+		printf("\nDigite 1: ver alunos");
+		printf("\nDigite 2: ver professores");
+		printf("\nDigite 3: ver disciplina");
+		printf("\nDigite 4: ver criterio de aprovação");
+		printf("\nDigite 5: adicionar aluno");
+		printf("\nDigite 6: deletar aluno");
+		printf("\nDigite 7: adicionar professor");
+		printf("\nDigite 8: deletar professor");
+		printf("\nDigite 9: deletar sala");
+		printf("\nDigite 10: adicionar sala");
+		printf("\nDigite 11: deletar turma");
+		printf("\nDigite 12: adicionar turma");
+		printf("\nDigite 13: modificar grade");
+		printf("\nDigite 14: modificar dados pessoais de um aluno");
+		printf("\nDigite 15: modificar dados pessoais de um professor");
+		printf("\nDigite 16: sair\n");
+		scanf("%d", &opcao);
+
+		switch(opcao)
+		{
+			case 1:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 2:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 3:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 4:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 5:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 6:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 7:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 8:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 9:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 10:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 11:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 12:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 13:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 14:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			case 15:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+			default:
+				system("cls");
+				// Ir menu Aluno. Area onde o aluno realizar o menu
+				break;
+		}
+	}
+}
+
+int MEN_loginAdministrativo(void)
+{
+	char mat[81];
+
+	printf("\nLogin Administrador\n");
+
+	printf("\nDigite a matricula: ");
+	scanf(" %s", mat);
+
+	//Quando o modulo aluno estive funcionado irá ser feita
+	system("cls");
+	return 1;
 }
