@@ -52,10 +52,10 @@ CDIS_tpCondRet CorpoDisc_cria (void);
 *  $FC Função: CDIS deleta
 *
 *  $ED Descrição da função
-*		Varre a lista do Corpo Discente procurando Aluno com matrícula igual ao valor de mat1 e o remove da lista.
+*		Varre a lista do Corpo Discente procurando Aluno com matrícula igual ao valor de matbusca e o remove da lista.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int mat1);
+CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca);
 /***********************************************************************
 *
 *  $FC Função: CDIS imprime
@@ -82,4 +82,4 @@ CDIS_tpCondRet CorpoDisc_imprime (CorpoDisc *Corpo);
 *		Percorre a lista procurando pelo Aluno com matrícula igual a matbusca e retorna, por referência, em alunodesejado.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno* alunodesejado);
+CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno** alunodesejado);
