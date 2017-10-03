@@ -35,7 +35,7 @@ typedef struct aluno Aluno;
 ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end);
 
 // Função para deletar um aluno. Recebe o endereço de memória de um aluno e o deleta (apaga da memória).*/
-ALN_tpCondRet ALU_deletaAluno(Aluno* a);
+ALN_tpCondRet ALU_deletaAluno(Aluno** a);
 
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero). Caso um dado não necessite ser alterado, passar 0 / NULL como parâmetro.
 ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end);
