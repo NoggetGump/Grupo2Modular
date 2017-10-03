@@ -32,6 +32,12 @@
 #include "turma.h"
 #include "menu.h"
 
+
+/***************************************************************************
+*
+*  Função: MEN_menuInicial
+*  ****/
+
 int main(void)
 {
 	MEN_menuInicial();

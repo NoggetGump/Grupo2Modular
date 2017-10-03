@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+/***** Protótipos das funções encapsuladas no módulo *****/
 void MEN_menuInicial(void);
 void MEN_menuAluno(void);
 int MEN_loginAluno(void);
@@ -29,6 +31,13 @@ int MEN_loginProfessor(void);
 void MEN_menuProfessor(void);
 void MEN_menuPAdministrativo(void);
 int MEN_loginAdministrativo(void);
+
+/*****  Código das funções exportadas pelo módulo  *****/
+
+/***************************************************************************
+*
+*  Função: MEN_menuInicial
+*  ****/
 
 void MEN_menuInicial(void)
 {
@@ -70,6 +79,12 @@ void MEN_menuInicial(void)
 		}
 	}
 }
+
+
+/***************************************************************************
+*
+*  Função: MEN_menuAluno
+*  ****/
 
 void MEN_menuAluno(void)
 {
@@ -135,6 +150,11 @@ void MEN_menuAluno(void)
 	}
 }
 
+/***************************************************************************
+*
+*  Função: MEN_loginAluno
+*  ****/
+
 int MEN_loginAluno(void)
 {
 	int mat;
@@ -149,6 +169,11 @@ int MEN_loginAluno(void)
 	return 1;
 }
 
+/***************************************************************************
+*
+*  Função: MEN_loginProfessor
+*  ****/
+
 int MEN_loginProfessor(void)
 {
 	int mat;
@@ -162,6 +187,11 @@ int MEN_loginProfessor(void)
 	system("cls");
 	return 1;
 }
+
+/***************************************************************************
+*
+*  Função: MEN_menuProfessor
+*  ****/
 
 void MEN_menuProfessor(void)
 {
@@ -213,6 +243,11 @@ void MEN_menuProfessor(void)
 	}
 
 }
+
+/***************************************************************************
+*
+*  Função: MEN_menuPAdministrativo
+*  ****/
 
 void MEN_menuPAdministrativo(void)
 {
@@ -313,6 +348,11 @@ void MEN_menuPAdministrativo(void)
 		}
 	}
 }
+
+/***************************************************************************
+*
+*  Função: MEN_loginAdministrativo
+*  ****/
 
 int MEN_loginAdministrativo(void)
 {
