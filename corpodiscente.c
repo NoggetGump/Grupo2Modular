@@ -19,10 +19,29 @@ CDIS_tpCondRet CorpoDisc_cria() {
 	return CDIS_CondRetOK;
 
 }
+/*Recebe um ponteiro para CorpoDisc e procura a matrícula fornecida por referência em matbusca na lista de alunos e caso encontre o aluno
+ desejado retorna seus dados em alunodesejado que é um ponteiro para Aluno passado por referência.Caso não encontre,retorna a condição 
+ de erro de aluno não encontrado.*/
+CDIS_tpCondRet CorpoDisc_busca (CorpoDisc *Corpo, unsigned int matbusca, Aluno *alunodesejado){
+	 unsigned int mat2;
+	 unsigned int i, size;
+	 Aluno *a = (Aluno*)malloc(sizeof(Aluno));
+	 list_size(Corpo->Aluno, &size);
+	 for (i = 0; i < size; i++){
+        get_val_cursor(Corpo->Aluno, &a);
+        ALU_GetMat(a, &mat2);
+        if (matbusca == mat2){
+            *alunodesejado = *a;
+            return CDIS_CondRetOK;
+        }
+        next(Corpo->Aluno);
+    }
+	 return CDIS_CondRetAlunoNãoEncontrado;
+}
 
 CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, int mat1){
     unsigned int mat2;
-    Aluno *a = (Aluno*)malloc (sizeof(Aluno*));
+    Aluno *a = (Aluno*)malloc (sizeof(Aluno));
     unsigned int i, size;
     list_size(Corpo->Aluno, &size);
     for (i = 0; i < size; i++){
