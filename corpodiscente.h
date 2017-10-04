@@ -17,9 +17,9 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data			Observações
-*     0.01    Flávio   01/10/2017	Início do desenvolvimento
-*     0.02    Flávio   03/10/2017       Funções busca, imprime e remove alteradas	
-*
+*     0.01    Flávio   01/10/2017	Início do desenvolvimento.
+*     0.02    Flávio   03/10/2017       Funções cria, busca, imprime e remove adicionadas	
+*     0.03    Flávio   03/10/2017       Função insere adicionada
 *  $ED Descrição do módulo
 *     Este módulo implementa o Corpo Discente do Sistema Acadêmico a ser desenvolvido.
 *     O Corpo Discente é uma lista de Alunos da universidade.
