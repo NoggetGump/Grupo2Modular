@@ -18,6 +18,7 @@
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data			Observações
 *     0.01    Flávio   01/10/2017	Início do desenvolvimento
+*     0.02    Flávio   03/10/2017       Funções busca, imprime e remove alteradas	
 *
 *  $ED Descrição do módulo
 *     Este módulo implementa o Corpo Discente do Sistema Acadêmico a ser desenvolvido.
@@ -50,13 +51,13 @@ typedef enum {
 CDIS_tpCondRet CorpoDisc_cria(CorpoDisc **corpo);
 /***********************************************************************
 *
-*  $FC Função: CDIS deleta
+*  $FC Função: CDIS remove
 *
 *  $ED Descrição da função
 *		Varre a lista do Corpo Discente procurando Aluno com matrícula igual ao valor de matbusca e o remove da lista.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_deleta(CorpoDisc *Corpo, unsigned int matbusca);
+CDIS_tpCondRet CorpoDisc_remove(CorpoDisc *Corpo, unsigned int matbusca);
 /***********************************************************************
 *
 *  $FC Função: CDIS imprime
