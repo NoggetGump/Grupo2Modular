@@ -72,3 +72,17 @@ CDIS_tpCondRet CorpoDisc_imprime(CorpoDisc *Corpo) {
 	return CDIS_CondRetOK;
 }
 /*Fim da função CorpoDisc_imprime*/
+/*Inicio da função CorpoDisc_insere*/
+/*Função que recebe um vetor de ponteiros para aluno a ser inserido, o nome do aluno, sua matricula,seu cpf, seu telefone, sua data de nascimento, seu endereço e um ponteiro para uma estrutura Corpo Discente*/
+CDIS_tpCondRet CorpoDisc_insere(CorpoDisc *Corpo, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end)
+{
+	Aluno *a;
+	ALU_CriaAluno(&a,nome,mat,cpf,telefone,nasc,end);
+	if(a == NULL)
+		return CDIS_CondRetFaltouMemoria;
+	else {
+		push_back(Corpo->Aluno,a);
+		return CDIS_CondRetOK;
+	}
+}
+/*Fim da função*/
