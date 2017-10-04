@@ -1,0 +1,72 @@
+
+
+LES - Laboratório de Engenharia de Software DI/PUC-Rio
+      Arcabouço de teste de módulos C  (c) 2006
+
+---------------------------------------------
+      Construto sob teste: Modulo Aluno.exe
+
+      Arquivo de teste:    Teste.script
+
+
+!!!    0  Linha:     1  // Script teste Grupo 2 
+    3  == Retorno
+    7  == Paramentos
+   12  == Declarando conteÃºdo dos alunos
+!!!    0  Linha:    14  // Aluno 
+!!!    0  Linha:    31  // AlunoUm 
+!!!    0  Linha:    48  // AlunoDois 
+   68  == Verificar criar
+   71  == Verificar criar
+   74  == Verificar criar
+   77  == Verificar getnome
+   80  == Verificar getnome comparando com nome errado
+>>>    1  Linha:    81  Nome errado. Deveria ser: >Joao<  É: >Matheus<
+<<<    0  Linha:    82  Falha esperada foi recuperada. 
+   84  == Verificar getnome
+   87  == Verificar getmat
+   90  == Verificar alteradado
+   93  == Verificar getnome apos alterar
+   96  == Verificar getmat apos alterar
+   99  == Verificar impalunoNome: Bruno
+Matricula: 1510003
+CPF:  123.456.789-00
+Telefone: 99933412
+Data de Nascimento: 17/09/1997
+Endereco: AvenidaDosAnoesGrandes, ProxAoInferno, Ceu, RioDeJaneiro - RioDeJaneiro
+
+  102  == Verificar impalunoNome: Joao
+Matricula: 1621473
+CPF:  123.456.789-00
+Telefone: 99933412
+Data de Nascimento: 17/09/1997
+Endereco: AvenidaDosAnoesGrandes, prox ao inferno, Ceu, RioDeJaneiro - RioDeJaneiro
+
+  105  == Verificar impalunoNome: Joao
+Matricula: 1621473
+CPF:  123.456.789-00
+Telefone: 99933412
+Data de Nascimento: 17/09/1997
+Endereco: AvenidaDosAnoesGrandes, ProxAoInferno, Ceu, RioDeJaneiro - RioDeJaneiro
+
+  108  == Verificar getall
+  111  == Verificar getall esperando matricula errado
+>>>    1  Linha:   112  Retorno por referencia errado ao consultar matricula do Aluno. Deveria ser: 1510003  É: 1621473
+<<<    0  Linha:   113  Falha esperada foi recuperada. 
+  115  == Verificar getall esperando nome errado
+>>>    1  Linha:   116  Retorno por referencia errado ao consultar nome do Aluno. Deveria ser: >Matheus<  É: >Bruno<
+<<<    0  Linha:   117  Falha esperada foi recuperada. 
+  119  == Deleta Aluno
+  122  == Deleta Aluno
+  125  == Deleta Aluno
+  128  == Deleta Aluno que ja foi deletado
+
+!!! Número de linhas lidas:         129
+!!! Número de casos de teste:        23
+!!! Número comandos corretos:        69
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0
