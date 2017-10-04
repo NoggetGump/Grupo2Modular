@@ -75,7 +75,7 @@ CDIS_tpCondRet CorpoDisc_imprime(CorpoDisc *Corpo);
 *		Cria e insere Aluno no final da lista do Corpo Discente.
 *
 ***********************************************************************/
-//FUNÇÃO INSERE--------------------------------------------------
+CDIS_tpCondRet CorpoDisc_insere(CorpoDisc *Corpo, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end);
 /***********************************************************************
 *
 *  $FC Função: CDIS busca
