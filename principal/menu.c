@@ -22,6 +22,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "Aluno.h"
+#include "disciplina.h"
+#include "listas.h"
+#include "professor.h"
+#include "sala.h"
+#include "turma.h"
+#include "menu.h"
+#include "corpodiscente.h"
 
 /***** Protótipos das funções encapsuladas no módulo *****/
 void MEN_menuInicial(void);

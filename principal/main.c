@@ -31,7 +31,7 @@
 #include "sala.h"
 #include "turma.h"
 #include "menu.h"
-
+#include "corpodiscente.h"
 
 /***************************************************************************
 *
