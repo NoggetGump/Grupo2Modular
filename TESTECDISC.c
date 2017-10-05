@@ -58,8 +58,8 @@
 #include	"aluno.h"
 #include    "TST_ESPC.H"
 
-#include    "generico.h"
-#include    "lerparm.h"
+#include    "GENERICO.H"
+#include    "LERPARM.H"
 
 /* Tabela dos nomes dos comandos de teste específicos */
 
