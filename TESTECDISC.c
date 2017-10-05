@@ -28,8 +28,8 @@
 *		IMPINF_CDISC_CMD	Imprime a info de um aluno			"=impinfaluno"
 *		ALT_CDISC_CMD		Altera dados de um aluno			"=altaluno"
 *		RMV_CDISC_CMD		Remove um aluno do C. Disc.			"=remover"
-*		IMP_CDISC_CMD		Imprime um C. Disc.					"=imprimir"
-*		DEL_CDISC_CMD		Deleta um C. Disc.					"=deletar"
+*		IMP_CDISC_CMD		Imprime um C. Disc.				"=imprimir"
+*		DEL_CDISC_CMD		Deleta um C. Disc.				"=deletar"
 *
 *		Comandos de teste específicos para o módulo Corpo Discente:
 *
