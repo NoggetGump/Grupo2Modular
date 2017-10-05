@@ -225,7 +225,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = CDIdeleta();
+		CondRetObtido = CDI_deleta();
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
 	}
 
