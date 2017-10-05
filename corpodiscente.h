@@ -23,7 +23,7 @@
 *     Este módulo implementa o Corpo Discente do Sistema Acadêmico a ser desenvolvido.
 *     O Corpo Discente é uma lista de Alunos da universidade.
 ***************************************************************************/
-
+#include "aluno.h"
 
 
 /***********************************************************************
@@ -47,6 +47,7 @@ typedef enum {
 *
 ***********************************************************************/
 typedef struct corpodisc CorpoDisc;
+
 /***********************************************************************
 *
 *  $FC Função: CDI cria
@@ -92,7 +93,7 @@ CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, CPF *cpf, unsigned int te
 *		Caso não queira alterar um dado, basta passar NULL no parâmetro que se manterá inalterado.
 *
 ***********************************************************************/
-CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end)
+CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco *end);
 /***********************************************************************
 *
 *  $FC Função: CDI deleta
