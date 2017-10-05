@@ -274,9 +274,9 @@ void MEN_menuPAdministrativo(void)
 	int opcao = 0;
 	char nome[81];
 	unsigned int mat, telefone;
-	Data *nasc; 
-	Endereco* end;
-	CPF *cpf;
+	Data nasc; 
+	Endereco end;
+	CPF cpf;
 
 	if(MEN_loginAdministrativo() == 1) // Se volta 1, ok.
 
@@ -328,20 +328,20 @@ void MEN_menuPAdministrativo(void)
 				printf("\nDigite a telefone: \n");
 				scanf("%d", &telefone);
 				printf("\nDigite a data de nacimento: \n");
-				scanf("%d//%d//%d", nasc->dia, nasc->mes, nasc->ano);
+				scanf("%d %d %d", nasc.dia, nasc.mes, nasc.ano);
 				printf("\nDigite o cpf: \n");
-				scanf("%d.%d.%d-%d", cpf->dig1, cpf->dig2, cpf->dig3, cpf->cod);
+				scanf("%d.%d.%d-%d", cpf.dig1, cpf.dig2, cpf.dig3, cpf.cod);
 				printf("\nDigite o estado\n");
-				scanf("%s", end->estado);
+				scanf("%s", end.estado);
 				printf("\nDigite a cidade\n");
-				scanf("%s", end->cidade);
+				scanf("%s", end.cidade);
 				printf("\nDigite o bairro\n");
-				scanf("%s", end->bairro);
+				scanf("%s", end.bairro);
 				printf("\nDigite a rua\n");
-				scanf("%s", end->rua);
+				scanf("%s", end.rua);
 				printf("\nDigite o comp\n");
-				scanf("%s", end->comp);
-				CDI_insere(nome, mat, cpf, telefone, nasc, end);
+				scanf("%s", end.comp);
+				CDI_insere(nome, mat, &cpf, telefone, &nasc, &end);
 				break;
 			case 6:
 				system("cls");
