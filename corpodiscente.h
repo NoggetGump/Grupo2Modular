@@ -103,3 +103,12 @@ CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, u
 *
 ***********************************************************************/
 CDI_tpCondRet CDI_deleta(void);
+/***********************************************************************
+*
+*  $FC Função: CDI imprime Info
+*
+*  $ED Descrição da função
+*		Imprime na tela os dados do Aluno com matrícula igual a matbusca.
+*
+***********************************************************************/
+CDI_tpCondRet CDI_imprimeInfo(unsigned int matbusca);
