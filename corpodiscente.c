@@ -118,8 +118,9 @@ CDI_tpCondRet CDI_imprime(void) {
 /*Fim da função CDI_imprime*/
 
 /*Início da função CDI_deleta*/
-CDI_tpCondRet CDI_deleta(void) {
-	// TODO
+CDI_tpCondRet CDI_deleta(void){
+	clear(Corpo->Aluno);
+	free (Corpo);
 	return CDI_CondRetOK;
 }
 /*Fim da função CDI_deleta*/
