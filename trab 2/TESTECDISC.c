@@ -86,8 +86,8 @@ Data Datateste;
 TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 {
 
-	ALN_tpCondRet CondRetObtido = ALN_CondRetOK;
-	ALN_tpCondRet CondRetEsperada = ALN_CondRetFaltouMemoria;
+	CDI_tpCondRet CondRetObtido = ALN_CondRetOK;
+	CDI_tpCondRet CondRetEsperada = ALN_CondRetFaltouMemoria;
 	/* inicializa para qualquer coisa,é só para inicializar as variáveis */
 	unsigned int matbusca = -1;
 	char StringEsperada[81];
