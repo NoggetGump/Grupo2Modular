@@ -25,29 +25,35 @@
 *
 *		CRIAR_CDISC_CMD		Cria um Corpo Discente				"=criar"
 *		INS_CDISC_CMD		Insere um aluno no C. Disc.			"=inserir"
-*		BSC_CDISC_CMD		Busca um aluno no C. Disc.			"=buscaluno"
+*		IMPINF_CDISC_CMD	Imprime a info de um aluno			"=impinfaluno"
+*		ALT_CDISC_CMD		Altera dados de um aluno			"=altaluno"
 *		RMV_CDISC_CMD		Remove um aluno do C. Disc.			"=remover"
 *		IMP_CDISC_CMD		Imprime um C. Disc.					"=imprimir"
 *		DEL_CDISC_CMD		Deleta um C. Disc.					"=deletar"
 *
 *		Comandos de teste específicos para o módulo Corpo Discente:
 *
-*		"=criar" <int>indexCDisc <int>CondRet
+*		"=criar" <int>CondRet
 *
-*		"=inserir" <int>indexCDisc <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig
+*		"=inserir" <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig
 *		<int>cpf3TercDig <int>cpfcodVerif <int>telefone <int>diaNasc <int>mesNasc <int>anoNasc
 *		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
 *		<int>CondRet
 *
-*		"=buscaluno" <int>indexCDisc <int>mat <int>indexAluno <int>CondRet
+*       "=impinfaluno <int>matbusca <int>CondRet
 *
-*		"=remover" <int>indexCDisc <int>mat <int>CondRet
+*	
+*		"altaluno"<int>matbusca <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig
+*		<int>cpf3TercDig <int>cpfcodVerif <int>telefone <int>diaNasc <int>mesNasc <int>anoNasc
+*		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
+*		<int>CondRet
 *
-*		"=imprimir" <int>indexCDisc <int>CondRet
+*		"=remover" <int>matbusca <int>CondRet
 *
-*		"=deletar" <int>indexCDisc <int>CondRet
+*		"=imprimir" <int>CondRet
 *
-*		"=delaluno" <int>indexAluno <int>CondRet
+*		"=deletar"  <int>CondRet
+*
 *
 ***************************************************************************/
 
@@ -55,30 +61,26 @@
 #include    <stdio.h>
 #include	<stdlib.h>
 #include    "corpodiscente.h"
-#include	"Aluno.h"
+#include	"aluno.h"
 #include    "TST_ESPC.H"
 
-#include    "GENERICO.H"
-#include    "LERPARM.H"
+#include    "generico.h"
+#include    "lerparm.h"
 
 /* Tabela dos nomes dos comandos de teste específicos */
 
 #define     CRIAR_CDISC_CMD		"=criar"
 #define     INS_CDISC_CMD		"=inserir"
-#define     BSC_CDISC_CMD		"=buscaluno"
+#define     IMPINF_CDISC_CMD	"=impinfaluno"
+#define     ALT_CDISC_CMD       "=altaluno"
 #define     RMV_CDISC_CMD		"=remover"
 #define     IMP_CDISC_CMD		"=imprimir"
 #define     DEL_CDISC_CMD		"=deletar"
 
 #define DIM_VT   10
-#define  DIM_STRING  250
 
 CorpoDisc *vtCorpoDisc[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
 NULL, NULL, NULL, NULL, NULL };	// vetor de ponteiros para os alunos criados no script.
-Data vtDatas[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
-NULL, NULL, NULL, NULL, NULL };
-Endereco vtEnds[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
-NULL, NULL, NULL, NULL, NULL };
 Endereco Endteste;
 Data Datateste;
 TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
@@ -87,9 +89,11 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	ALN_tpCondRet CondRetObtido = ALN_CondRetOK;
 	ALN_tpCondRet CondRetEsperada = ALN_CondRetFaltouMemoria;
 	/* inicializa para qualquer coisa,é só para inicializar as variáveis */
-
-	char ValorEsperado = '?';
-	char ValorObtido = '!';
+	unsigned int matbusca = -1;
+	char StringEsperada[81];
+	unsigned int MatEsperada = -1;
+	CPF cpfEsperado;
+	unsigned int telefoneEsperado;
 	int dia;
 	int mes;
 	int ano;
@@ -98,57 +102,59 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	char bairro[81];
 	char rua[81];
 	char complemento[81];
-	char StringEsperada[81];
-	char StringObtida[81];
-	unsigned int MatEsperada = -1;
-	unsigned int MatObtida = -1;
-	int indxdata = -1;
-	int indxaluno = -1;
-	int indxendereco = -1;
-	CPF cpfEsperado;
-	CPF cpfObtido;
-	unsigned int telefoneEsperado;
-	unsigned int telefoneObtido;
 	int  NumLidos = -1;
 
-	TST_tpCondRet Ret, Ret1;
+	/* Testar criar lista de alunos*/
 
-	/* Testar ALU Criar aluno*/
-
-	if (strcmp(ComandoTeste, CRIAR_ALN_CMD) == 0)
+	if (strcmp(ComandoTeste,CRIAR_CDISC_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
-			&CondRetEsperada);
-		if (NumLidos != 17)
+		NumLidos = LER_LerParametros("i",&CondRetEsperada);
+		if (NumLidos !=1)
 		{
 			return TST_CondRetParm;
 		}
-		/* testando se a matricula é valida, isto é, tem 7 números */
-		if (MatEsperada<1000000 || MatEsperada>9999999) {
-			return TST_CondRetErro;
-		}
-		/* montando structs para testar criaaluno */
-		Datateste.dia = dia;
-		Datateste.mes = mes;
-		Datateste.ano = ano;
-		strcpy(Endteste.estado, estado);
-		strcpy(Endteste.cidade, cidade);
-		strcpy(Endteste.bairro, bairro);
-		strcpy(Endteste.rua, rua);
-		strcpy(Endteste.comp, complemento);
-
-		CondRetObtido = ALU_CriaAluno(vtAlunos + indxaluno, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
+		CondRetObtido = CDI_cria();
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
-			"Retorno errado ao criar Aluno.");
+			"Retorno errado ao criar lista.");
 
 	}
-	/* Testar ALU Altera dados do aluno*/
 
-	if (strcmp(ComandoTeste, ALT_DADO_CMD) == 0)
+	/* Testar CDISC Insere aluno na lista do corpo discente*/
+
+	if (strcmp(ComandoTeste, INS_CDISC_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("siiiiiiiiisssssi",StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
+			&CondRetEsperada);
+		if (NumLidos != 16)
+		{
+			return TST_CondRetParm;
+		}
+		/* testando se a matricula é valida, isto é, tem 7 números */
+		if (MatEsperada<1000000 || MatEsperada>9999999) {
+			return TST_CondRetErro;
+		}
+		Datateste.dia = dia;
+		Datateste.mes = mes;
+		Datateste.ano = ano;
+		strcpy(Endteste.estado, estado);
+		strcpy(Endteste.cidade, cidade);
+		strcpy(Endteste.bairro, bairro);
+		strcpy(Endteste.rua, rua);
+		strcpy(Endteste.comp, complemento);
+		CondRetObtido = CDI_insere(StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
+		return TST_CompararInt(CondRetEsperada, CondRetObtido,
+			"Retorno errado ao inserir aluno na lista.");
+	}
+
+
+	/* Testar CDISC Altera dados de um aluno do corpo discente*/
+
+	if (strcmp(ComandoTeste, ALT_CDISC_CMD) == 0)
+	{
+
+		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &matbusca, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
 		if (NumLidos != 17)
 		{
@@ -166,107 +172,44 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		strcpy(Endteste.bairro, bairro);
 		strcpy(Endteste.rua, rua);
 		strcpy(Endteste.comp, complemento);
-		CondRetObtido = ALU_AlteraDados(vtAlunos[indxaluno], StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
-
+		CondRetObtido = CDI_altera(matbusca, StringEsperada, MatEsperada, &cpfEsperado, telefoneEsperado, &Datateste, &Endteste);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao alterar dados do Aluno.");
-
 	}
+	/* Testar remove aluno da lista */
 
-	/* Testar ALU Get ALL que pega todos os dados do aluno e copia para os parametros enviados*/
-
-	if (strcmp(ComandoTeste, GET_ALL_CMD) == 0)
+	else if (strcmp(ComandoTeste, RMV_CDISC_CMD) == 0)
 	{
-
-		NumLidos = LER_LerParametros("isiiiiiiiiisssssi", &indxaluno, StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
-			&CondRetEsperada);
-		if (NumLidos != 17)
-		{
-			return TST_CondRetParm;
-		}
-		CondRetObtido = ALU_GetAll(vtAlunos[indxaluno], StringObtida, &MatObtida, &cpfObtido, &telefoneObtido, &vtDatas[indxdata], &vtEnds[indxendereco]);
-
-		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido,
-			"Retorno errado ao pegar dados do Aluno.");
-
-		if (Ret != TST_CondRetOK) return Ret;
-		Ret = TST_CompararString(StringEsperada, StringObtida,
-			"Retorno por referencia errado ao consultar nome do Aluno.");
-
-		Ret1 = TST_CompararInt(MatObtida, MatEsperada,
-			"Retorno por referencia errado ao consultar matricula do Aluno.");
-		if (Ret1 != TST_CondRetOK) return Ret1;
-		return Ret;
-	}
-
-	/* Testar ALU pegar matrícula do aluno */
-
-	else if (strcmp(ComandoTeste, GET_MAT_CMD) == 0)
-	{
-		/*indxaluno é o index do aluno declarado no script de teste(exemplo:criar aluno0, criar aluno1, a função lerparametros pega esse 0 e 1,que são indices para um vetor de alunos criado nesse módulo para teste */
-		NumLidos = LER_LerParametros("iii", &indxaluno, &MatEsperada, &CondRetEsperada);
-		if (NumLidos != 3)
-		{
-			return TST_CondRetParm;
-		} /* if */
-
-		CondRetObtido = ALU_GetMat(vtAlunos[indxaluno], &MatObtida);
-		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
-		if (Ret != TST_CondRetOK) {
-			return Ret;
-		}
-
-		return TST_CompararInt(MatEsperada, MatObtida,
-			"Matrícula errada.");
-
-	}
-
-	/* Testar ALU pegar nome do aluno */
-
-	else if (strcmp(ComandoTeste, GET_NOME_CMD) == 0)
-	{
-		/*nesse caso abaixo StringNome = nome do aluno digitado no script de teste */
-		NumLidos = LER_LerParametros("isi", &indxaluno, StringEsperada, &CondRetEsperada);
-		if (NumLidos != 3)
-		{
-			return TST_CondRetParm;
-		}
-
-		CondRetObtido = ALU_GetNome(vtAlunos[indxaluno], StringObtida);
-		Ret = TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
-		if (Ret != TST_CondRetOK) {
-			return Ret;
-		}
-		return TST_CompararString(StringEsperada, StringObtida,
-			"Nome errado.");
-	}
-
-	/* Testar deletar aluno */
-
-	else if (strcmp(ComandoTeste, DEL_ALUN_CMD) == 0)
-	{
-		NumLidos = LER_LerParametros("ii", &indxaluno, &CondRetEsperada);
+		NumLidos = LER_LerParametros("ii", &matbusca, &CondRetEsperada);
 		if (NumLidos != 2)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = ALU_deletaAluno(vtAlunos + indxaluno);
-		vtAlunos[indxaluno] = NULL;
+		CondRetObtido = CDI_remove(matbusca);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
 	}
-	/* Testar imprimir aluno */
-	else if (strcmp(ComandoTeste, IMP_ALUN_CMD) == 0)
+	/* Testar imprimir todos os alunos da lista corpo discente */
+	else if (strcmp(ComandoTeste, IMP_CDISC_CMD) == 0)
 	{
-		NumLidos = LER_LerParametros("ii", &indxaluno,
-			&CondRetEsperada);
+		NumLidos = LER_LerParametros("i",&CondRetEsperada);
+		if (NumLidos != 1)
+		{
+			return TST_CondRetParm;
+		}
+		CondRetObtido = CDI_imprime();
+		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
+	}
+	/* Testar imprimir info de um aluno da lista corpo discente */
+	else if (strcmp(ComandoTeste, IMPINF_CDISC_CMD) == 0)
+	{
+		NumLidos = LER_LerParametros("ii",&matbusca,&CondRetEsperada);
 		if (NumLidos != 2)
 		{
 			return TST_CondRetParm;
 		}
-		CondRetObtido = ALU_imprimeAluno(vtAlunos[indxaluno]);
+		CondRetObtido = CDI_imprimeInfo(matbusca);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
 	}
-
 	return TST_CondRetNaoConhec;
 
 }
