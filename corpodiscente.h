@@ -23,7 +23,7 @@
 *     Este módulo implementa o Corpo Discente do Sistema Acadêmico a ser desenvolvido.
 *     O Corpo Discente é uma lista de Alunos da universidade.
 ***************************************************************************/
-#include "aluno.h"
+#include "Aluno.h"
 
 
 /***********************************************************************

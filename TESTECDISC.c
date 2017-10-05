@@ -55,7 +55,7 @@
 #include    <stdio.h>
 #include	<stdlib.h>
 #include    "corpodiscente.h"
-#include	"aluno.h"
+#include	"Aluno.h"
 #include    "TST_ESPC.H"
 
 #include    "GENERICO.H"

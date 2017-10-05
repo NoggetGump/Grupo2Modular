@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
+/*Início da Struct encapsulada Aluno*/
 struct aluno {
 	char nome[81];
 	unsigned int mat;
@@ -15,10 +15,11 @@ struct aluno {
 	Data nasc;
 	Endereco end;
 };
+/*Fim da struct*/
 
 int ValidaData(Data* data);	// Cabeçalho da função interna que valida data.
 
-							//Cria um único aluno com as informações passadas por referencia.
+/*Início da função ALU_CriaAluno*/							
 ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end) {
 
 	*a = (Aluno*)malloc(sizeof(Aluno));	// Alocando espaço na memória para um Aluno
@@ -53,7 +54,9 @@ ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, u
 
 	return ALN_CondRetOK;	// Retorno que tudo deu certo.
 }
+/*Fim da função*/
 
+/*Início da função ALU_deletaAluno*/
 /*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
 ALN_tpCondRet ALU_deletaAluno(Aluno** a) {
 	if (*a != NULL)						// Caso o ponteiro não seja nulo
@@ -63,7 +66,9 @@ ALN_tpCondRet ALU_deletaAluno(Aluno** a) {
 	}
 	return ALN_CondRetAlunoNaoExiste;	// Caso contrário, retorno que o aluno não existe
 }
+/*Fim da função*/
 
+/*Início da função ALU_GetMat*/
 /*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
 ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat) {
 	if (a == NULL)
@@ -72,6 +77,9 @@ ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat) {
 	*mat = a->mat;							// Copio o conteúdo da struct para a variável matricula
 	return ALN_CondRetOK;					// Retorno que tudo deu certo
 }
+/*Fim da função*/
+
+/*Início da função ALU_GetNome*/
 /*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
 ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome) {
 	if (a == NULL)
@@ -79,7 +87,9 @@ ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome) {
 	strcpy(nome, a->nome);					// Copio o conteúdo da struct e coloco na variável
 	return ALN_CondRetOK;					// Retorno que tudo deu certo
 }
+/*Fim da função*/
 
+/*Início da função ALU_AlteraDados*/
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
 ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end) {
 
@@ -113,7 +123,9 @@ ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, unsigned int mat, CPF *cpf, 
 	}
 	return ALN_CondRetOK;
 }
+/*Fim da função*/
 
+/*Início da função ALU_GetAll*/
 // Função que copia os dados do aluno
 ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, unsigned int *mat, CPF *cpf, unsigned int *tel, Data *nasc, Endereco *endereco) {
 
@@ -137,7 +149,9 @@ ALN_tpCondRet ALU_GetAll(Aluno *a, char *nome, unsigned int *mat, CPF *cpf, unsi
 
 	return ALN_CondRetOK;
 }
+/*Fim da função*/
 
+/*Início da função ALU_imprimeAluno*/
 // Função recebe um ponteiro pra aluno e imprime todos os seus dados
 ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 	if (a == NULL)
@@ -150,8 +164,10 @@ ALN_tpCondRet ALU_imprimeAluno(Aluno *a) {
 	printf("Endereco: %s, %s, %s, %s - %s\n", a->end.rua, a->end.comp, a->end.bairro, a->end.cidade, a->end.estado);
 	return ALN_CondRetOK;
 }
+/*Fim da função*/
 
-/* Função interna para validar uma data.
+/*Início da função interna ValidaData*/
+/*
 Considera a data atual do sistema como data limite.
 Retorna 1 se a data for válida e 0 caso contrário.
 Valida verificando o número de dias por mês, p. ex. O dia 31 de setembro não é válido. */
@@ -191,3 +207,4 @@ int ValidaData(Data* data) {
 	}
 	return 0;		// Neste caso, a data é inválida.
 }
+/*Fim da função*/
