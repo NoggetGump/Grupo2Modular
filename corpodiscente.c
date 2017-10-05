@@ -3,11 +3,14 @@
 #include "listas.h"
 #include "corpodiscente.h"
 #include "aluno.h"
+
 struct corpodisc {
 	List* Aluno;
 }typedef CorpoDisc;
 
 static CorpoDisc *Corpo;
+
+Aluno* CDI_busca(unsigned int matbusca);
 
 /*Inicio da função CDI_cria*/
 /* Recebe um ponteiro para CorpoDisc e aloca memória para uma lista de alunos,
@@ -28,7 +31,7 @@ CDI_tpCondRet CDI_cria(void) {
 
 /*Inicio da função CDI_insere*/
 /*Função que recebe um vetor de ponteiros para aluno a ser inserido, o nome do aluno, sua matricula,seu cpf, seu telefone, sua data de nascimento, seu endereço e um ponteiro para uma estrutura Corpo Discente*/
-CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end)
+CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, struct cpf *cpf, unsigned int telefone, struct data *nasc, struct endereco* end)
 {
 	Aluno *a;
 	if (CDI_busca(mat) != NULL)
@@ -56,7 +59,7 @@ Aluno* CDI_busca(unsigned int matbusca) {
 		get_val_cursor(Corpo->Aluno, &a);
 		ALU_GetMat(a, &mat2);
 		if (matbusca == mat2) {
-			return &a;
+			return a;
 		}
 		next(Corpo->Aluno);
 	}
@@ -66,9 +69,8 @@ Aluno* CDI_busca(unsigned int matbusca) {
 
 /*Início da função CDI_altera*/
 /*Função que altera os dados de um aluno do corpo docente.*/
-CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end) {
+CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, struct cpf *cpf, unsigned int telefone, struct data *nasc, struct endereco *end) {
 	Aluno *alndesejado;
-	ALN_tpCondRet ret;
 
 	alndesejado = CDI_busca(matbusca);	// busco o aluno no corpo discente
 
@@ -98,7 +100,7 @@ CDI_tpCondRet CDI_remove(unsigned int matbusca) {
 /*Início da função CDI_imprime*/
 /*Função que recebe como parâmetro o ponteiro para a estrutura Corpo Discente e imprime na tela todos os seus elementos*/
 CDI_tpCondRet CDI_imprime(void) {
-	unsigned int mat2, i, size;
+	unsigned int i, size;
 	Aluno *a;
 	list_size(Corpo->Aluno, &size);
 	if (size == 0) {
@@ -118,5 +120,6 @@ CDI_tpCondRet CDI_imprime(void) {
 /*Início da função CDI_deleta*/
 CDI_tpCondRet CDI_deleta(void) {
 	// TODO
+	return CDI_CondRetOK;
 }
 /*Fim da função CDI_deleta*/
