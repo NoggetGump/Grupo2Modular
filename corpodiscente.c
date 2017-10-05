@@ -74,12 +74,9 @@ CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, u
 
 	if (alndesejado == NULL)	// se não encontrei
 		return CDI_CondRetAlunoNaoCadastrado;	// aluno não está cadastrado.
-	ret = ALU_AlteraDados(alndesejado,nome,mat,cpf,telefone,nasc,end);
-	if (ret != ALN_CondRetOK) {
-		return CDI_CondRetAlunoNãoEncontrado;
-	}
 
-	return CDI_CondRetOK;
+	ALU_AlteraDados(alndesejado,nome,mat,cpf,telefone,nasc,end); // altero os dados, através da função de alterar dado do módulo aluno.
+	return CDI_CondRetOK;	// Tudo deu certo.
 
 }
 /*Fim da função CDI_altera*/
