@@ -17,9 +17,8 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data			Observações
-*     0.01    Flávio   01/10/2017	Início do desenvolvimento.
-*     0.02    Flávio   03/10/2017       Funções cria, busca, imprime e remove adicionadas	
-*     0.03    Flávio   03/10/2017       Função insere adicionada
+*     0.01    Flávio   01/10/2017	Início do desenvolvimento
+*
 *  $ED Descrição do módulo
 *     Este módulo implementa o Corpo Discente do Sistema Acadêmico a ser desenvolvido.
 *     O Corpo Discente é uma lista de Alunos da universidade.
@@ -29,59 +28,77 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: CDIS Condições de retorno
+*  $TC Tipo de dados: CDI Condições de retorno
 *
 *
 ***********************************************************************/
 typedef enum {
-	CDIS_CondRetOK,	// Executou corretamente
-	CDIS_CondRetAlunoNaoCadastrado,	// O aluno não está cadastrado
-	CDIS_CondRetAlunoNãoEncontrado, // O aluno não foi encontrado
-	CDIS_CondRetFaltouMemoria,	// Faltou memória ao alocar dados
-	CDIS_CondRetCDISVazio
-} CDIS_tpCondRet;
+	CDI_CondRetOK,	// Executou corretamente
+	CDI_CondRetAlunoNaoCadastrado,	// O aluno não está cadastrado
+	CDI_CondRetAlunoJaCadastrado,	// O aluno já foi cadastrado
+	CDI_CondRetAlunoNãoEncontrado, // O aluno não foi encontrado
+	CDI_CondRetFaltouMemoria,	// Faltou memória ao alocar dados
+	CDI_CondRetCDIVazio
+} CDI_tpCondRet;
 /***********************************************************************
 *
-*  $FC Função: CDIS cria
+*  $TD	Typedef 
+*			Para que outros módulos conheçam a existencia da struct.
+*
+***********************************************************************/
+typedef struct corpodisc CorpoDisc;
+/***********************************************************************
+*
+*  $FC Função: CDI cria
 *
 *  $ED Descrição da função
 *		Cria lista de Alunos do Corpo Discente.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_cria(CorpoDisc **corpo);
+CDI_tpCondRet CDI_cria(void);
 /***********************************************************************
 *
-*  $FC Função: CDIS remove
+*  $FC Função: CDI remove
 *
 *  $ED Descrição da função
 *		Varre a lista do Corpo Discente procurando Aluno com matrícula igual ao valor de matbusca e o remove da lista.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_remove(CorpoDisc *Corpo, unsigned int matbusca);
+CDI_tpCondRet CDI_remove(unsigned int matbusca);
 /***********************************************************************
 *
-*  $FC Função: CDIS imprime
+*  $FC Função: CDI imprime
 *
 *  $ED Descrição da função
 *		Imprime na tela o Corpo Discente.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_imprime(CorpoDisc *Corpo);
+CDI_tpCondRet CDI_imprime(void);
 /***********************************************************************
 *
-*  $FC Função: CDIS insere
+*  $FC Função: CDI insere
 *
 *  $ED Descrição da função
-*		Cria e insere Aluno no final da lista do Corpo Discente.
+*		Cria e insere um Aluno no final da lista do Corpo Discente.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_insere(CorpoDisc *Corpo, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end);
+CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end);
 /***********************************************************************
 *
-*  $FC Função: CDIS busca
+*  $FC Função: CDI altera
 *
 *  $ED Descrição da função
-*		Percorre a lista procurando pelo Aluno com matrícula igual a matbusca e retorna, por referência, em alunodesejado.
+*		Percorre a lista procurando pelo Aluno com matrícula igual a matbusca e altera os dados passados que sejam diferentes de NULL.
+*		Caso não queira alterar um dado, basta passar NULL no parâmetro que se manterá inalterado.
 *
 ***********************************************************************/
-CDIS_tpCondRet CorpoDisc_busca(CorpoDisc *Corpo, unsigned int matbusca, Aluno** alunodesejado);
+CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end)
+/***********************************************************************
+*
+*  $FC Função: CDI deleta
+*
+*  $ED Descrição da função
+*		Deleta o corpo discente. ******TO DO*****
+*
+***********************************************************************/
+CDI_tpCondRet CDI_deleta(void);
