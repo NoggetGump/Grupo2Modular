@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "corpodiscente.h"
-#include "aluno.h"
+#include "Aluno.h"
 
 int main(void) {
 	CPF cpf;

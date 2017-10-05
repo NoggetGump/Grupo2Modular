@@ -13,7 +13,7 @@
 *  Autores:   mrol - Matheus Rodrigues de Oliveira Leal
 *             SaintL - Leonardo Abreu Santos
 *	      	  ngtgmp - Felipe Nogueira de Souza
-LL - Clayton Lucas Mendes Lima
+	          LL - Clayton Lucas Mendes Lima
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
@@ -60,7 +60,7 @@ struct list
 *
 *  Função: LIS create list
 *  ****/
-LIS_tpCondRet createList(List** l) { (*l) = (List*)calloc(1, sizeof(List)); if (!l) return LIS_CondRetFaltouMemoria; (*l)->first = NULL; (*l)->last = NULL; (*l)->cursor = NULL; return LIS_CondRetOK; }
+LIS_tpCondRet createList(List** l){ (*l) = (List*) calloc(1, sizeof(List)); if(!l) return LIS_CondRetFaltouMemoria; (*l)->first = NULL; (*l)->last = NULL; (*l)->cursor = NULL; return LIS_CondRetOK; }
 /* Fim função: LIS create lista */
 /***************************************************************************
 *
@@ -70,7 +70,7 @@ LIS_tpCondRet del(List* l)
 {
 	Node* tnode = l->first;
 	l->cursor = l->first;
-	while (tnode != NULL)
+	while(tnode != NULL)
 	{
 		l->cursor = l->cursor->next;
 		free(tnode);
@@ -79,15 +79,15 @@ LIS_tpCondRet del(List* l)
 	free(l);
 	return LIS_CondRetOK;
 }/* Fim função: LIS del */
- /***************************************************************************
- *
- *  Função: LIS clear
- *  ****/
+/***************************************************************************
+*
+*  Função: LIS clear
+*  ****/
 LIS_tpCondRet clear(List* l)
 {
 	Node* tnode = l->first;
 	l->cursor = l->first;
-	while (tnode != NULL)
+	while(tnode != NULL)
 	{
 		l->cursor = l->cursor->next;
 		free(tnode);
@@ -98,19 +98,19 @@ LIS_tpCondRet clear(List* l)
 	l->cursor = NULL;
 	return LIS_CondRetOK;
 }/* Fim função: LIS del */
- /***************************************************************************
- *
- *  Função: LIS push back
- *  ****/
+/***************************************************************************
+*
+*  Função: LIS push back
+*  ****/
 LIS_tpCondRet push_back(List* l, void* val)
 {
 	Node* Nnode;
-	Nnode = (Node*)calloc(1, sizeof(Node));
-	if (!Nnode)
+	Nnode = (Node*) calloc (1, sizeof(Node));
+	if(!Nnode)
 		return LIS_CondRetFaltouMemoria;
 	Nnode->val = val;
 	Nnode->next = NULL;
-	if (l->first == NULL)//Se a lista estiver vazia, primeiro nó = último nó = nó cursor.
+	if(l->first == NULL)//Se a lista estiver vazia, primeiro nó = último nó = nó cursor.
 	{
 		l->first = Nnode;
 		l->cursor = Nnode;
@@ -124,19 +124,19 @@ LIS_tpCondRet push_back(List* l, void* val)
 	l->last = Nnode;
 	return LIS_CondRetOK;
 } /* Fim função: LIS push back */
-  /***************************************************************************
-  *
-  *  Função: LIS push front
-  *  ****/
+/***************************************************************************
+*
+*  Função: LIS push front
+*  ****/
 LIS_tpCondRet push_front(List* l, void* val)
 {
 	Node* Nnode;
-	Nnode = (Node*)calloc(1, sizeof(Node));
-	if (!Nnode)
+	Nnode = (Node*) calloc(1, sizeof(Node));
+	if(!Nnode)
 		return LIS_CondRetFaltouMemoria;
 	Nnode->val = val;
 	Nnode->prev = NULL;
-	if (l->first == NULL)
+	if(l->first == NULL)
 	{
 		l->last = Nnode;
 		l->cursor = Nnode;
@@ -150,14 +150,14 @@ LIS_tpCondRet push_front(List* l, void* val)
 	l->first = Nnode;
 	return LIS_CondRetOK;
 } /* Fim função: LIS push front */
-  /***************************************************************************
-  *
-  *  Função: LIS pop back
-  *  ****/
+/***************************************************************************
+*
+*  Função: LIS pop back
+*  ****/
 LIS_tpCondRet pop_back(List* l, void** val)
 {
 	Node* tnode;
-	if (l->first == NULL) { return LIS_CondRetListaVazia; }
+	if(l->first == NULL) { printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n"); return LIS_CondRetListaVazia; }
 
 	*val = l->last->val;
 
@@ -168,7 +168,7 @@ LIS_tpCondRet pop_back(List* l, void** val)
 		l->cursor = NULL;
 		return LIS_CondRetOK;
 	}
-	if (l->cursor == l->last)
+	if(l->cursor == l->last)
 		l->cursor = l->last->prev;
 	tnode = l->last;
 	l->last = l->last->prev;
@@ -176,14 +176,14 @@ LIS_tpCondRet pop_back(List* l, void** val)
 	tnode->prev = NULL;
 	return LIS_CondRetOK;
 } /* Fim função: LIS pop back */
-  /***************************************************************************
-  *
-  *  Função: LIS pop front
-  *  ****/
+/***************************************************************************
+*
+*  Função: LIS pop front
+*  ****/
 LIS_tpCondRet pop_front(List* l, void** val)
 {
 	Node* tnode;
-	if (l->first == NULL) { return LIS_CondRetListaVazia; }
+	if(l->first == NULL) { printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n"); return LIS_CondRetListaVazia;}
 
 	*val = l->first->val;
 
@@ -194,7 +194,7 @@ LIS_tpCondRet pop_front(List* l, void** val)
 		l->cursor = NULL;
 		return LIS_CondRetOK;
 	}
-	if (l->cursor == l->first)
+	if(l->cursor == l->first)
 		l->cursor = l->first->next;
 	tnode = l->first;
 	l->first = l->first->next;
@@ -202,29 +202,29 @@ LIS_tpCondRet pop_front(List* l, void** val)
 	tnode->next = NULL;
 	return LIS_CondRetOK;
 } /* Fim função: LIS pop front */
-  /***************************************************************************
-  *
-  *  Função: LIS pop cursor
-  *  ****/
+/***************************************************************************
+*
+*  Função: LIS pop cursor
+*  ****/
 LIS_tpCondRet pop_cursor(List* l, void** val)
 {
 	Node* tnode;
-	if (l->cursor == l->first)
+	if(l->cursor == l->first)
 		return pop_front(l, val);
-	else if (l->cursor == l->last)
+	else if(l->cursor == l->last)
 		return pop_back(l, val);
 	else
 	{
-		if (l->first == NULL) { return LIS_CondRetListaVazia; }
-
+		if(l->first == NULL) { printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n"); return LIS_CondRetListaVazia;}
+		
 		*val = l->cursor->val;
-
+	
 		if (l->first == l->last)
 		{
-			l->first = NULL;
-			l->last = NULL;
-			l->cursor = NULL;
-			return LIS_CondRetOK;
+		l->first = NULL;
+		l->last = NULL;
+		l->cursor = NULL;
+		return LIS_CondRetOK;
 		}
 		tnode = l->cursor;
 		l->cursor->prev->next = l->cursor->next;
@@ -233,43 +233,43 @@ LIS_tpCondRet pop_cursor(List* l, void** val)
 		tnode->next = NULL;
 		tnode->prev = NULL;
 		return LIS_CondRetOK;
-	}
+		}
 } /* Fim função: LIS pop cursor */
-  /***************************************************************************
-  *
-  *  Função: LIS get val cursor
-  *  ****/
+/***************************************************************************
+*
+*  Função: LIS get val cursor
+*  ****/
 LIS_tpCondRet get_val_cursor(List* l, void** val)
 {
-	if (l->first == NULL)
-		return LIS_CondRetListaVazia; 
+	if(l->first == NULL) { printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n"); return LIS_CondRetListaVazia;} 
 	*val = l->cursor->val;
 	return LIS_CondRetOK;
 }/* Fim função: LIS get val cursor */
- /***************************************************************************
- *
- *  Função: LIS list size
- *  ****/
+/***************************************************************************
+*
+*  Função: LIS list size
+*  ****/
 LIS_tpCondRet list_size(List* l, unsigned int* size)
 {
-	*size = 0;
 	Node* Tnode = l->first;
-	if (l->first == NULL)
+	if(l->first == NULL)
 		return LIS_CondRetListaVazia;
-	while (Tnode != NULL)
+	*size = 0;
+	while(Tnode != NULL)
 	{
 		Tnode = Tnode->next;
-		*size = *size + 1;
+		*size = *size +1;
 	}
 	return LIS_CondRetOK;
 } /* Fim função: LIS list size */
 
-  /***************************************************************************
-  *
-  *  Função: LIS first
-  *  ****/
-LIS_tpCondRet first(List* l) {
-	if (l->first == NULL) {
+/***************************************************************************
+*
+*  Função: LIS first
+*  ****/
+LIS_tpCondRet first(List* l){
+	if(l->first == NULL) {
+		printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n");
 		return LIS_CondRetListaVazia;
 	}
 	l->cursor = l->first;
@@ -283,23 +283,25 @@ LIS_tpCondRet first(List* l) {
 *  ****/
 LIS_tpCondRet next(List* l)
 {
-	if (l->first == NULL) { return LIS_CondRetListaVazia; }
-	else if (l->cursor->next == NULL)
+	if(l->first == NULL) { printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n");return LIS_CondRetListaVazia;}
+	else if(l->cursor->next == NULL)
 	{
+		printf("\n\n <!> Cursor ja posicionado no final da lista <!> \n\n");
 		return LIS_CondRetCursorNoFinal;
 	}
 	else l->cursor = l->cursor->next;
 	return LIS_CondRetOK;
 } /* Fim função: LIS next */
-  /***************************************************************************
-  *
-  *  Função: LIS prev
-  *  ****/
+/***************************************************************************
+*
+*  Função: LIS prev
+*  ****/
 LIS_tpCondRet prev(List* l)
 {
-	if (l->first == NULL) { return LIS_CondRetListaVazia; }
-	else if (l->cursor->prev == NULL)
+	if(l->first == NULL) { printf("\n\n <!><!><!> Lista Vazia! <!><!><!> \n\n"); return LIS_CondRetListaVazia;}
+	else if(l->cursor->prev == NULL)
 	{
+		printf("\n\n <!> Cursor ja posicionado no inicio da lista <!> \n\n");
 		return LIS_CondRetCursorNoInicio;
 	}
 	else l->cursor = l->cursor->prev;
