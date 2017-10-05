@@ -131,6 +131,10 @@ CDI_tpCondRet CDI_deleta(void) {
 /*Função que limpa a lista e libera o Corpo Discente.
 (Este continua existindo, permitido novas inserções*/
 CDI_tpCondRet CDI_limpa(void) {
+	int size;
+	list_size(Corpo->Aluno,&size);
+	if (size == 0)
+		return CDI_CondRetCDIVazio;
 	clear(Corpo->Aluno);	// limpo o corpo discente
 	return CDI_CondRetOK;
 }
