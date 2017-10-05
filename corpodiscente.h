@@ -42,7 +42,7 @@ typedef enum {
 } CDI_tpCondRet;
 /***********************************************************************
 *
-*  $TD	Typedef 
+*  $TD	Typedef
 *			Para que outros módulos conheçam a existencia da struct.
 *
 ***********************************************************************/
@@ -57,7 +57,7 @@ typedef struct corpodisc CorpoDisc;
 *
 ***********************************************************************/
 /*Assertivas: Retorno da função: CDI_CondRetFaltouMemoria caso não consiga criar a lista do
-/								 corpo discente e CDI_CondRetOK caso contrário. 
+/								 corpo discente e CDI_CondRetOK caso contrário.
 /			 Parâmentros: Não há passagem de parâmetros.
 ***********************************************************************/
 CDI_tpCondRet CDI_cria(void);
@@ -69,9 +69,9 @@ CDI_tpCondRet CDI_cria(void);
 *		Varre a lista do Corpo Discente procurando Aluno com matrícula igual ao valor de matbusca e o remove da lista.
 *
 ***********************************************************************/
-/*Assertivas: Retorno da função: CDI_CondRetAlunoNaoCadastrado caso não consiga encontrar o aluno 
-/                                com matrícula matbusca na lista do corpo discente e CDI_CondRetOK  
-/                                caso contrário. 
+/*Assertivas: Retorno da função: CDI_CondRetAlunoNaoCadastrado caso não consiga encontrar o aluno
+/                                com matrícula matbusca na lista do corpo discente e CDI_CondRetOK
+/                                caso contrário.
 /			 Parâmentros: Um inteiro para matrícula do Aluno a ser removido.
 ***********************************************************************/
 CDI_tpCondRet CDI_remove(unsigned int matbusca);
@@ -83,8 +83,8 @@ CDI_tpCondRet CDI_remove(unsigned int matbusca);
 *		Imprime na tela o Corpo Discente.
 *
 ***********************************************************************/
-/*Assertivas: Retorno da função: CDI_CondRetCDIVazio caso a lista do corpo discente 
-/								 esteja vazia e CDI_CondRetOK caso contrário. 
+/*Assertivas: Retorno da função: CDI_CondRetCDIVazio caso a lista do corpo discente
+/								 esteja vazia e CDI_CondRetOK caso contrário.
 /			 Parâmentros: Não há passagem de parâmetros.
 ***********************************************************************/
 CDI_tpCondRet CDI_imprime(void);
@@ -96,9 +96,9 @@ CDI_tpCondRet CDI_imprime(void);
 *		Cria e insere um Aluno no final da lista do Corpo Discente.
 *
 ***********************************************************************/
-/*Assertivas: Retorno da função: CDI_CondRetAlunoJaCadastrado caso já haja um Aluno com matrícula 
+/*Assertivas: Retorno da função: CDI_CondRetAlunoJaCadastrado caso já haja um Aluno com matrícula
 /                                 igual à passada como parâmetro cadastrado no CDI e ALN_CondRetOK caso contrário.
-/			 Parâmentros: Uma string para nome, um inteiro para matrícula, um ponteiro para CPF(struct) para cpf, um inteiro 
+/			 Parâmentros: Uma string para nome, um inteiro para matrícula, um ponteiro para CPF(struct) para cpf, um inteiro
 /                         para telefone,um ponteiro para Data(struct) para data de nascimento e um ponteiro para Endereco(struct) para endereço.
 ************************************************************************************************************************************************/
 CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end);
@@ -111,9 +111,9 @@ CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, CPF *cpf, unsigned int te
 *		Caso não queira alterar um dado, basta passar NULL no parâmetro que se manterá inalterado.
 *
 ***********************************************************************/
-/*Assertivas: Retorno da função: CDI_CondRetAlunoNaoCadastrado caso não haja um Aluno com matrícula 
+/*Assertivas: Retorno da função: CDI_CondRetAlunoNaoCadastrado caso não haja um Aluno com matrícula
 /                                 igual à passada como parâmetro cadastrado no CDI e ALN_CondRetOK caso contrário.
-/			 Parâmentros: Um inteiro para matrícula a ser buscada, uma string para novo nome, um inteiro para nova matrícula, um ponteiro para novo CPF(struct) para cpf, um inteiro 
+/			 Parâmentros: Um inteiro para matrícula a ser buscada, uma string para novo nome, um inteiro para nova matrícula, um ponteiro para novo CPF(struct) para cpf, um inteiro
 /                         para novo telefone, um ponteiro para nova Data(struct) para data de nascimento e um ponteiro para novo Endereco(struct) para endereço.
 ************************************************************************************************************************************************/
 CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco *end);
@@ -122,11 +122,10 @@ CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, CPF *cpf, u
 *  $FC Função: CDI deleta
 *
 *  $ED Descrição da função
-*		Deleta o corpo discente.
+*		Limpa todo o corpo discente e então o deleta.
 *
 ***********************************************************************/
-/*Assertivas: Retorno da função: CDI_CondRetCDIVazio caso a lista do corpo discente
-/								 esteja vazia e CDI_CondRetOK caso contrário. 
+/*Assertivas: Retorno da função: CDI_CondRetOK ao deletar.
 /			 Parâmentros: Não há passagem de parâmetros.
 ***********************************************************************/
 CDI_tpCondRet CDI_deleta(void);
@@ -138,8 +137,21 @@ CDI_tpCondRet CDI_deleta(void);
 *		Imprime na tela os dados do Aluno com matrícula igual a matbusca.
 *
 ***********************************************************************/
-/*Assertivas: Retorno da função: CDI_CondRetAlunoNaoCadastrado caso não haja um Aluno com matrícula 
+/*Assertivas: Retorno da função: CDI_CondRetAlunoNaoCadastrado caso não haja um Aluno com matrícula
 /                                 igual à passada como parâmetro cadastrado no CDI e ALN_CondRetOK caso contrário.
 /			 Parâmentros:        Um inteiro para matrícula do aluno cujos dados devem ser impressos.
 ************************************************************************************************************************************************/
 CDI_tpCondRet CDI_imprimeInfo(unsigned int matbusca);
+/***********************************************************************
+*
+*  $FC Função: CDI limpa
+*
+*  $ED Descrição da função
+*		Limpa todos os alunos do corpo discente, mas o mantém.
+*
+***********************************************************************/
+/*Assertivas: Retorno da função: CDI_CondRetCDIVazio caso a lista do corpo discente
+/								 esteja vazia e CDI_CondRetOK caso contrário.
+/			 Parâmentros: Não há passagem de parâmetros.
+************************************************************************************************************************************************/
+CDI_tpCondRet CDI_limpa(void);
