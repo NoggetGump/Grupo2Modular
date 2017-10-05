@@ -51,8 +51,8 @@ CDI_tpCondRet CDI_insere(char *nome, unsigned int mat, struct cpf *cpf, unsigned
 desejado retorna seus dados em alunodesejado que é um ponteiro para Aluno passado por referência.Caso não encontre,retorna a condição
 de erro de aluno não encontrado.*/
 Aluno* CDI_busca(unsigned int matbusca) {
-	unsigned int mat2, i, size;
-	Aluno *a;
+	unsigned int mat2=0, i, size;
+	Aluno *a = NULL;
 	list_size(Corpo->Aluno, &size);
 	first(Corpo->Aluno);
 	for (i = 0; i < size; i++) {
@@ -77,7 +77,7 @@ CDI_tpCondRet CDI_altera(int matbusca, char *nome, unsigned int mat, struct cpf 
 	if (alndesejado == NULL)	// se não encontrei
 		return CDI_CondRetAlunoNaoCadastrado;	// aluno não está cadastrado.
 
-	ALU_AlteraDados(alndesejado,nome,mat,cpf,telefone,nasc,end); // altero os dados, através da função de alterar dado do módulo aluno.
+	ALU_AlteraDados(alndesejado, nome, mat, cpf, telefone, nasc, end); // altero os dados, através da função de alterar dado do módulo aluno.
 	return CDI_CondRetOK;	// Tudo deu certo.
 
 }
@@ -125,9 +125,9 @@ CDI_tpCondRet CDI_deleta(void) {
 /*Fim da função CDI_deleta*/
 
 /*Início da função CDI_imprimeInfo*/
-CDI_tpCondRet CDI_imprimeInfo(unsigned int matbusca){
+CDI_tpCondRet CDI_imprimeInfo(unsigned int matbusca) {
 	Aluno *a = CDI_busca(matbusca);
-	if(a == NULL)
+	if (a == NULL)
 		return CDI_CondRetAlunoNaoCadastrado;
 	ALU_imprimeAluno(a);
 	return CDI_CondRetOK;
