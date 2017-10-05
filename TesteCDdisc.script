@@ -83,14 +83,38 @@
 == Verificar imp info aluno alterado
 =impinfaluno matAlt OK
 
+== Verificar imprimir
+=imprimir OK
+
 == Verificar remover
 =remover matTres OK
 
 == Verificar imprimir
 =imprimir OK
 
+== Verificar remover
+=remover matDois OK
+
+== Verificar imprimir
+=imprimir OK
+
 == Deleta Aluno que ja foi deletado
 =remover matTres alunoNull
+
+== Verificar limpar lista toda
+=limpar OK
+
+== Verificar imprimir
+=imprimir 5
+
+== Verificar inserir
+=inserir nomeUm matUm cpfdigUmA cpfdigDoisA cpfdigTresA cpfcodA telefoneUm diaUm mesUm anoUm estadoUm cidadeUm bairroUm ruaUm complementoUm OK
+
+== Verificar inserir
+=inserir nomeDois matDois cpfdigUmB cpfdigDoisB cpfdigTresB cpfcodB telefoneDois diaDois mesDois anoDois estadoDois cidadeDois bairroDois ruaDois complementoDois OK
+
+== Verificar inserir
+=inserir nomeTres matTres cpfdigUmC cpfdigDoisC cpfdigTresC cpfcodC telefoneTres diaTres mesTres anoTres estadoTres cidadeTres bairroTres ruaTres complementoTres OK
 
 == Verificar deletar lista toda
 =deletar OK
