@@ -1,3 +1,94 @@
+#define _CRT_SECURE_NO_WARNINGS
+#pragma warning( disable : 4996 ) 
+
+#include "aluno.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+/*Início da Struct encapsulada Aluno*/
+struct aluno {
+	char nome[81];
+	unsigned int mat;
+	CPF cpfA;
+	unsigned int telefone;
+	Data nasc;
+	Endereco end;
+};
+/*Fim da struct*/
+
+int ValidaData(Data* data);	// Cabeçalho da função interna que valida data.
+
+/*Início da função ALU_CriaAluno*/							
+ALN_tpCondRet ALU_CriaAluno(Aluno **a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end) {
+
+	*a = (Aluno*)malloc(sizeof(Aluno));	// Alocando espaço na memória para um Aluno
+										//*a = b;	// Usando outro ponteiro para me referenciar ao aluno, para facilitar leitura
+										// e não ter que usar (*a)->atributo.
+	if (a == NULL)
+		return ALN_CondRetFaltouMemoria;	// Faltou memória ao alocar aluno.
+
+	strcpy((*a)->nome, nome);	// Atribuo todas as informações ao aluno.
+	(*a)->mat = mat;
+	(*a)->cpfA.dig1 = cpf->dig1;
+	(*a)->cpfA.dig2 = cpf->dig2;
+	(*a)->cpfA.dig3 = cpf->dig3;
+	(*a)->cpfA.cod = cpf->cod;
+	(*a)->telefone = telefone;
+	if (ValidaData(nasc)) {
+		(*a)->nasc.dia = nasc->dia;
+		(*a)->nasc.mes = nasc->mes;
+		(*a)->nasc.ano = nasc->ano;
+	}
+	else {
+		printf("\nData de nascimento fornecida invalida.\n\n");	// Caso a data seja inválida, informo ao usuário.
+		(*a)->nasc.dia = 0;
+		(*a)->nasc.mes = 0;
+		(*a)->nasc.ano = 0;
+	}
+	strcpy((*a)->end.bairro, end->bairro);	// Atribuo os dados de endereço.
+	strcpy((*a)->end.cidade, end->cidade);
+	strcpy((*a)->end.comp, end->comp);
+	strcpy((*a)->end.estado, end->estado);
+	strcpy((*a)->end.rua, end->rua);
+
+	return ALN_CondRetOK;	// Retorno que tudo deu certo.
+}
+/*Fim da função*/
+
+/*Início da função ALU_deletaAluno*/
+/*Recebe um ponteiro para aluno e desaloca o espaço de memória apontado pelo mesmo*/
+ALN_tpCondRet ALU_deletaAluno(Aluno** a) {
+	if (*a != NULL)						// Caso o ponteiro não seja nulo
+	{
+		free(*a);						// Libero a área de memória alocada
+		return ALN_CondRetOK;			// Retorno que tudo deu certo
+	}
+	return ALN_CondRetAlunoNaoExiste;	// Caso contrário, retorno que o aluno não existe
+}
+/*Fim da função*/
+
+/*Início da função ALU_GetMat*/
+/*Recebe um ponteiro para aluno e outro para um inteiro e retorna a matrícula do aluno pelo ponteiro para inteiro.*/
+ALN_tpCondRet ALU_GetMat(Aluno *a, unsigned int *mat) {
+	if (a == NULL)
+		return ALN_CondRetAlunoNaoExiste;	// Caso o ponteiro seja nulo, retorno que o aluno não existe.
+
+	*mat = a->mat;							// Copio o conteúdo da struct para a variável matricula
+	return ALN_CondRetOK;					// Retorno que tudo deu certo
+}
+/*Fim da função*/
+
+/*Início da função ALU_GetNome*/
+/*Recebe um ponteiro para aluno e outro para um char e retorna o nome do aluno pelo ponteiro para char.*/
+ALN_tpCondRet ALU_GetNome(Aluno *a, char* nome) {
+	if (a == NULL)
+		return ALN_CondRetAlunoNaoExiste;	// Caso o ponteiro seja nulo, retorno que o aluno não existe.
+	strcpy(nome, a->nome);					// Copio o conteúdo da struct e coloco na variável
+	return ALN_CondRetOK;					// Retorno que tudo deu certo
+}
+/*Fim da função*/
+
 /*Início da função ALU_AlteraDados*/
 // Altera os dados de um aluno, caso eles sejam diferente de NULL / 0 (Zero).
 ALN_tpCondRet ALU_AlteraDados(Aluno *a, char *nome, unsigned int mat, CPF *cpf, unsigned int telefone, Data *nasc, Endereco* end) {
