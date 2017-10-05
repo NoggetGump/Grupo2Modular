@@ -23,13 +23,14 @@
 *     módulo corpo discente. É um interpretador de comandos de teste específicos
 *	  utilizando o arcabouço de teste para C.
 *
-*		CRIAR_CDISC_CMD		Cria um Corpo Discente				"=criar"
+*		CRIAR_CDISC_CMD		Cria o Corpo Discente				"=criar"
 *		INS_CDISC_CMD		Insere um aluno no C. Disc.			"=inserir"
 *		IMPINF_CDISC_CMD	Imprime a info de um aluno			"=impinfaluno"
 *		ALT_CDISC_CMD		Altera dados de um aluno			"=altaluno"
 *		RMV_CDISC_CMD		Remove um aluno do C. Disc.			"=remover"
-*		IMP_CDISC_CMD		Imprime um C. Disc.				"=imprimir"
-*		DEL_CDISC_CMD		Deleta um C. Disc.				"=deletar"
+*		IMP_CDISC_CMD		Imprime o C. Disc.					"=imprimir"
+*		DEL_CDISC_CMD		Deleta o C. Disc.					"=deletar"
+*		LMP_CDISC_CMD		Limpa o C. Disc.					"=limpar"
 *
 *		Comandos de teste específicos para o módulo Corpo Discente:
 *
@@ -40,9 +41,9 @@
 *		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
 *		<int>CondRet
 *
-*       	"=impinfaluno <int>matbusca <int>CondRet
+*       "=impinfaluno <int>matbusca <int>CondRet
 *
-*	
+*
 *		"altaluno"<int>matbusca <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig
 *		<int>cpf3TercDig <int>cpfcodVerif <int>telefone <int>diaNasc <int>mesNasc <int>anoNasc
 *		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
@@ -53,6 +54,8 @@
 *		"=imprimir" <int>CondRet
 *
 *		"=deletar"  <int>CondRet
+*
+*		"=limpar"  <int>CondRet
 *
 *
 ***************************************************************************/
@@ -76,11 +79,8 @@
 #define     RMV_CDISC_CMD		"=remover"
 #define     IMP_CDISC_CMD		"=imprimir"
 #define     DEL_CDISC_CMD		"=deletar"
+#define     LMP_CDISC_CMD		"=limpar"
 
-#define DIM_VT   10
-
-CorpoDisc *vtCorpoDisc[DIM_VT] = { NULL, NULL, NULL, NULL, NULL,
-NULL, NULL, NULL, NULL, NULL };	// vetor de ponteiros para os alunos criados no script.
 Endereco Endteste;
 Data Datateste;
 TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
@@ -106,11 +106,11 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 
 	/* Testar criar lista de alunos*/
 
-	if (strcmp(ComandoTeste,CRIAR_CDISC_CMD) == 0)
+	if (strcmp(ComandoTeste, CRIAR_CDISC_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("i",&CondRetEsperada);
-		if (NumLidos !=1)
+		NumLidos = LER_LerParametros("i", &CondRetEsperada);
+		if (NumLidos != 1)
 		{
 			return TST_CondRetParm;
 		}
@@ -125,7 +125,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	if (strcmp(ComandoTeste, INS_CDISC_CMD) == 0)
 	{
 
-		NumLidos = LER_LerParametros("siiiiiiiiisssssi",StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
+		NumLidos = LER_LerParametros("siiiiiiiiisssssi", StringEsperada, &MatEsperada, &cpfEsperado.dig1, &cpfEsperado.dig2, &cpfEsperado.dig3, &cpfEsperado.cod, &telefoneEsperado, &dia, &mes, &ano, estado, cidade, bairro, rua, complemento,
 			&CondRetEsperada);
 		if (NumLidos != 16)
 		{
@@ -176,6 +176,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		return TST_CompararInt(CondRetEsperada, CondRetObtido,
 			"Retorno errado ao alterar dados do Aluno.");
 	}
+
 	/* Testar remove aluno da lista */
 
 	else if (strcmp(ComandoTeste, RMV_CDISC_CMD) == 0)
@@ -188,10 +189,12 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		CondRetObtido = CDI_remove(matbusca);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno errado");
 	}
+
 	/* Testar imprimir todos os alunos da lista corpo discente */
+
 	else if (strcmp(ComandoTeste, IMP_CDISC_CMD) == 0)
 	{
-		NumLidos = LER_LerParametros("i",&CondRetEsperada);
+		NumLidos = LER_LerParametros("i", &CondRetEsperada);
 		if (NumLidos != 1)
 		{
 			return TST_CondRetParm;
@@ -199,10 +202,12 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		CondRetObtido = CDI_imprime();
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
 	}
+
 	/* Testar imprimir info de um aluno da lista corpo discente */
+
 	else if (strcmp(ComandoTeste, IMPINF_CDISC_CMD) == 0)
 	{
-		NumLidos = LER_LerParametros("ii",&matbusca,&CondRetEsperada);
+		NumLidos = LER_LerParametros("ii", &matbusca, &CondRetEsperada);
 		if (NumLidos != 2)
 		{
 			return TST_CondRetParm;
@@ -210,6 +215,31 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		CondRetObtido = CDI_imprimeInfo(matbusca);
 		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
 	}
-	return TST_CondRetNaoConhec;
 
+	/* Testar deletar o corpo discente */
+
+	else if (strcmp(ComandoTeste, DEL_CDISC_CMD) == 0)
+	{
+		NumLidos = LER_LerParametros("i", &CondRetEsperada);
+		if (NumLidos != 1)
+		{
+			return TST_CondRetParm;
+		}
+		CondRetObtido = CDIdeleta();
+		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
+	}
+
+	/* Testar limpar todos os alunos do corpo discente */
+
+	else if (strcmp(ComandoTeste, LMP_CDISC_CMD) == 0)
+	{
+		NumLidos = LER_LerParametros("i", &CondRetEsperada);
+		if (NumLidos != 1)
+		{
+			return TST_CondRetParm;
+		}
+		CondRetObtido = CDI_limpa();
+		return TST_CompararInt(CondRetEsperada, CondRetObtido, "Retorno Errado");
+	}
+	return TST_CondRetNaoConhec;
 }
