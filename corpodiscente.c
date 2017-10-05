@@ -123,3 +123,13 @@ CDI_tpCondRet CDI_deleta(void) {
 	return CDI_CondRetOK;
 }
 /*Fim da função CDI_deleta*/
+
+/*Início da função CDI_imprimeInfo*/
+CDI_tpCondRet CDI_imprimeInfo(unsigned int matbusca){
+	Aluno *a = CDI_busca(matbusca);
+	if(a == NULL)
+		return CDI_CondRetAlunoNaoCadastrado;
+	ALU_imprimeAluno(a);
+	return CDI_CondRetOK;
+}
+/*Fim da função CDI_imprimeInfo*/
