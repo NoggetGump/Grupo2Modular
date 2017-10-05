@@ -40,7 +40,7 @@
 *		<string>EndEstado <string>EndCidade <string>EndBairro <string>EndRua <string>EndComplemento
 *		<int>CondRet
 *
-*       "=impinfaluno <int>matbusca <int>CondRet
+*       	"=impinfaluno <int>matbusca <int>CondRet
 *
 *	
 *		"altaluno"<int>matbusca <string>nome <int>matricula <int>cpf3primDig <int>cpf3segDig
